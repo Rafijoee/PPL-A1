@@ -2,9 +2,30 @@
 @section('title', 'Dashboard')
 @section('content')
 
-<video class="w-full" autoplay muted>
-    <source src="public\videos\video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet quos consequatur neque exercitationem maxime nemo. Ut obcaecati deserunt nisi iure! Autem, soluta voluptates nisi sint obcaecati enim, dolores deleniti ducimus veniam placeat totam laboriosam eum earum consequuntur dolorem sunt maxime corporis, perspiciatis adipisci dignissimos. Voluptatibus repellendus nisi repellat nobis quod quia molestias ab corrupti numquam tenetur, minus iste assumenda harum id quos at? Ad ipsa, quia dicta, amet nisi similique, veniam ducimus a officia asperiores temporibus pariatur fugiat est dolores cum corrupti error voluptatum suscipit. Eligendi tenetur aspernatur architecto, id hic odit incidunt blanditiis aliquam beatae, eaque earum qui. Hic quaerat alias, maxime sit harum quibusdam temporibus, enim quae quos doloribus ab repellat incidunt odit, deserunt aliquid ipsam? Cupiditate itaque saepe tempore, delectus totam fugit. In dolores magnam ea architecto quod voluptates iure. Ab nulla ea officiis aut soluta eum repellat fugit tenetur dolorem eligendi est sunt, consectetur animi, suscipit, saepe blanditiis tempora culpa eos! Dolor corporis totam id ut ab dicta soluta. Quaerat, sequi illo? Voluptatum ullam incidunt modi, odit magni ratione vitae architecto velit nulla deleniti optio veniam fugiat voluptatem maxime laborum cupiditate molestias ut sunt accusantium earum consectetur vel. Eius voluptatem dolores accusantium, aut tempora quam excepturi veniam fugit fuga nostrum rerum cum maiores architecto beatae eos ratione ducimus doloremque culpa nulla sint amet debitis consequatur explicabo aperiam. Fugit quam blanditiis reprehenderit iure qui aspernatur quaerat nihil culpa, beatae sequi impedit animi. Tempore necessitatibus, porro aspernatur doloremque amet odio dolore eligendi assumenda sint molestiae? Veritatis, fuga molestias.
+@if(session('status'))
+<div class="flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+    <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+    </svg>
+    <span class="sr-only">Info</span>
+    <div>
+        <span class="font-medium">{{ session('status') }}</span>
+    </div>
+</div>
+@endif
+
+<div class="container">
+    <div class="kiri">
+        <h2>
+            Selamat Datang
+        </h2>
+        <p>
+
+        </p>
+    </div>
+    <div class="kanan">
+
+    </div>
+</div>
+
 @endsection
