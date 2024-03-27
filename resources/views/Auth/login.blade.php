@@ -18,7 +18,7 @@
                 <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white text-center">
-                            <i class="fa-solid fa-user mr-3"> </i>Login
+                            <i class="fa-solid fa-user mr-3"> </i>Masuk
                         </h1>
                         @if (session()->has('error'))
                         <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 text-center" role="alert">
@@ -47,10 +47,10 @@
                                 <a href="#" class="text-indigo-800 text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Lupa Kata Sandi?</a>
                             </div>
                             <div class="mt-5">
-                                <button type="submit" class="border-2 border-indigo-700 bg-indigo-700 text-white w-full h-10 py-1 rounded-md hover:bg-transparent hover:text-indigo-700 font-semibold">Login</button>
+                                <button type="submit" class="border-2 border-indigo-700 bg-indigo-700 text-white w-full h-10 py-1 rounded-md hover:bg-transparent hover:text-indigo-700 font-semibold">Masuk</button>
                             </div>
                             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                                Belum mempunyai akun? <a href="{{route('form_register')}}" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Registrasi</a>
+                                Belum mempunyai akun? <a href="{{route('form_register')}}" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Buat Akun </a>
                             </p>
                         </div>
                     </div>

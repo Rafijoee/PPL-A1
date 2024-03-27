@@ -39,3 +39,4 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/',[DashboardController::class, 'pengaduan'])->name('pengaduan');
     });
 });
+

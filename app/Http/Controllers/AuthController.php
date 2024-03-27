@@ -21,7 +21,7 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return view('welcome');
+            return view('layouts.dashboard');
         } else {
             return redirect('login')->with('error', 'Email atau Kata sandi salah !');
         }
@@ -40,12 +40,12 @@ class AuthController extends Controller
 
     public function form_register()
     {
+
         return view('auth.register');
     }
 
     public function register(Request $request)
     {
-        // dd('here');
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
