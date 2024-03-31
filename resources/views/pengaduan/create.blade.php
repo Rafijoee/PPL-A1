@@ -22,22 +22,19 @@
         <h1 class="font-bold text-4xl border-b-2">Buat Aduan</h1>
 
         <div class="mt-10 flex w-full justify-center">
-                <form class="space-y-4 md:space-y-6 w-2/3" action="#">
+                <form class="space-y-4 md:space-y-6 w-2/3" method="post" action="/dashboard/pengaduan">
+                @csrf
                 <div>
                     <label for="judul_laporan" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Judul Aduan</label>
                     <input type="text" name="judul_laporan" id="judul_laporan" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="judul aduan" required="" value="{{ old('judul_laporan') }}">
                 </div>
                 <div>
                     <label for="slug" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Slug</label>
-                    <input type="text" name="slug" id="slug" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="judul-aduan" required="" readonly>
+                    <input type="text" name="slug" id="slug" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="judul-aduan" readonly>
                 </div>
                 <div>
                     <label for="alamat" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Alamat / Lokasi Sawah</label>
                     <input type="text" name="alamat" id="alamat" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Jl. alamat sawah" required="">
-                </div>
-                <div>
-                    <label for="judul_laporan" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Judul Aduan</label>
-                    <input type="text" name="judul_laporan" id="judul_laporan" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="judul aduan" required="">
                 </div>
                 <div>
                     <label for="image" class="form-label text-md font-medium">Foto Sawah</label>
@@ -45,9 +42,9 @@
                     <input class="form-control mt-3 border-gray-300 rounded-lg bg-gray-50 border" type="file" id="image" name="image" onchange="preview()">
                 </div>
                 <div>
-                    <label for="body" class="form-label text-md font-medium">Isi Aduan</label>
-                    <input id="body" type="hidden" name="body" class="" value="{{ old('body') }}">
-                    <trix-editor input="body" class="mt-3"></trix-editor>
+                    <label for="isi_aduan" class="form-label text-md font-medium">Isi Aduan</label>
+                    <input id="isi_aduan" type="hidden" name="isi_aduan" class="" value="{{ old('isi_aduan') }}">
+                    <trix-editor input="isi_aduan" class="mt-3"></trix-editor>
                 </div>
                 <button type="submit" class="mt-10 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">Buat Aduan</button>
             </form>

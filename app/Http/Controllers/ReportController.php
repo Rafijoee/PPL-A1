@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Report;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\support\Facades\DB;
 
 class ReportController extends Controller
 {
@@ -28,7 +30,34 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $validatedData = $request->validate([
+        //     'judul_laporan' => 'required|max:255',
+        //     'alamat' => 'required|max:255',
+        //     'isi_laporan' => 'required'
+        // ]);
+
+        $request['user_id'] = auth()->user()->id;
+        
+        // Report::create($request);
+
+        // return $request;
+
+        // $validatedData['user_id'] = auth()->user()->id;
+        
+        $title = $request ->input("judul_laporan");
+        $content = $request->input("isi_aduan");
+        $alamat = $request->input("alamat");
+        $user = Auth::user()->id;
+
+        Report::create([
+            'user_id' -> $user,
+            'judul_laporan' => $title,
+            'alamat' => $alamat,
+            'isi_aduan' => $content,
+        ]);
+        // Report::create($validatedData);
+
+        return redirect('/dashboard/pengaduan')->with('success', 'Aduan berhasil dikirimkan!');
     }
 
     /**
