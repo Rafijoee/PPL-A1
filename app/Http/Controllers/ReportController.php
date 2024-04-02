@@ -14,7 +14,9 @@ class ReportController extends Controller
      */
     public function index()
     {
-        return view('pengaduan.index');
+        return view('pengaduan.index',[
+            'report' => Report::where('user_id', Auth::user()->id)->get()
+        ]);
     }
 
     /**
@@ -30,31 +32,38 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'judul_laporan' => 'required|max:255',
-        //     'alamat' => 'required|max:255',
-        //     'isi_laporan' => 'required'
-        // ]);
-
-        $request['user_id'] = auth()->user()->id;
-        
-        // Report::create($request);
-
-        // return $request;
-
-        // $validatedData['user_id'] = auth()->user()->id;
-        
-        $title = $request ->input("judul_laporan");
-        $content = $request->input("isi_aduan");
-        $alamat = $request->input("alamat");
-        $user = Auth::user()->id;
-
-        Report::create([
-            'user_id' -> $user,
-            'judul_laporan' => $title,
-            'alamat' => $alamat,
-            'isi_aduan' => $content,
+        $validatedData = $request->validate([
+            'judul_laporan' => 'required|max:255',
+            'alamat' => 'required|max:255',
+            'isi_aduan' => 'required',
+            'foto_lokasi' => 'image|file|max:20480'
         ]);
+        
+        $validatedData['foto_lokasi'] = $request->file('image')->store('post-images');
+        $validatedData['user_id'] = Auth::user()->id;
+        $validatedData['handling__statuses_id'] = 1;
+        $validatedData['verification_statuses_id'] = 1;
+
+        Report::create($validatedData);
+
+
+        
+        // $title = $request ->input("judul_laporan");
+        // $content = $request->input("isi_aduan");
+        // $alamat = $request->input("alamat");
+        // $user = Auth::user()->id;
+        // $foto = $request->file('image')->store('post-images');
+
+
+        // Report::create([
+        //     'user_id' => $user,
+        //     'judul_laporan' => $title,
+        //     'alamat' => $alamat,
+        //     'isi_aduan' => $content,
+        //     'handling__statuses_id' => 1,
+        //     'verification_statuses_id' => 1,
+        //     'foto_lokasi' => $foto
+        // ]);
         // Report::create($validatedData);
 
         return redirect('/dashboard/pengaduan')->with('success', 'Aduan berhasil dikirimkan!');

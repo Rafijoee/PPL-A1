@@ -12,8 +12,15 @@ class Report extends Model
 
     protected $fillable = [
         'judul_laporan',
+        'user_id',
         'alamat',
         'isi_aduan',
+        'handling__statuses_id',
+        'verification_statuses_id',
+        'foto_lokasi',
+        'foto_penyuluh',
+        'tanggapan_penyuluh',
+        'tanggapan_pemerintah',
     ];
 
     public function user(){

@@ -22,7 +22,7 @@
         <h1 class="font-bold text-4xl border-b-2">Buat Aduan</h1>
 
         <div class="mt-10 flex w-full justify-center">
-                <form class="space-y-4 md:space-y-6 w-2/3" method="post" action="/dashboard/pengaduan">
+                <form class="space-y-4 md:space-y-6 w-2/3" method="post" action="/dashboard/pengaduan" enctype="multipart/form-data">
                 @csrf
                 <div>
                     <label for="judul_laporan" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Judul Aduan</label>
