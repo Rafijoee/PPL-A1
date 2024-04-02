@@ -15,7 +15,7 @@ class ReportController extends Controller
     public function index()
     {
         return view('pengaduan.index',[
-            'report' => Report::where('user_id', Auth::user()->id)->get()
+            'reports' => Report::where('user_id', Auth::user()->id)->get()
         ]);
     }
 
