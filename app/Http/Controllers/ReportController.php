@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Report;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Handling_Status;
 use Illuminate\support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Encryption\DecryptException;   
+use Illuminate\Support\Facades\Crypt;
+use Symfony\Component\HttpKernel\Event\ResponseEvent;
 
 class ReportController extends Controller
 {
@@ -14,9 +18,12 @@ class ReportController extends Controller
      */
     public function index()
     {
-        return view('pengaduan.index',[
-            'reports' => Report::where('user_id', Auth::user()->id)->get()
-        ]);
+        $user_id = Auth::user()->id;
+        $reports = Report::where('user_id', $user_id)->get();
+        // $handling = Handling_Status::where('id', $reports->handling__statuses_id)->get();
+        // @dd($reports->judul_laporan);
+        
+        return view('pengaduan.index', compact('reports'));
     }
 
     /**
@@ -72,9 +79,20 @@ class ReportController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Report $report)
+    public function show(Report $report, $id)
     {
-        return $report;
+        $user_id = Auth::user()->id;
+        $decryptedID = Crypt::decryptString($id);
+        $reports = Report::find($decryptedID);
+
+        $model = Report::findOrFail($decryptedID);
+        
+
+        return view("pengaduan.show", compact('model','reports'));
+
+        // return view("pengaduan.show",[
+        //     'report'=> $report
+        // ]);
     }
 
     /**

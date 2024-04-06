@@ -52,7 +52,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($reports as $report)                        
+                    @foreach ($reports as $report)                  
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <td class="px-6 py-4">
                             {{ $loop->iteration }}
@@ -71,15 +71,15 @@
                         </td>
                         <td class="px-6 py-4">
                             @if ($report->handling__statuses_id == 2)
-                                sedang diverifikasi
+                                sedang ditindaklanjuti
                             @elseif ($report->handling__statuses_id == 3)
-                                sudah diverifikasi
+                                sudah ditindaklanjuti
                             @else
-                                belum diverifikasi
+                                belum ditindaklanjuti
                             @endif
                         </td>
                         <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <a href="/dashboard/pengaduan/{{ Crypt::encryptString($report["id"]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                         </td>
                     @endforeach
                     </tr>

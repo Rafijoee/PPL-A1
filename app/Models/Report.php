@@ -27,4 +27,7 @@ class Report extends Model
         return $this->belongsTo(User::class, "user_id");
     }
 
+    public function handling_status(){
+        return $this->belongsTo(Handling_Status::class, "handling__statuses_id");
+    }
 }
