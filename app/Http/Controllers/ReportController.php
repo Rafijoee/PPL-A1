@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Handling_Status;
 use Illuminate\support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Contracts\Encryption\DecryptException;   
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
+use Illuminate\Contracts\Encryption\DecryptException;   
 
 class ReportController extends Controller
 {
@@ -45,8 +46,13 @@ class ReportController extends Controller
             'isi_aduan' => 'required',
             'foto_lokasi' => 'image|file|max:20480'
         ]);
+
+        if($request->file('image')){
+            $validatedData['foto_lokasi'] = $request->file('image')->store('post-images');
+        }
+
         
-        $validatedData['foto_lokasi'] = $request->file('image')->store('post-images');
+        // $validatedData['foto_lokasi'] = $request->file('image')->store('post-images');
         $validatedData['user_id'] = Auth::user()->id;
         $validatedData['handling__statuses_id'] = 1;
         $validatedData['verification_statuses_id'] = 1;
@@ -98,9 +104,14 @@ class ReportController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Report $report)
+    public function edit(Report $report, $id)
     {
-        //
+        $user_id = Auth::user()->id;
+        $decryptedID = Crypt::decryptString($id);
+        $reports = Report::find($decryptedID);
+
+        $model = Report::findOrFail($decryptedID);
+        return view("pengaduan.edit", compact('reports', 'model'));
     }
 
     /**
@@ -108,7 +119,33 @@ class ReportController extends Controller
      */
     public function update(Request $request, Report $report)
     {
-        //
+
+        $validatedData = $request->validate([
+            'judul_laporan' => 'required|max:255',
+            'alamat' => 'required|max:255',
+            'isi_aduan' => 'required',
+            'foto_lokasi' => 'image|file|max:20480'
+        ]);
+
+        // if($request->file('image')){
+        //     $validatedData['foto_lokasi'] = $request->file('image')->store('post-images');
+        // }
+        
+        if($request->file('image')){
+            if($request->oldImage){
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['foto_lokasi'] = $request->file('image')->store('post-images');
+        }
+
+        $validatedData['user_id'] = Auth::user()->id;
+        $validatedData['handling__statuses_id'] = 1;
+        $validatedData['verification_statuses_id'] = 1;
+
+        Report::where('id', $report->id)
+              ->update($validatedData);
+        
+        return redirect('/dashboard/pengaduan')->with('success', 'Aduan berhasil diperbarui!');
     }
 
     /**
