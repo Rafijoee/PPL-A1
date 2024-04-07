@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,9 @@ Route::group(['middleware' => ['auth']], function () {
     });
 });
 
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::group(['prefix' => 'dashboard'], function() {
+        Route::resource('/pengaduan', ReportController::class)->middleware('auth');
+    });
+});

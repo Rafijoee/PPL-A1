@@ -9,6 +9,6 @@ class Handling_Status extends Model
 {
     use HasFactory;
     public function reports (){
-        return $this->belongsTo(Report::class);
+        return $this->hasMany(Report::class);
     }
 }
