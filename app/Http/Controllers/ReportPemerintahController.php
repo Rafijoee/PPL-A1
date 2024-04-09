@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Report;
+use App\Models\Kecamatan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class ReportPemerintahController extends Controller
 {
@@ -44,9 +47,17 @@ class ReportPemerintahController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Report $report)
+    public function edit(Report $report, $id)
     {
-        //
+        $user_id = Auth::user()->id;
+        $decryptedID = Crypt::decryptString($id);
+        $reports = Report::find($decryptedID);
+        $kecamatan_id = $reports->kecamatan_id;
+        $kecamatans = Kecamatan::all();
+        $namakecamatan = Kecamatan::where('id', $kecamatan_id)->first();
+
+        $model = Report::findOrFail($decryptedID);
+        return view("pengaduan-pemerintah.show", compact('reports', 'model', 'namakecamatan'));
     }
 
     /**

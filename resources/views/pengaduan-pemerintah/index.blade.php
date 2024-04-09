@@ -81,7 +81,7 @@
                             @endif
                         </td>
                         <td class="px-6 py-4">
-                            <a href="/dashboard/pengaduan/{{ Crypt::encryptString($report["id"]) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            <a href="/dashboard/pengaduan-pemerintah/{{ Crypt::encryptString($report["id"]) }}/edit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                         </td>
                     @endforeach
                     </tr>
