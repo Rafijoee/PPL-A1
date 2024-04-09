@@ -38,15 +38,21 @@ class ReportPenyuluhController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Report $report)
+    public function show(Report $report, $id)
     {
-        //
+        $user_id = Auth::user()->id;
+        $decryptedID = Crypt::decryptString($id);
+        $reports = Report::find($decryptedID);
+
+        $model = Report::findOrFail($decryptedID);
+
+        return view('pengaduan-penyuluh.show', compact('model', 'reports'));
     }
 
     /**
@@ -73,7 +79,16 @@ class ReportPenyuluhController extends Controller
         $decryptedID = Crypt::decryptString($id);
         $reports = Report::find($decryptedID);
 
-        $foto_penyuluh = $request->file('image2')->store('post-images-penyuluh');
+        if($request->file('image2')){
+            if($request->oldImage2){
+                Storage::delete($request->oldImage2);
+            }
+            $foto_penyuluh = $request->file('image2')->store('post-images-penyuluh');
+        }
+        else{
+            $foto_penyuluh = $request->oldImage2;
+        }
+
         $isi_aduan_penyuluh = $request->input('isi_aduan_penyuluh');
         $verif = 3;
 

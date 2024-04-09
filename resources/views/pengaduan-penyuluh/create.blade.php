@@ -49,9 +49,9 @@
                         <label for="image" class="form-label text-md font-medium">Foto Petani</label>
                         <input type="hidden" name="oldImage" value="{{ $reports->foto_lokasi }}">
                         @if ($reports->foto_lokasi)
-                            <img src="{{ asset('storage/'.$reports->foto_lokasi) }}" class="object-scale-down max-h-[500px] w-auto" id="frame" alt="">
+                            <img src="{{ asset('storage/'.$reports->foto_lokasi) }}" class="object-scale-down max-h-[800px] w-auto" id="frame" alt="">
                         @else    
-                            <img class="object-scale-down max-h-[500px] w-auto" id="frame">
+                            <img class="object-scale-down max-h-[800px] w-auto" id="frame">
                         @endif
                     </div>
                 </div>
@@ -60,12 +60,17 @@
                 </div>
                 <div>
                     <label for="isi_aduan_penyuluh" class="form-label text-md font-medium">Isi Aduan Penyuluh</label>
-                    <input id="isi_aduan_penyuluh" type="hidden" name="isi_aduan_penyuluh" class="" value="{{ old('isi_aduan_penyuluh') }}">
+                    <input id="isi_aduan_penyuluh" type="hidden" name="isi_aduan_penyuluh" class="" value="{{ old('isi_aduan_penyuluh', $reports->isi_aduan_penyuluh) }}">
                     <trix-editor input="isi_aduan_penyuluh" class="mt-3"></trix-editor>
                 </div>
                 <div>
                     <label for="image" class="form-label text-md font-medium">Foto Konfirmasi Penyuluh</label>
-                    <img class="object-scale-down max-h-[500px] w-auto" id="frame2">
+                    <input type="hidden" name="oldImage2" value="{{ $reports->foto_penyuluh }}">
+                    @if ($reports->foto_penyuluh)
+                        <img src="{{ asset('storage/'.$reports->foto_penyuluh) }}" alt="" class="scale-75 max-h-[800px]" id="frame2">
+                    @else
+                        <img class="object-scale-down max-h-[800px] w-auto" id="frame2">
+                    @endif
                     <input class="form-control mt-3 border-gray-300 rounded-lg bg-gray-50 border" type="file" name="image2" onchange="preview2()">
                 </div>
                 <button type="submit" class="mt-10 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">Buat Aduan</button>

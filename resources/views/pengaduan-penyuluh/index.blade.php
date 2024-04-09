@@ -77,7 +77,9 @@
                         </td>
                         <td class="px-6 py-4">
                             <a href="/dashboard/pengaduan-penyuluh/{{ Crypt::encryptString($report["id"]) }}" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">View</a>
+                            @if ($report->isi_aduan_penyuluh == NULL)
                             <a href="/dashboard/pengaduan-penyuluh/{{ Crypt::encryptString($report["id"]) }}/edit" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2 ml-3">Buat Aduan</a>
+                            @endif
                         </td>
                     @endforeach
                     </tr>
