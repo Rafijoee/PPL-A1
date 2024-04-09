@@ -23,5 +23,8 @@ class VerivicationSeeder extends Seeder
         VerificationStatus::create([
             'name' => 'Sudah diverifikasi'
         ]);
+        VerificationStatus::create([
+            'name' => 'Aduan ditolak'
+        ]);
     }
 }

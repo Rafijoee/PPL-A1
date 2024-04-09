@@ -14,11 +14,15 @@ class Report extends Model
         'judul_laporan',
         'user_id',
         'alamat',
+        'kecamatan_id',
         'isi_aduan',
         'handling__statuses_id',
         'verification_statuses_id',
         'foto_lokasi',
+        'isi_aduan_penyuluh',
         'foto_penyuluh',
+
+        
         'tanggapan_penyuluh',
         'tanggapan_pemerintah',
     ];

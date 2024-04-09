@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Report;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\Models\Handling_Status;
+use App\Models\Kecamatan;
 use Illuminate\support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -21,6 +23,7 @@ class ReportController extends Controller
     {
         $user_id = Auth::user()->id;
         $reports = Report::where('user_id', $user_id)->get();
+        
         // $handling = Handling_Status::where('id', $reports->handling__statuses_id)->get();
         // @dd($reports->judul_laporan);
         
@@ -32,7 +35,9 @@ class ReportController extends Controller
      */
     public function create()
     {
-        return view('pengaduan.create');
+        return view('pengaduan.create',[
+            'kecamatans' => Kecamatan::all()
+        ]);
     }
 
     /**
@@ -43,6 +48,7 @@ class ReportController extends Controller
         $validatedData = $request->validate([
             'judul_laporan' => 'required|max:255',
             'alamat' => 'required|max:255',
+            'kecamatan_id' => 'required',
             'isi_aduan' => 'required',
             'foto_lokasi' => 'image|file|max:20480'
         ]);
@@ -117,8 +123,10 @@ class ReportController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Report $report)
+    public function update(Request $request, Report $report, $id)
     {
+        $decryptedID = Crypt::decryptString($id);
+        $reports = Report::find($decryptedID);
 
         $validatedData = $request->validate([
             'judul_laporan' => 'required|max:255',
@@ -142,7 +150,7 @@ class ReportController extends Controller
         $validatedData['handling__statuses_id'] = 1;
         $validatedData['verification_statuses_id'] = 1;
 
-        Report::where('id', $report->id)
+        Report::where('id', $reports->id)
               ->update($validatedData);
         
         return redirect('/dashboard/pengaduan')->with('success', 'Aduan berhasil diperbarui!');

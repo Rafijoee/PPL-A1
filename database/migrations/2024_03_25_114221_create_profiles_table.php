@@ -19,6 +19,7 @@ return new class extends Migration
             $table->bigInteger('nik');
             $table->bigInteger('no_hp');
             $table->string('alamat');
+            $table->foreignId('kecamatan_id');
             $table->timestamps();
         });
     }

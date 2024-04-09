@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ReportPenyuluhController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,5 +46,11 @@ Route::group(['middleware' => ['auth']], function () {
 Route::group(['middleware' => ['auth']], function() {
     Route::group(['prefix' => 'dashboard'], function() {
         Route::resource('/pengaduan', ReportController::class)->middleware('auth');
+    });
+});
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::group(['prefix' => 'dashboard'], function() {
+        Route::resource('/pengaduan-penyuluh', ReportPenyuluhController::class)->middleware('auth');
     });
 });
