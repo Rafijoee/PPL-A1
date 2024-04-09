@@ -20,6 +20,8 @@ return new class extends Migration
             $table->text('isi_aduan');
             $table->string('foto_lokasi');
             $table->string('alamat');
+            $table->foreignId('kecamatan_id');
+            $table->text('isi_aduan_penyuluh')->nullable();
             $table->string('foto_penyuluh')->nullable();
             $table->text('tanggapan_penyuluh')->nullable();
             $table->text('tanggapan_pemerintah')->nullable();
