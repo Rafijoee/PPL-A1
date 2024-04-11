@@ -40,7 +40,7 @@
                     </div>
 
                     <div>      
-                        <label for="isi_aduan" class="form-label text-md font-medium">Isi Aduan Penyuluh</label>
+                        <label for="isi_aduan" class="form-label text-md font-medium">Isi Aduan Petani</label>
                     </div>
                     <div class="bg-gray-100 text-justify px-5 pb-3 rounded-xl">
                         <p>{!! $reports->isi_aduan !!}</p>

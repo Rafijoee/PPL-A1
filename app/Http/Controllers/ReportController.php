@@ -98,9 +98,12 @@ class ReportController extends Controller
         $reports = Report::find($decryptedID);
 
         $model = Report::findOrFail($decryptedID);
+
+        $kecamatan_id = $reports->kecamatan_id;
+        $namakecamatan = Kecamatan::where('id', $kecamatan_id)->first();
         
 
-        return view("pengaduan.show", compact('model','reports'));
+        return view("pengaduan.show", compact('model','reports', 'namakecamatan'));
 
         // return view("pengaduan.show",[
         //     'report'=> $report
