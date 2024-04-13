@@ -22,7 +22,7 @@
         <h1 class="font-bold text-4xl border-b-2">Pengaduan</h1>
 
         <div class=" flex w-full justify-center">
-            <form class="space-y-4 md:space-y-6 w-2/3" method="post" action="/dashboard/pengaduan-penyuluh/{{ Crypt::encryptString($reports["id"]) }}" enctype="multipart/form-data">
+            <form class="space-y-4 md:space-y-6 w-2/3" method="post" action="/dashboard/pengaduan-pemerintah/{{ Crypt::encryptString($reports["id"]) }}" enctype="multipart/form-data">
                 @method('put')
                 @csrf
                 <h1 class="font-bold text-4xl">Laporan Petani</h1>
@@ -66,7 +66,7 @@
                     <label for="isi_aduan" class="form-label text-md font-medium">Isi Aduan Penyuluh</label>
                     </div>
                     <div class="bg-gray-100 text-justify px-5 pb-3 rounded-xl">
-                        <p>{!! $reports->isi_aduan !!}</p>
+                        <p>{!! $reports->isi_aduan_penyuluh !!}</p>
                     </div>
                 
                     <div>
@@ -83,12 +83,54 @@
                     </div>
                     <label for="isi_aduan" class="form-label text-md font-medium">Tanggapan Penyuluh</label>
                     </div>
-                    <div class="bg-gray-100 text-justify px-5 pb-3 rounded-xl">
+                    <div class="bg-gray-100 text-justify px-5 pb-3 rounded-xl pt-2">
                         <p>{!! $reports->tanggapan_penyuluh !!}</p>
                     
                 </div>
+                <div class="text-justify mt-3">
+                    <label for="tanggapan_pemerintah" class="form-label text-md font-medium">Tanggapan Pemerintah</label>
+                    @if ($reports->tanggapan_pemerintah)
+                    <div class="bg-gray-100 text-justify px-5 pt-2 pb-3 rounded-xl">
+                        <p >{!! $reports->tanggapan_pemerintah !!}</p>
+                    </div>
+                    @else
+                        <p class="bg-gray-100 text-justify px-5 pt-3 pb-3 rounded-xl">Belum ada tanggapan</p>
+                    @endif
+                </div>
+            
+                @if ($reports->handling__statuses_id == 3)                    
+
+                @else
+                <div class="mt-5" id="tanggapan" style="display: block;">
+                    <h2 class="text-2xl font-bold mt-5 border-t-2">Tanggapan Pemerintah</h2>
+                    <div>
+                        <label for="handling" class="form-label text-md font-bold">Status Penanganan</label>
+                        <select name="handling_statuses_id"  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            @foreach ($handlings as $handling)
+                            @if (old('handling_statuses_id', $reports->handling__statuses_id) == $handling->id)
+                                <option value="{{ $handling->id }}" selected>{{ $handling->name }}</option>
+                            @else
+                                <option value="{{$handling->id}}">{{$handling->name}}</option>
+                            @endif
+                                
+                            @endforeach
+                        </select>
+                    </div>
+                    @if ($reports->tanggapan_pemerintah)    
                     
-                <button type="submit" class="mt-10 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2 w-full">Buat Aduan</button>
+                    @else
+                        <div>
+                            <label for="isi_aduan_pemerintah" class="form-label text-md font-bold">Isi Aduan</label>
+                            <input id="isi_aduan_pemerintah" type="hidden" name="isi_aduan_pemerintah" class="" value="{{ old('isi_aduan_pemerintah', $reports->tanggapan_pemerintah) }}">
+                            <trix-editor input="isi_aduan_pemerintah" class="mt-3"></trix-editor>
+                        </div>
+                    @endif
+
+                    <button type="submit" class="mt-10 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2 w-full">Kirim Tanggapan</button>
+                </div>
+                @endif
+                
+                
             </form>
         </div>
     </div>
@@ -96,7 +138,7 @@
     <script>
             function preview(){
                 frame.src= URL.createObjectURL(event.target.files[0]);
-        }
+            }
             function preview2(){
                 frame2.src= URL.createObjectURL(event.target.files[0]);
             }

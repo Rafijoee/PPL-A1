@@ -21,7 +21,8 @@
         <br>
         <h2 class="text-2xl font-bold">Foto</h2>
         <img src="{{ asset('storage/'.$reports->foto_lokasi) }}" alt="" class="scale-75">
-        <a href="#" id="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2 ml-5 mr-5 mx-auto flex justify-center" onclick="hideShow()">Lihat Tanggapan</a>
+        <!-- <a href="#" id="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2 ml-5 mr-5 mx-auto flex justify-center" onclick="hideShow()">Lihat Tanggapan</a> -->
+        <button id="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md  w-full py-2 px-2" onclick="hideShow()">Lihat Tanggapan</button>       
         <div class="mt-5" id="tanggapan" style="display: none;">
             <h2 class="text-2xl font-bold mt-5 border-t-2">Tanggapan Penyuluh</h2>
             @if ($reports->tanggapan_penyuluh)
@@ -29,7 +30,9 @@
             @endif
             <div class="text-justify mt-3">
             @if ($reports->tanggapan_penyuluh)
-                    <p class="bg-gray-100 text-justify px-5 pt-3 pb-3 rounded-xl">{{ $reports->tanggapan_penyuluh }}</p>
+                    <div class="bg-gray-100 text-justify px-5 pt-3 pb-3 rounded-xl">
+                        <p >{!! $reports->tanggapan_penyuluh !!}</p>
+                    </div>
                 @else
                     <p class="bg-gray-100 text-justify px-5 pt-3 pb-3 rounded-xl">Belum ada tanggapan</p>
                 @endif
@@ -37,7 +40,9 @@
             <h2 class="text-2xl font-bold mt-5">Tanggapan Pemerintah</h2>
             <div class="text-justify mt-3">
                 @if ($reports->tanggapan_pemerintah)
-                    <p class="bg-gray-100 text-justify px-5 pt-3 pb-3 rounded-xl">{{ $reports->tanggapan_pemerintah }}</p>
+                    <div class="bg-gray-100 text-justify px-5 pt-3 pb-3 rounded-xl">
+                        <p >{!! $reports->tanggapan_pemerintah !!}</p>
+                    </div>
                 @else
                     <p class="bg-gray-100 text-justify px-5 pt-3 pb-3 rounded-xl">Belum ada tanggapan</p>
                 @endif

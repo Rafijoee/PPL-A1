@@ -62,6 +62,8 @@
                                 sedang diverifikasi
                             @elseif ($report->verification_statuses_id == 3)
                                 sudah diverifikasi
+                            @elseif ($report->verification_statuses_id == 4)
+                            Aduan ditolak
                             @else
                                 belum diverifikasi
                             @endif
