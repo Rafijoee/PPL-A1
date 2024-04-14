@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pengaduan</title>
 </head>
-<body>
+<body class="bg-[#F2FBFF] text-[#185141]">
     <div class="p-4 sm:ml-64 mt-16">
         <h1 class="font-bold text-4xl">Pengaduan</h1>
 
@@ -29,7 +29,7 @@
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-[#40C6A1] dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             No.
@@ -59,28 +59,43 @@
                         </td>
                         <td class="px-6 py-4">    
                             @if ($report->verification_statuses_id == 2)
-                                sedang diverifikasi
+                                <div class="w-1/2 px-2 text-center bg-yellow-200 rounded-lg text-gray-900">
+                                    sedang diverifikasi
+                                </div>
                             @elseif ($report->verification_statuses_id == 3)
+                                <div class="w-1/2 px-2 text-center bg-lime-300 rounded-lg text-gray-900">
                                 sudah diverifikasi
+                                </div>
                             @elseif ($report->verification_statuses_id == 4)
-                            Aduan ditolak
+                                <div class="w-1/2 px-2 text-center bg-red-300 rounded-lg text-gray-900">
+                                Aduan ditolak
+                                </div>
                             @else
+                                <div class="w-1/2 px-2 text-center bg-sky-300 rounded-lg text-gray-900">
                                 belum diverifikasi
+                                </div>
                             @endif
                         </td>
                         <td class="px-6 py-4">
+                            
                             @if ($report->handling__statuses_id == 2)
+                                <div class="w-1/2 px-2 text-center bg-yellow-200 rounded-lg text-gray-900">
                                 sedang ditindaklanjuti
+                                </div>
                             @elseif ($report->handling__statuses_id == 3)
+                                <div class="w-1/2 px-2 text-center bg-lime-300 rounded-lg text-gray-900">
                                 sudah ditindaklanjuti
+                                </div>
                             @else
+                                <div class="w-1/2 px-2 text-center bg-sky-300 rounded-lg text-gray-900">
                                 belum ditindaklanjuti
+                                </div>
                             @endif
                         </td>
                         <td class="px-6 py-4">
-                            <a href="/dashboard/pengaduan-penyuluh/{{ Crypt::encryptString($report["id"]) }}" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">View</a>
+                            <a href="/dashboard/pengaduan-penyuluh/{{ Crypt::encryptString($report["id"]) }}" class="font-medium text-[#40C6A1] hover:underline">Lihat</a>
                             @if ($report->isi_aduan_penyuluh == NULL)
-                            <a href="/dashboard/pengaduan-penyuluh/{{ Crypt::encryptString($report["id"]) }}/edit" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2 ml-3">Buat Aduan</a>
+                            <a href="/dashboard/pengaduan-penyuluh/{{ Crypt::encryptString($report["id"]) }}/edit" class="text-white bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2 ml-3">Buat Aduan</a>
                             @endif
                         </td>
                     @endforeach

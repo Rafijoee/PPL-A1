@@ -15,7 +15,7 @@
         }
     </style>
 </head>
-<body>
+<body class="bg-[#F2FBFF] text-[#185141]">
     <div class="p-4 sm:ml-64 mt-16 mb-96 text-justify ">
         <form method="post" action="/dashboard/pengaduan-penyuluh/edit/{{ Crypt::encryptString($reports["id"]) }}">
             @method('put')
@@ -29,7 +29,9 @@
                 <a href="/dashboard/pengaduan-penyuluh/{{ Crypt::encryptString($reports["id"]) }}/edit" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-1.5 text-center me-2 mb-28">Edit</a>
             @endif
             <h2 class="text-2xl font-bold mt-5">Isi Aduan Petani</h2>
-            <p class="text-right">{!! $reports->isi_aduan !!}</p>
+            <div class="bg-gray-100 py-2 text-justify mt-3 px-2 rounded-lg">
+                <p class="">{!! $reports->isi_aduan !!}</p>
+            </div>
             <br>
             <h2 class="text-2xl font-bold">Foto dari Petani</h2>
             <img src="{{ asset('storage/'.$reports->foto_lokasi) }}" alt="" class="scale-75">
@@ -60,7 +62,7 @@
                 <div class="mt-3">
                     <label for="isi_aduan_penyuluh" class="form-label text-md font-medium">Isi Tanggapan Penyuluh</label>
                     <input id="tanggapan_penyuluh" type="hidden" name="tanggapan_penyuluh" class="" value="{{ old('tanggapan_penyuluh', $reports->tanggapan_penyuluh) }}">
-                    <trix-editor input="tanggapan_penyuluh" class="mt-3"></trix-editor>
+                    <trix-editor input="tanggapan_penyuluh" class="mt-3 bg-white"></trix-editor>
                 </div>
                 <h2 class="text-2xl font-bold mt-5">Tanggapan Pemerintah</h2>
                 <div class="text-justify mt-3">
@@ -73,7 +75,7 @@
                     @endif
                 </div>
             </div>
-            <button type="submit" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md  w-full py-2 px-2 mt-10">Lihat Tanggapan</button>
+            <button type="submit" class="text-white bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md  w-full py-2 px-2 mt-10">Perbarui Tanggapan</button>
         </form>
     </div>
 
