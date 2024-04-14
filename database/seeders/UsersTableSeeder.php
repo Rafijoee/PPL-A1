@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,6 +20,7 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'roles_id'=> '1'
             ]);
+
             
             $patrang = User::create([
                 'name' => 'Penyuluh Kecamatan Patrang',
@@ -26,6 +28,10 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'roles_id'=> '3'
             ]);
+            // $patrang = Profile::create([
+            //     'user_id' => $patrang->id,
+            //     'kecamatan_id' => '8',
+            // ]);
 
             $pemerintah = User::create([
                 'name' => 'Pemerintah',

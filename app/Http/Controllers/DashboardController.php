@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function form_pengaduan()
+    public function index()
     {
         return view('layouts.dashboard');
     }
