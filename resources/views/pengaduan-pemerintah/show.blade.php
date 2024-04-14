@@ -17,37 +17,40 @@
 </head>
 
 </head>
-<body>
+<body class="bg-[#F2FBFF] text-[#185141]">
     <div class="p-4 sm:ml-64 mt-16 mb-60">
-        <h1 class="font-bold text-4xl border-b-2">Pengaduan</h1>
+        <div class="border-b-4 border-[#185141]">
+            <h1 class="font-bold text-7xl">Laporan Pengaduan</h1>
+            <hr class="mt-5">
+        </div>    
 
         <div class=" flex w-full justify-center">
             <form class="space-y-4 md:space-y-6 w-2/3" method="post" action="/dashboard/pengaduan-pemerintah/{{ Crypt::encryptString($reports["id"]) }}" enctype="multipart/form-data">
                 @method('put')
                 @csrf
-                <h1 class="font-bold text-4xl">Laporan Petani</h1>
+                <h1 class="font-bold text-4xl">Aduan Petani</h1>
                 <div class="border-b-4 border-gray-200">
                     <div>
-                        <label for="judul_laporan" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Judul Aduan</label>
+                        <label for="judul_laporan" class="block mb-2 text-3xl font-medium dark:text-white">Judul Aduan</label>
                         <input type="text" name="judul_laporan" id="judul_laporan" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="judul aduan"  value="{{ $reports->judul_laporan }}" readonly>
                     </div>
                     <div>
-                        <label for="alamat" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Alamat / Lokasi Sawah</label>
+                        <label for="alamat" class="block mb-2 text-3xl font-medium dark:text-white">Alamat / Lokasi Sawah</label>
                         <input type="text" name="alamat" id="alamat" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Jl. alamat sawah" value="{{ $reports->alamat }}" readonly>
                     </div>
                     <div>
-                        <label for="kecamatan" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Kecamatan</label>
+                        <label for="kecamatan" class="block mb-2 text-3xl font-medium dark:text-white">Kecamatan</label>
                         <input type="text" value="{{ $namakecamatan->name }}" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" readonly>
                     </div>
 
                     <div>      
-                        <label for="isi_aduan" class="form-label text-md font-medium">Isi Aduan Penyuluh</label>
+                        <label for="isi_aduan" class="form-label text-3xl font-medium">Isi Aduan Petani</label>
                     </div>
                     <div class="bg-gray-100 text-justify px-5 pb-3 rounded-xl">
                         <p>{!! $reports->isi_aduan !!}</p>
                     </div>
                     <div class="mb-10 mt-3">
-                        <label for="image" class="form-label text-md font-medium">Foto Petani</label>
+                        <label for="image" class="form-label text-3xl font-medium">Foto Petani</label>
                         <div class="flex justify-center mt-6">
                             <input type="hidden" name="oldImage" value="{{ $reports->foto_lokasi }}">
                             @if ($reports->foto_lokasi)
@@ -63,14 +66,14 @@
                 </div>
                 <div>
                 <div>      
-                    <label for="isi_aduan" class="form-label text-md font-medium">Isi Aduan Penyuluh</label>
+                    <label for="isi_aduan" class="form-label text-3xl font-medium">Isi Aduan Penyuluh</label>
                     </div>
                     <div class="bg-gray-100 text-justify px-5 pb-3 rounded-xl">
                         <p>{!! $reports->isi_aduan_penyuluh !!}</p>
                     </div>
                 
                     <div>
-                        <label for="image" class="form-label text-md font-medium">Foto Konfirmasi Penyuluh</label>
+                        <label for="image" class="form-label text-3xl font-medium">Foto Konfirmasi Penyuluh</label>
                         <div class="flex justify-center mt-6">
                             <input type="hidden" name="oldImage2" value="{{ $reports->foto_penyuluh }}">
                             @if ($reports->foto_penyuluh)
@@ -81,14 +84,20 @@
                         </div>
                     
                     </div>
-                    <label for="isi_aduan" class="form-label text-md font-medium">Tanggapan Penyuluh</label>
+                    <label for="isi_aduan" class="form-label text-3xl font-medium">Tanggapan Penyuluh</label>
                     </div>
+                    @if ($reports->tanggapan_penyuluh)
                     <div class="bg-gray-100 text-justify px-5 pb-3 rounded-xl pt-2">
                         <p>{!! $reports->tanggapan_penyuluh !!}</p>
+                    @else
+                    <div class="bg-gray-100 text-justify px-5 pb-3 rounded-xl pt-2">
+                        <p>Belum ada tanggapan</p>        
+                                     
+                    @endif
                     
                 </div>
                 <div class="text-justify mt-3">
-                    <label for="tanggapan_pemerintah" class="form-label text-md font-medium">Tanggapan Pemerintah</label>
+                    <label for="tanggapan_pemerintah" class="form-label text-3xl font-medium">Tanggapan Pemerintah</label>
                     @if ($reports->tanggapan_pemerintah)
                     <div class="bg-gray-100 text-justify px-5 pt-2 pb-3 rounded-xl">
                         <p >{!! $reports->tanggapan_pemerintah !!}</p>
@@ -97,36 +106,39 @@
                         <p class="bg-gray-100 text-justify px-5 pt-3 pb-3 rounded-xl">Belum ada tanggapan</p>
                     @endif
                 </div>
-            
+
                 @if ($reports->handling__statuses_id == 3)                    
 
                 @else
-                <div class="mt-5" id="tanggapan" style="display: block;">
-                    <h2 class="text-2xl font-bold mt-5 border-t-2">Tanggapan Pemerintah</h2>
-                    <div>
-                        <label for="handling" class="form-label text-md font-bold">Status Penanganan</label>
-                        <select name="handling_statuses_id"  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            @foreach ($handlings as $handling)
-                            @if (old('handling_statuses_id', $reports->handling__statuses_id) == $handling->id)
-                                <option value="{{ $handling->id }}" selected>{{ $handling->name }}</option>
-                            @else
-                                <option value="{{$handling->id}}">{{$handling->name}}</option>
-                            @endif
-                                
-                            @endforeach
-                        </select>
-                    </div>
+                <div>
+                    <label for="handling" class="form-label text-3xl font-bold">Status Penanganan</label>
+                    <select name="handling_statuses_id"  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        @foreach ($handlings as $handling)
+                        @if (old('handling_statuses_id', $reports->handling__statuses_id) == $handling->id)
+                            <option value="{{ $handling->id }}" selected>{{ $handling->name }}</option>
+                        @else
+                            <option value="{{$handling->id}}">{{$handling->name}}</option>
+                        @endif
+                            
+                        @endforeach
+                    </select>
+                </div>
+                @if ($reports->tanggapan_pemerintah)
+                    <button type="submit" class="mt-10 text-white bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2 w-full">Perbarui Tanggapan</button>
+                @else
+                    <button id="button" class="text-white bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md  w-full py-2 px-2" onclick="hideShow()">Buat Tanggapan</button>
+                @endif
+                <div class="mt-5" id="tanggapan" style="display: none;">
                     @if ($reports->tanggapan_pemerintah)    
-                    
                     @else
                         <div>
-                            <label for="isi_aduan_pemerintah" class="form-label text-md font-bold">Isi Aduan</label>
+                            <label for="isi_aduan_pemerintah" class="form-label text-md font-bold">Isi Tanggapan</label>
                             <input id="isi_aduan_pemerintah" type="hidden" name="isi_aduan_pemerintah" class="" value="{{ old('isi_aduan_pemerintah', $reports->tanggapan_pemerintah) }}">
-                            <trix-editor input="isi_aduan_pemerintah" class="mt-3"></trix-editor>
+                            <trix-editor input="isi_aduan_pemerintah" class="mt-3 bg-white"></trix-editor>
                         </div>
                     @endif
 
-                    <button type="submit" class="mt-10 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2 w-full">Kirim Tanggapan</button>
+                    <button type="submit" class="mt-10 text-white bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2 w-full">Kirim Tanggapan</button>
                 </div>
                 @endif
                 
@@ -136,6 +148,22 @@
     </div>
 
     <script>
+        var div = document.getElementById("tanggapan");
+        var button = document.getElementById("button");
+        var display = 1;
+
+        function hideShow(){
+        if (display == 1){
+            div.style.display = 'block';
+            display = 0;
+            button.remove();
+            }
+        else{
+            div.style.display = 'none';
+            display = 1;
+            }
+        }
+
             function preview(){
                 frame.src= URL.createObjectURL(event.target.files[0]);
             }
