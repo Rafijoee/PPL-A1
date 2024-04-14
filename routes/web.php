@@ -37,30 +37,24 @@ Route::group(['middleware' => ['auth']], function () {
         Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
-    Route::group(['prefix' => 'dashboard'], function () {
-        Route::get('/', [DashboardController::class, 'form_pengaduan'])->name('form_pengaduan');
-        Route::post('/',[DashboardController::class, 'pengaduan'])->name('pengaduan');
-    });
 });
 
 
-Route::group(['middleware' => ['auth']], function() {
+Route::middleware('petani')->group(function(){
     Route::group(['prefix' => 'dashboard'], function() {
-        Route::resource('/pengaduan', ReportController::class)->middleware('auth');
+        Route::resource('/pengaduan', ReportController::class);
     });
 });
 
-Route::group(['middleware' => ['auth']], function() {
+Route::middleware('penyuluh')->group(function(){
     Route::group(['prefix' => 'dashboard'], function() {
         Route::get('/pengaduan-penyuluh/edit/{pengaduan_penyuluh}', [ReportPenyuluhController::class, 'edit2']);
         Route::put('/pengaduan-penyuluh/edit/{pengaduan_penyuluh}', [ReportPenyuluhController::class, 'update2']);
-        Route::resource('/pengaduan-penyuluh', ReportPenyuluhController::class)->middleware('auth');
+        Route::resource('/pengaduan-penyuluh', ReportPenyuluhController::class);
     });
 });
 
-
-Route::group(['middleware' => ['auth']], function() {
-    Route::group(['prefix' => 'dashboard'], function() {
-        Route::resource('/pengaduan-pemerintah', ReportPemerintahController::class)->middleware('auth');
+Route::middleware('pemerintah')->group(function(){
+        Route::resource('/pengaduan-pemerintah', ReportPemerintahController::class);
     });
-});
+

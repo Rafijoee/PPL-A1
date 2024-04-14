@@ -46,16 +46,14 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $request->validate([
+        $validate_data = $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
+        $validate_data['roles_id'] = '2';
+        
+        User::create($validate_data);
 
         return redirect('login');
     }
