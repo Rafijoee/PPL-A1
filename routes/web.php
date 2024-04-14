@@ -52,9 +52,12 @@ Route::group(['middleware' => ['auth']], function() {
 
 Route::group(['middleware' => ['auth']], function() {
     Route::group(['prefix' => 'dashboard'], function() {
+        Route::get('/pengaduan-penyuluh/edit/{pengaduan_penyuluh}', [ReportPenyuluhController::class, 'edit2']);
+        Route::put('/pengaduan-penyuluh/edit/{pengaduan_penyuluh}', [ReportPenyuluhController::class, 'update2']);
         Route::resource('/pengaduan-penyuluh', ReportPenyuluhController::class)->middleware('auth');
     });
 });
+
 
 Route::group(['middleware' => ['auth']], function() {
     Route::group(['prefix' => 'dashboard'], function() {
