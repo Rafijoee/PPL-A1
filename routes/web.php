@@ -44,20 +44,20 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 
-Route::group(['middleware' => ['auth']], function() {
+Route::middleware('petani')->group(function(){
     Route::group(['prefix' => 'dashboard'], function() {
-        Route::resource('/pengaduan', ReportController::class)->middleware('auth');
+        Route::resource('/pengaduan', ReportController::class);
     });
 });
 
-Route::group(['middleware' => ['auth']], function() {
+Route::middleware('penyuluh')->group(function(){
     Route::group(['prefix' => 'dashboard'], function() {
-        Route::resource('/pengaduan-penyuluh', ReportPenyuluhController::class)->middleware('auth');
+        Route::resource('/pengaduan-penyuluh', ReportPenyuluhController::class);
     });
 });
 
-Route::group(['middleware' => ['auth']], function() {
+Route::middleware('pemerintah')->group(function(){
     Route::group(['prefix' => 'dashboard'], function() {
-        Route::resource('/pengaduan-pemerintah', ReportPemerintahController::class)->middleware('auth');
+        Route::resource('/pengaduan-pemerintah', ReportPemerintahController::class);
     });
 });
