@@ -4,13 +4,13 @@ HOW TO INSTALL THIS APP
 2. composer dumpautoload
 3. cp .env.example .env
 4. php artisan key:generate
-5. php artisan migrate
-    then
-    5.1 php artisan db:seed --class=UsersTableSeeder
-    5.2 php artisan db:seed --class=RolesSeeder
-    5.3 php artisan db:seed --class=HandlingStatusSeeder
-    5.4 php artisan db:seed --class=VerivicationSeeder
-    5.5 php artisan db:seed --class=kecamatanSeeder
+5. php artisan migrate <br>
+    then <br>
+    5.1 php artisan db:seed --class=UsersTableSeeder <br>
+    5.2 php artisan db:seed --class=RolesSeeder <br>
+    5.3 php artisan db:seed --class=HandlingStatusSeeder <br>
+    5.4 php artisan db:seed --class=VerivicationSeeder <br>
+    5.5 php artisan db:seed --class=kecamatanSeeder <br>
 6. npm install
 7. npm run dev
 8. php artisan serve
