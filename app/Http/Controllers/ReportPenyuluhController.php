@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Report;
 use App\Models\Profile;
 use App\Models\Kecamatan;
+use App\Models\VerificationStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -12,6 +13,34 @@ use Illuminate\Support\Facades\Storage;
 
 class ReportPenyuluhController extends Controller
 {
+    public function edit2(Report $report, $id){
+        $user_id = Auth::user()->id;
+        $decryptedID = Crypt::decryptString($id);
+        $reports = Report::find($decryptedID);
+        $kecamatan_id = $reports->kecamatan_id;
+        $kecamatans = Kecamatan::all();
+        $namakecamatan = Kecamatan::where('id', $kecamatan_id)->first();
+
+        $model = Report::findOrFail($decryptedID);
+        $verifs = VerificationStatus::all();
+        return view('pengaduan-penyuluh.edit', compact('reports', 'model', 'namakecamatan', 'verifs'));
+    }
+
+    public function update2(Request $request, Report $report, $id){
+        $decryptedID = Crypt::decryptString($id);
+        $reports = Report::find($decryptedID);
+
+        $tanggapan_penyuluh = $request->input('tanggapan_penyuluh');
+        $verif_status =$request->input('verification_statuses_id') ;
+
+        Report::where('id', $reports->id)
+              ->update([
+                'tanggapan_penyuluh' => $tanggapan_penyuluh,
+                'verification_statuses_id' => $verif_status
+              ]);
+
+        return redirect('/dashboard/pengaduan-penyuluh')->with('success', 'Aduan berhasil diperbarui!');
+    }
     /**
      * Display a listing of the resource.
      */
@@ -51,8 +80,11 @@ class ReportPenyuluhController extends Controller
         $reports = Report::find($decryptedID);
 
         $model = Report::findOrFail($decryptedID);
+        $kecamatan_id = $reports->kecamatan_id;
+        $kecamatans = Kecamatan::all();
+        $namakecamatan = Kecamatan::where('id', $kecamatan_id)->first();
 
-        return view('pengaduan-penyuluh.show', compact('model', 'reports'));
+        return view('pengaduan-penyuluh.show', compact('model', 'reports', 'namakecamatan'));
     }
 
     /**
@@ -109,4 +141,5 @@ class ReportPenyuluhController extends Controller
     {
         //
     }
+
 }

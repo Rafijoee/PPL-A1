@@ -17,7 +17,7 @@
 </head>
 
 </head>
-<body>
+<body class="bg-[#F2FBFF] text-[#185141]">
     <div class="p-4 sm:ml-64 mt-16 mb-60">
         <h1 class="font-bold text-4xl border-b-2">Buat Aduan</h1>
 
@@ -40,7 +40,7 @@
                     </div>
 
                     <div>      
-                        <label for="isi_aduan" class="form-label text-md font-medium">Isi Aduan Penyuluh</label>
+                        <label for="isi_aduan" class="form-label text-md font-medium">Isi Aduan Petani</label>
                     </div>
                     <div class="bg-gray-100 text-justify px-5 pb-3 rounded-xl">
                         <p>{!! $reports->isi_aduan !!}</p>
@@ -61,7 +61,7 @@
                 <div>
                     <label for="isi_aduan_penyuluh" class="form-label text-md font-medium">Isi Aduan Penyuluh</label>
                     <input id="isi_aduan_penyuluh" type="hidden" name="isi_aduan_penyuluh" class="" value="{{ old('isi_aduan_penyuluh', $reports->isi_aduan_penyuluh) }}">
-                    <trix-editor input="isi_aduan_penyuluh" class="mt-3"></trix-editor>
+                    <trix-editor input="isi_aduan_penyuluh" class="mt-3 bg-white"></trix-editor>
                 </div>
                 <div>
                     <label for="image" class="form-label text-md font-medium">Foto Konfirmasi Penyuluh</label>
@@ -71,9 +71,9 @@
                     @else
                         <img class="object-scale-down max-h-[800px] w-auto" id="frame2">
                     @endif
-                    <input class="form-control mt-3 border-gray-300 rounded-lg bg-gray-50 border" type="file" name="image2" onchange="preview2()">
+                    <input class="form-control mt-3 border-gray-300 rounded-lg bg-gray-50 border w-full" type="file" name="image2" onchange="preview2()">
                 </div>
-                <button type="submit" class="mt-10 text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">Buat Aduan</button>
+                <button type="submit" class="mt-10 text-white bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2 w-full">Buat Aduan</button>
             </form>
         </div>
     </div>

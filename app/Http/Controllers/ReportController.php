@@ -98,9 +98,12 @@ class ReportController extends Controller
         $reports = Report::find($decryptedID);
 
         $model = Report::findOrFail($decryptedID);
+
+        $kecamatan_id = $reports->kecamatan_id;
+        $namakecamatan = Kecamatan::where('id', $kecamatan_id)->first();
         
 
-        return view("pengaduan.show", compact('model','reports'));
+        return view("pengaduan.show", compact('model','reports', 'namakecamatan'));
 
         // return view("pengaduan.show",[
         //     'report'=> $report
@@ -117,7 +120,8 @@ class ReportController extends Controller
         $reports = Report::find($decryptedID);
 
         $model = Report::findOrFail($decryptedID);
-        return view("pengaduan.edit", compact('reports', 'model'));
+        $kecamatans = Kecamatan::all();
+        return view("pengaduan.edit", compact('reports', 'model', 'kecamatans'));
     }
 
     /**
@@ -149,6 +153,7 @@ class ReportController extends Controller
         $validatedData['user_id'] = Auth::user()->id;
         $validatedData['handling__statuses_id'] = 1;
         $validatedData['verification_statuses_id'] = 1;
+        $validatedData['kecamatan_id'] = $request->input('kecamatan_id');
 
         Report::where('id', $reports->id)
               ->update($validatedData);
