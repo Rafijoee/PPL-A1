@@ -1,3 +1,23 @@
+HOW TO INSTALL THIS APP
+
+1. composer install
+2. composer dumpautoload
+3. cp .env.example .env
+4. php artisan key:generate
+5. php artisan migrate
+    then
+    5.1 php artisan db:seed --class=UsersTableSeeder
+    5.2 php artisan db:seed --class=RolesSeeder
+    5.3 php artisan db:seed --class=HandlingStatusSeeder
+    5.4 php artisan db:seed --class=VerivicationSeeder
+    5.5 php artisan db:seed --class=kecamatanSeeder
+6. npm install
+7. npm run dev
+8. php artisan serve
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
