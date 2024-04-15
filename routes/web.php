@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChatifyController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
@@ -28,6 +29,8 @@ Route::post('login', [AuthController::class, 'authenticate'])->name('authenticat
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('register', [AuthController::class, 'form_register'])->name('form_register');
 Route::post('register', [AuthController::class, 'register'])->name('register');
+
+Route::get('/dashboard/konsultasi', [ChatifyController::class, 'index'])->name('konsultasi');
 
 
 
@@ -60,4 +63,6 @@ Route::middleware('pemerintah')->group(function(){
         Route::resource('/pengaduan-pemerintah', ReportPemerintahController::class);
     });
 });
+
+
 
