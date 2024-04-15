@@ -56,6 +56,8 @@ Route::middleware('penyuluh')->group(function(){
 });
 
 Route::middleware('pemerintah')->group(function(){
+    Route::group(['prefix' => 'dashboard'], function() {
         Route::resource('/pengaduan-pemerintah', ReportPemerintahController::class);
     });
+});
 

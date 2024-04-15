@@ -105,7 +105,7 @@
                 </li>
                 @if (Auth::user()->roles_id = 2 )
                 <li>
-                    <a href="/dashboard/pengaduan-penyuluh" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <a href="/dashboard/pengaduan" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <i class="fa-solid fa-seedling w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap text-xl">Pengaduan</span>
                     </a>
@@ -114,7 +114,7 @@
                 @if (Auth::user()->roles_id == 3)
                 <li>
                     <p>Pengaduan</p>
-                    <a href="/dashboard/pengaduan" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <a href="/dashboard/pengaduan-penyuluh" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <i class="fa-solid fa-seedling w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                         <span class="flex-1 ms-3 whitespace-nowrap text-xl">Pengaduan</span>
                     </a>
@@ -129,12 +129,15 @@
                     </a>
                 </li>
                 @endif
+
+                @if (Auth::user()->roles_id == 2 || Auth::user()->roles_id == 3)    
                 <li>
                     <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-comments w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                        <i class="fa-solid fa-comments w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                         <span class="flex-1 ms-3 text-xl whitespace-nowrap">Konsultasi</span>
                     </a>
                 </li>
+                @endif
             </ul>
         </div>
     </aside>
