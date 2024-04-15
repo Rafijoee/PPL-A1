@@ -62,7 +62,18 @@
                 <div class="mt-3">
                     <label for="isi_aduan_penyuluh" class="form-label text-md font-medium">Isi Tanggapan Penyuluh</label>
                     <input id="tanggapan_penyuluh" type="hidden" name="tanggapan_penyuluh" class="" value="{{ old('tanggapan_penyuluh', $reports->tanggapan_penyuluh) }}">
-                    <trix-editor input="tanggapan_penyuluh" class="mt-3 bg-white"></trix-editor>
+                    @if ($reports->tanggapan_penyuluh)
+                        <div class="bg-gray-100 px-3 py-2 rounded-lg">
+                            <p>{!! $reports->tanggapan_penyuluh !!}</p>
+                        </div>
+                    @else
+                        <trix-editor input="tanggapan_penyuluh" class="mt-3 bg-white"></trix-editor>
+                        @error('tanggapan_penyuluh')
+                        <div class=" text-red-500">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                    @endif
                 </div>
                 <h2 class="text-2xl font-bold mt-5">Tanggapan Pemerintah</h2>
                 <div class="text-justify mt-3">

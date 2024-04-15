@@ -71,20 +71,13 @@ class ReportPemerintahController extends Controller
 
         $decryptedID = Crypt::decryptString($id);
         $reports = Report::find($decryptedID);
-        $handling_status = $request->input('handling_statuses_id');
-
-        if($request->input('isi_aduan_pemerintah')){
-            $tanggapan_pemerintah = $request->input('isi_aduan_pemerintah');
-        }
-        else{
-            $tanggapan_pemerintah = $reports->tanggapan_pemerintah;
-        }
+        $validatedData = $request->validate([
+            'isi_aduan_pemerintah' => 'max:255',
+            'handling_status_id' => 'required'
+        ]);
 
         Report::where('id', $reports->id)
-        ->update([
-            'tanggapan_pemerintah' => $tanggapan_pemerintah,
-            'handling__statuses_id' => $handling_status
-        ]);
+        ->update($validatedData);
 
 
         return redirect('/dashboard/pengaduan-pemerintah')->with('success', 'tanggapan berhasil dikirim!');

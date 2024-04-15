@@ -135,6 +135,11 @@
                             <label for="isi_aduan_pemerintah" class="form-label text-md font-bold">Isi Tanggapan</label>
                             <input id="isi_aduan_pemerintah" type="hidden" name="isi_aduan_pemerintah" class="" value="{{ old('isi_aduan_pemerintah', $reports->tanggapan_pemerintah) }}">
                             <trix-editor input="isi_aduan_pemerintah" class="mt-3 bg-white"></trix-editor>
+                            @error('isi_aduan_pemerintah')
+                                <div class=" text-red-500">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                     @endif
 

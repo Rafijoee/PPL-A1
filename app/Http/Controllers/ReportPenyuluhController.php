@@ -30,16 +30,20 @@ class ReportPenyuluhController extends Controller
         $decryptedID = Crypt::decryptString($id);
         $reports = Report::find($decryptedID);
 
-        $tanggapan_penyuluh = $request->input('tanggapan_penyuluh');
+        $validatedData = $request->validate([
+            'tanggapan_penyuluh' => 'required|max:255'
+        ]);
+
+        $validatedData['tanggapan_penyuluh'] = $request->input('tanggapan_penyuluh');
         $verif_status =$request->input('verification_statuses_id') ;
 
         Report::where('id', $reports->id)
               ->update([
-                'tanggapan_penyuluh' => $tanggapan_penyuluh,
+                'tanggapan_penyuluh' => $validatedData['tanggapan_penyuluh'],
                 'verification_statuses_id' => $verif_status
               ]);
 
-        return redirect('/dashboard/pengaduan-penyuluh')->with('success', 'Aduan berhasil diperbarui!');
+        return redirect('/dashboard/pengaduan-penyuluh')->with('success', 'Tanggapan berhasil dikirim!');
     }
     /**
      * Display a listing of the resource.
@@ -111,23 +115,28 @@ class ReportPenyuluhController extends Controller
         $decryptedID = Crypt::decryptString($id);
         $reports = Report::find($decryptedID);
 
-        if($request->file('image2')){
+        $validatedData = $request->validate([
+            'foto' => 'file|image|max:20480',
+            'isi_aduan_penyuluh' => 'required|max:255'
+        ]);
+
+        if($request->file('foto')){
             if($request->oldImage2){
                 Storage::delete($request->oldImage2);
             }
-            $foto_penyuluh = $request->file('image2')->store('post-images-penyuluh');
+            $validatedData['foto'] = $request->file('foto')->store('post-images-penyuluh');
         }
         else{
-            $foto_penyuluh = $request->oldImage2;
+            $validatedData['foto'] = $request->oldImage2;
         }
 
-        $isi_aduan_penyuluh = $request->input('isi_aduan_penyuluh');
+        $validatedData['isi_aduan_penyuluh'] = $request->input('isi_aduan_penyuluh');
         $verif = 3;
 
         Report::where('id', $reports->id)
               ->update([
-                'foto_penyuluh' => $foto_penyuluh,
-                'isi_aduan_penyuluh' => $isi_aduan_penyuluh,
+                'foto_penyuluh' => $validatedData['foto'],
+                'isi_aduan_penyuluh' => $validatedData['isi_aduan_penyuluh'],
                 'verification_statuses_id' => $verif
               ]);
 
