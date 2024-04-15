@@ -6,6 +6,7 @@ use App\Http\Controllers\ChatifyController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KonsultasiController;
 use App\Http\Controllers\ReportPenyuluhController;
 use App\Http\Controllers\ReportPemerintahController;
 
@@ -30,7 +31,7 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('register', [AuthController::class, 'form_register'])->name('form_register');
 Route::post('register', [AuthController::class, 'register'])->name('register');
 
-Route::get('/dashboard/konsultasi', [ChatifyController::class, 'index'])->name('konsultasi');
+Route::get('/konsultasi', [KonsultasiController::class, 'index'])->name('konsultasi');
 
 
 

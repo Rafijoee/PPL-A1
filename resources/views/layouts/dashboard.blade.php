@@ -8,9 +8,11 @@
     @vite(['resources/css/app.css','resources/js/app.js'])
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-
 <body>
-
+    @auth
+        @php
+            $roles_id = auth()->user()->roles_id;
+        @endphp
     <nav class="fixed top-0 z-50 w-full bg-[#40C6A1] border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
         <div class="px-3 py-3 lg:px-5 lg:pl-3">
             <div class="flex items-center justify-between">
@@ -60,8 +62,6 @@
         </div>
     </nav>
 
-
-
     <footer class="bg-gray-300 shadow dark:bg-gray-900 bottom-0 z-50 fixed w-full">
         <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
             <div class="sm:flex sm:items-center sm:justify-between">
@@ -104,7 +104,7 @@
                     </a>
                 </li>
                 
-                @if (Auth::user()->roles_id = 2 )
+                @if ($roles_id = 2 )
                 <li>
                     <a href="/dashboard/pengaduan" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <i class="fa-solid fa-seedling w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
@@ -112,7 +112,8 @@
                     </a>
                 </li>
                 @endif
-                @if (Auth::user()->roles_id == 3)
+
+                @if ($roles_id == 3)
                 <li>
                     <p>Pengaduan</p>
                     <a href="/dashboard/pengaduan-penyuluh" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -122,7 +123,7 @@
                 </li>
                 @endif
 
-                @if (Auth::user()->roles_id == 4)
+                @if ($roles_id == 4)
                 <li>
                     <a href="/dashboard/pengaduan-pemerintah" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <i class="fa-solid fa-seedling w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
@@ -130,10 +131,18 @@
                     </a>
                 </li>
                 @endif
-
-                @if (Auth::user()->roles_id == 2 || Auth::user()->roles_id == 3)    
+            
+                @if ($roles_id == 3)
                 <li>
-                    <a href="/dashboard/konsultasi" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <a href="/chatify" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <i class="fa-solid fa-comments w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                        <span class="flex-1 ms-3 text-xl whitespace-nowrap">Konsultasi</span>
+                    </a>
+                </li>
+                @endif
+                @if ($roles_id == 2)
+                <li>
+                    <a href="/konsultasi" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <i class="fa-solid fa-comments w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                         <span class="flex-1 ms-3 text-xl whitespace-nowrap">Konsultasi</span>
                     </a>
@@ -143,7 +152,7 @@
         </div>
     </aside>
 
-
+    @endauth
 </body>
 
 </html>
