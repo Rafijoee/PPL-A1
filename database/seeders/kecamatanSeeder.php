@@ -14,28 +14,10 @@ class kecamatanSeeder extends Seeder
     public function run(): void
     {
         Kecamatan::create([
-            'name' => 'sumbersari',
-        ]);
-        Kecamatan::create([
             'name' => 'Ajung',
         ]);
         Kecamatan::create([
             'name' => 'Ambulu',
-        ]);
-        Kecamatan::create([
-            'name' => 'Tanggul',
-        ]);
-        Kecamatan::create([
-            'name' => 'Tempurejo',
-        ]);
-        Kecamatan::create([
-            'name' => 'Umbulsari',
-        ]);
-        Kecamatan::create([
-            'name' => 'Wuluhan',
-        ]);
-        Kecamatan::create([
-            'name' => 'Patrang',
         ]);
         Kecamatan::create([
             'name' => 'Arjasa',
@@ -62,6 +44,9 @@ class kecamatanSeeder extends Seeder
             'name' => 'Kalisat',
         ]);
         Kecamatan::create([
+            'name' => 'Kaliwates',
+        ]);
+        Kecamatan::create([
             'name' => 'Kencong',
         ]);
         Kecamatan::create([
@@ -78,6 +63,9 @@ class kecamatanSeeder extends Seeder
         ]);
         Kecamatan::create([
             'name' => 'Pakusari',
+        ]);
+        Kecamatan::create([
+            'name' => 'Patrang',
         ]);
         Kecamatan::create([
             'name' => 'Puger',
@@ -103,6 +91,20 @@ class kecamatanSeeder extends Seeder
         Kecamatan::create([
             'name' => 'Sumberjambe',
         ]);
-
+        Kecamatan::create([
+            'name' => 'sumbersari',
+        ]);
+        Kecamatan::create([
+            'name' => 'Tanggul',
+        ]);
+        Kecamatan::create([
+            'name' => 'Tempurejo',
+        ]);
+        Kecamatan::create([
+            'name' => 'Umbulsari',
+        ]);
+        Kecamatan::create([
+            'name' => 'Wuluhan',
+        ]);
     }
 }

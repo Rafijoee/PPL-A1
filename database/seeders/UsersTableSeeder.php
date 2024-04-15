@@ -20,26 +20,19 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('password'),
                 'roles_id'=> '1'
             ]);
-
-            
-            $patrang = User::create([
-                'name' => 'Penyuluh Kecamatan Patrang',
-                'email' => 'penyuluhpatrang@example.com',
-                'password' => bcrypt('password'),
-                'roles_id'=> '3'
-            ]);
-            // $patrang = Profile::create([
-            //     'user_id' => $patrang->id,
-            //     'kecamatan_id' => '8',
-            // ]);
-
             $pemerintah = User::create([
                 'name' => 'Pemerintah',
                 'email' => 'pemerintah@example.com',
                 'password' => bcrypt('password'), 
                 'roles_id'=> '4'
             ]);
-            
+            $patrang = User::create([
+                'name' => 'Penyuluh Kecamatan Patrang',
+                'email' => 'penyuluhpatrang@example.com',
+                'password' => bcrypt('password'),
+                'roles_id'=> '3'
+            ]);
+
             $sumbersari = User::create([
                 'name' => 'Penyuluh Kecamatan Sumbersari',
                 'email' => 'penyuluhsumbersari@example.com',
