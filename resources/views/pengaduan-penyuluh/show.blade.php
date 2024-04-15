@@ -25,7 +25,7 @@
         <p class="text-right">{!! $reports->isi_aduan !!}</p>
         <br>
         <h2 class="text-2xl font-bold">Foto dari Petani</h2>
-        <img src="{{ asset('storage/'.$reports->foto_lokasi) }}" alt="" class="scale-75">
+        <img src="{{ asset('storage/'.$reports->foto_lokasi) }}" alt="" class="scale-75 max-h-[800px]">
         <div class="border-t-2 border-gray-200 mb-5">
             <h2 class="text-2xl font-bold mt-5 mb-3">Isi Aduan Penyuluh</h2>
             @if ($reports->isi_aduan_penyuluh)                
