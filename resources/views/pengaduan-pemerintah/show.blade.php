@@ -149,7 +149,6 @@
                         </div>
                     </div>
                 </div>
-                @endif
                 @else
                     <button id="button" class="text-white bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md  w-full py-2 px-2" onclick="hideShow()">Buat Tanggapan</button>
                 @endif
