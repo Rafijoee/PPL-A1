@@ -49,8 +49,8 @@ class ReportController extends Controller
             'judul_laporan' => 'required|max:255',
             'alamat' => 'required|max:255',
             'kecamatan_id' => 'required',
+            'image' => 'image|file|max:20480',
             'isi_aduan' => 'required',
-            'foto_lokasi' => 'image|file|max:20480'
         ]);
 
         if($request->file('image')){
@@ -136,7 +136,7 @@ class ReportController extends Controller
             'judul_laporan' => 'required|max:255',
             'alamat' => 'required|max:255',
             'isi_aduan' => 'required',
-            'foto_lokasi' => 'image|file|max:20480'
+            'image' => 'image|file|max:20480'
         ]);
 
         // if($request->file('image')){

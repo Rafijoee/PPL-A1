@@ -14,7 +14,11 @@
         <br>
         <a href="/dashboard/pengaduan-penyuluh" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-1.5 text-center me-2 mb-28">Kembali</a>
         @if ($reports->handling__statuses_id == 1)
-            <a href="/dashboard/pengaduan-penyuluh/{{ Crypt::encryptString($reports["id"]) }}/edit" class="text-white bg-yellow-200 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-1.5 text-center me-2 mb-28">Edit</a>
+            @if ($reports->tanggapan_penyuluh)
+                
+            @else
+                <a href="/dashboard/pengaduan-penyuluh/{{ Crypt::encryptString($reports["id"]) }}/edit" class="text-white bg-yellow-200 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-1.5 text-center me-2 mb-28">Edit</a>
+            @endif
         @else
         @endif
         <h2 class="text-2xl font-bold mt-5">Isi Aduan Petani</h2>
@@ -50,7 +54,11 @@
                     @if ($reports->verification_statuses_id == 3)
                         
                     @else
-                        <a href="/dashboard/pengaduan-penyuluh/edit/{{ Crypt::encryptString($reports["id"]) }}" class="text-white bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md py-2 px-2">Perbarui Tanggapan</a>
+                        @if ($reports->verification_statuses_id == 4)
+                            
+                        @else
+                            <a href="/dashboard/pengaduan-penyuluh/edit/{{ Crypt::encryptString($reports["id"]) }}" class="text-white bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md py-2 px-2">Perbarui Tanggapan</a>
+                        @endif
                     @endif
                 @else
                     <p class="bg-gray-100 text-justify px-5 pt-3 pb-3 rounded-xl mb-5">Belum ada tanggapan, Buatlah tanggapan</p>
