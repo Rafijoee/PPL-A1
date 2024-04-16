@@ -15,13 +15,13 @@ class KonsultasiController extends Controller
         $penyuluh = User::where('roles_id', 3)->get();
 
         $matchingProfiles = [];
-        foreach ($penyuluh as $user) {
-            $kecamatanPenyuluh = $user->profile->kecamatan_id;
+        foreach ($penyuluh as $user2) {
+            $kecamatanPenyuluh = $user2->profile->kecamatan_id;
 
             if ($kecamatanId === $kecamatanPenyuluh) {
-                $matchingProfiles[] = $user->profile;
+                $matchingProfiles[] = $user2->profile;
             }
 }     
-        return view('konsultasi.index', compact('kecamatanId', 'matchingProfiles'));
+        return view('konsultasi.index', compact('kecamatanId', 'matchingProfiles', 'user'));
     }
 }

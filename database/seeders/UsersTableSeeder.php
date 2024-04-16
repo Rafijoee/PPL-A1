@@ -460,6 +460,22 @@ class UsersTableSeeder extends Seeder
                 'no_hp' => '123456789',
                 'alamat' => 'Jl. wuluhan',
             ]);
+
+            $user = User::create([
+                'name' => 'user',
+                'email' => 'user@gmail.com',
+                'password' => bcrypt('password'),
+                'roles_id'=> '2'
+            ]);
+                
+            $wuluhan = Profile::create([
+                'user_id' => $user->id,
+                'kecamatan_id' => '1',
+                'nama' => $user->name,
+                'nik' => '123456789',
+                'no_hp' => '123456789',
+                'alamat' => 'Jl. User',
+            ]);
         
     }
 }
