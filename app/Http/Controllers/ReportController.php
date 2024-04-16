@@ -21,13 +21,14 @@ class ReportController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         $user_id = Auth::user()->id;
         $reports = Report::where('user_id', $user_id)->get();
         
         // $handling = Handling_Status::where('id', $reports->handling__statuses_id)->get();
         // @dd($reports->judul_laporan);
         
-        return view('pengaduan.index', compact('reports'));
+        return view('pengaduan.index', compact('reports', 'user'));
     }
 
     /**

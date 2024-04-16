@@ -16,9 +16,10 @@ class ReportPemerintahController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         $reports = Report::where('verification_statuses_id', 3)->get();
         
-        return view('pengaduan-pemerintah.index', compact('reports'));
+        return view('pengaduan-pemerintah.index', compact('reports', 'user'));
     }
 
     /**
