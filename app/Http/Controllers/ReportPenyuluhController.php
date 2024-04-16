@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Storage;
 class ReportPenyuluhController extends Controller
 {
     public function edit2(Report $report, $id){
+        $user = Auth::user();
         $user_id = Auth::user()->id;
         $decryptedID = Crypt::decryptString($id);
         $reports = Report::find($decryptedID);
@@ -23,7 +24,7 @@ class ReportPenyuluhController extends Controller
 
         $model = Report::findOrFail($decryptedID);
         $verifs = VerificationStatus::all();
-        return view('pengaduan-penyuluh.edit', compact('reports', 'model', 'namakecamatan', 'verifs'));
+        return view('pengaduan-penyuluh.edit', compact('reports', 'model', 'namakecamatan', 'verifs', 'user'));
     }
 
     public function update2(Request $request, Report $report, $id){
@@ -80,6 +81,7 @@ class ReportPenyuluhController extends Controller
      */
     public function show(Report $report, $id)
     {
+        $user = Auth::user();
         $user_id = Auth::user()->id;
         $decryptedID = Crypt::decryptString($id);
         $reports = Report::find($decryptedID);
@@ -89,7 +91,7 @@ class ReportPenyuluhController extends Controller
         $kecamatans = Kecamatan::all();
         $namakecamatan = Kecamatan::where('id', $kecamatan_id)->first();
 
-        return view('pengaduan-penyuluh.show', compact('model', 'reports', 'namakecamatan'));
+        return view('pengaduan-penyuluh.show', compact('model', 'reports', 'namakecamatan', 'user'));
     }
 
     /**
@@ -97,6 +99,7 @@ class ReportPenyuluhController extends Controller
      */
     public function edit(Report $report, $id)
     {
+        $user = Auth::user();
         $user_id = Auth::user()->id;
         $decryptedID = Crypt::decryptString($id);
         $reports = Report::find($decryptedID);
@@ -105,7 +108,7 @@ class ReportPenyuluhController extends Controller
         $namakecamatan = Kecamatan::where('id', $kecamatan_id)->first();
 
         $model = Report::findOrFail($decryptedID);
-        return view("pengaduan-penyuluh.create", compact('reports', 'model', 'namakecamatan'));
+        return view("pengaduan-penyuluh.create", compact('reports', 'model', 'namakecamatan', 'user'));
     }
 
     /**

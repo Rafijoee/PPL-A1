@@ -36,9 +36,10 @@ class ReportController extends Controller
      */
     public function create()
     {
+        $user = Auth::user();
         return view('pengaduan.create',[
             'kecamatans' => Kecamatan::all()
-        ]);
+        ], compact('user'));
     }
 
     /**
@@ -94,6 +95,7 @@ class ReportController extends Controller
      */
     public function show(Report $report, $id)
     {
+        $user = Auth::user();
         $user_id = Auth::user()->id;
         $decryptedID = Crypt::decryptString($id);
         $reports = Report::find($decryptedID);
@@ -104,7 +106,7 @@ class ReportController extends Controller
         $namakecamatan = Kecamatan::where('id', $kecamatan_id)->first();
         
 
-        return view("pengaduan.show", compact('model','reports', 'namakecamatan'));
+        return view("pengaduan.show", compact('model','reports', 'namakecamatan', 'user'));
 
         // return view("pengaduan.show",[
         //     'report'=> $report
@@ -116,13 +118,14 @@ class ReportController extends Controller
      */
     public function edit(Report $report, $id)
     {
+        $user = Auth::user();
         $user_id = Auth::user()->id;
         $decryptedID = Crypt::decryptString($id);
         $reports = Report::find($decryptedID);
 
         $model = Report::findOrFail($decryptedID);
         $kecamatans = Kecamatan::all();
-        return view("pengaduan.edit", compact('reports', 'model', 'kecamatans'));
+        return view("pengaduan.edit", compact('reports', 'model', 'kecamatans', 'user'));
     }
 
     /**

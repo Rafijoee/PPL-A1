@@ -51,6 +51,7 @@ class ReportPemerintahController extends Controller
      */
     public function edit(Report $report, $id)
     {
+        $user = Auth::user();
         $user_id = Auth::user()->id;
         $decryptedID = Crypt::decryptString($id);
         $reports = Report::find($decryptedID);
@@ -60,7 +61,7 @@ class ReportPemerintahController extends Controller
         $handlings = Handling_Status::all();
 
         $model = Report::findOrFail($decryptedID);
-        return view("pengaduan-pemerintah.show", compact('reports', 'model', 'namakecamatan', 'handlings'));
+        return view("pengaduan-pemerintah.show", compact('reports', 'model', 'namakecamatan', 'handlings', 'user'));
     }
 
     /**

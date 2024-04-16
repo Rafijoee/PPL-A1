@@ -11,12 +11,11 @@ HOW TO INSTALL THIS APP
     5.3 php artisan db:seed --class=HandlingStatusSeeder <br>
     5.4 php artisan db:seed --class=VerivicationSeeder <br>
     5.5 php artisan db:seed --class=kecamatanSeeder <br>
+    5.6 php artisan storage:link
 6. npm install
 7. npm run dev
 8. php artisan serve
 9. composer require munafio/chatify (WAJIB COK ASU IKI !!!)
-10. php artisan chatify:install
-11. php artisan migrate
 
 
 
