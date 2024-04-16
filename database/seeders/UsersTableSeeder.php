@@ -468,7 +468,7 @@ class UsersTableSeeder extends Seeder
                 'roles_id'=> '2'
             ]);
                 
-            $wuluhan = Profile::create([
+            $user = Profile::create([
                 'user_id' => $user->id,
                 'kecamatan_id' => '1',
                 'nama' => $user->name,
