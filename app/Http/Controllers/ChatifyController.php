@@ -10,6 +10,6 @@ class ChatifyController extends Controller
     public function index(){
         $user = Auth::user();
 
-        return view('konsultasi.index');
+        return view('konsultasi.index', compact('user'));
     }
 }
