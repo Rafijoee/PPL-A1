@@ -22,6 +22,6 @@ class KonsultasiController extends Controller
                 $matchingProfiles[] = $user->profile;
             }
 }     
-        return view('konsultasi.index', compact('kecamatanId', 'matchingProfiles'));
+        return view('konsultasi.index', compact('kecamatanId', 'matchingProfiles', 'user'));
     }
 }

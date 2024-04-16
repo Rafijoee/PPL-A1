@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ChatifyController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ChatifyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KonsultasiController;
+use App\Http\Controllers\ReportAdminController;
 use App\Http\Controllers\ReportPenyuluhController;
 use App\Http\Controllers\ReportPemerintahController;
 
@@ -65,5 +66,9 @@ Route::middleware('pemerintah')->group(function(){
     });
 });
 
-
+Route::middleware('admin')->group(function(){
+    Route::group(['prefix' => 'dashboard'], function() {
+        Route::resource('/pengaduan-admin', ReportAdminController::class);
+    });
+});
 
