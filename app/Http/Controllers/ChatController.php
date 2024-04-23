@@ -28,6 +28,8 @@ class ChatController extends Controller
                         ->where('to_id', $id)
                         ->orWhere('from_id', $id) 
                         ->where('to_id', $user_id)->get();
+        // salahanya disini ya, bismillah besok bisa
+        dd($chats_kita);
         return view('konsultasi.chat', compact('chats_kita', 'user'));
     }
 
