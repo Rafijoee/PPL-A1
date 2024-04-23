@@ -25,11 +25,13 @@
         </div>    
 
         <div class=" flex w-full justify-center">
-            <form class="space-y-4 md:space-y-6 w-2/3" method="post" action="/dashboard/pengaduan-pemerintah/{{ Crypt::encryptString($reports["id"]) }}" enctype="multipart/form-data">
+            <form class=" w-2/3" method="post" action="/dashboard/pengaduan-pemerintah/{{ Crypt::encryptString($reports["id"]) }}" enctype="multipart/form-data">
                 @method('put')
                 @csrf
                 <h1 class="font-bold text-4xl">Aduan Petani</h1>
-                <div class="border-b-4 border-gray-200">
+                <p class="text-gray-300">{{ $namakecamatan->name }}, {{ $reports->created_at->format('D d M Y H:i:s') }}</p>
+                
+                <div class="border-b-4 space-y-4 mt-3 pb-5 border-gray-200">
                     <div>
                         <label for="judul_laporan" class="block mb-2 text-3xl font-medium dark:text-white">Judul Aduan</label>
                         <input type="text" name="judul_laporan" id="judul_laporan" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="judul aduan"  value="{{ $reports->judul_laporan }}" readonly>
@@ -46,7 +48,7 @@
                     <div>      
                         <label for="isi_aduan" class="form-label text-3xl font-medium">Isi Aduan Petani</label>
                     </div>
-                    <div class="bg-gray-100 text-justify px-5 pb-3 rounded-xl">
+                    <div class="bg-gray-100 text-justify px-5 py-3 rounded-xl">
                         <p>{!! $reports->isi_aduan !!}</p>
                     </div>
                     <div class="mb-10 mt-3">
@@ -62,13 +64,13 @@
                     </div>
                 </div>
                 <div>
-                    <h1 class="font-bold text-4xl ">Aduan Penyuluh</h1>
+                    <h1 class="font-bold text-4xl mb-3">Aduan Penyuluh</h1>
                 </div>
                 <div>
                 <div>      
                     <label for="isi_aduan" class="form-label text-3xl font-medium">Isi Aduan Penyuluh</label>
                     </div>
-                    <div class="bg-gray-100 text-justify px-5 pb-3 rounded-xl">
+                    <div class="bg-gray-100 text-justify px-5 py-3 mt-2 mb-3 rounded-xl">
                         <p>{!! $reports->isi_aduan_penyuluh !!}</p>
                     </div>
                 
@@ -87,10 +89,10 @@
                     <label for="isi_aduan" class="form-label text-3xl font-medium">Tanggapan Penyuluh</label>
                     </div>
                     @if ($reports->tanggapan_penyuluh)
-                    <div class="bg-gray-100 text-justify px-5 pb-3 rounded-xl pt-2">
+                    <div class="bg-gray-100 text-justify px-5 pb-3 mt-2 rounded-xl pt-2">
                         <p>{!! $reports->tanggapan_penyuluh !!}</p>
                     @else
-                    <div class="bg-gray-100 text-justify px-5 pb-3 rounded-xl pt-2">
+                    <div class="bg-gray-100 text-justify px-5 pb-3 mt-2 rounded-xl pt-2">
                         <p>Belum ada tanggapan</p>        
                                      
                     @endif
@@ -99,11 +101,11 @@
                 <div class="text-justify mt-3">
                     <label for="tanggapan_pemerintah" class="form-label text-3xl font-medium">Tanggapan Pemerintah</label>
                     @if ($reports->tanggapan_pemerintah)
-                    <div class="bg-gray-100 text-justify px-5 pt-2 pb-3 rounded-xl">
+                    <div class="bg-gray-100 text-justify px-5 pt-2 pb-3 mt-2 rounded-xl">
                         <p >{!! $reports->tanggapan_pemerintah !!}</p>
                     </div>
                     @else
-                        <p class="bg-gray-100 text-justify px-5 pt-3 pb-3 rounded-xl">Belum ada tanggapan</p>
+                        <p class="bg-gray-100 text-justify px-5 pt-3 pb-3 mt-2 rounded-xl">Belum ada tanggapan</p>
                     @endif
                 </div>
 
@@ -112,7 +114,7 @@
                 @else
                 <div>
                     <label for="handling" class="form-label text-3xl font-bold">Status Penanganan</label>
-                    <select name="handling_statuses_id"  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <select name="handling_statuses_id"  class="bg-gray-50 mt-2 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         @foreach ($handlings as $handling)
                         @if (old('handling_statuses_id', $reports->handling__statuses_id) == $handling->id)
                             <option value="{{ $handling->id }}" selected>{{ $handling->name }}</option>

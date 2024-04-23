@@ -17,7 +17,7 @@
             <a href="/dashboard/pengaduan/{{ Crypt::encryptString($reports["id"]) }}/edit" class="text-white bg-yellow-200 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-1.5 text-center me-2 mb-28">Edit</a>
         @endif
         <h2 class="text-2xl font-bold mt-5">Isi Aduan</h2>
-        <div class="bg-gray-100 text-justify px-5 rounded-xl pb-5">
+        <div class="bg-gray-100 text-justify mt-2 px-5 pt-3 pb-3 rounded-xl ">
             <p class="">{!! $reports->isi_aduan !!}</p>
         </div>
         <br>
