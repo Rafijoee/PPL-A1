@@ -36,7 +36,7 @@ Route::post('register', [AuthController::class, 'register'])->name('register');
 
 Route::get('/chat', [ChatController::class, 'index']);
 Route::post('/chat', [ChatController::class, 'store']);
-Route::get('/chat/{id}', [ChatController::class, 'show']);
+Route::get('/chat/{id}', [ChatController::class, 'show'])->name('chat.show');
 
 
 

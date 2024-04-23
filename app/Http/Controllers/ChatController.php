@@ -36,7 +36,7 @@ class ChatController extends Controller
         $id_kita = Auth::user()->id;
         $profile = Auth::user()->profile;
         $kecamatan_kita = $profile->kecamatan_id;
-        $profile_lain = Profile::where('kecamatan_id',$kecamatan_kita)->where('id', '!=', $profile->id)->first();
+        $profile_lain = Profile::where('kecamatan_id',$kecamatan_kita)->where('id', '!=', $profile->id)->get();
         $id_lain = $profile_lain->id;
 
 
@@ -49,6 +49,6 @@ class ChatController extends Controller
         
         Chat::create($validatedData);
 
-        return redirect ('');
+        return redirect ()->back();
     }
 }
