@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ChatifyController;
 use App\Http\Controllers\ProfileController;
@@ -32,7 +33,10 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('register', [AuthController::class, 'form_register'])->name('form_register');
 Route::post('register', [AuthController::class, 'register'])->name('register');
 
-Route::get('/konsultasi', [KonsultasiController::class, 'index'])->name('konsultasi');
+
+Route::get('/chat', [ChatController::class, 'index']);
+Route::post('/chat', [ChatController::class, 'store']);
+Route::get('/chat/{id}', [ChatController::class, 'show']);
 
 
 
