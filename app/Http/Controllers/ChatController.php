@@ -22,12 +22,13 @@ class ChatController extends Controller
     }
     
     public function show ($id){
-        $user = Auth::user()->id;
-        $chats_kita = Chat::where('from_id', $user)
+        $user = Auth::user();
+        $user_id = Auth::user()->id;
+        $chats_kita = Chat::where('from_id', $user_id)
                         ->where('to_id', $id)
                         ->orWhere('from_id', $id) 
-                        ->where('to_id', $user)->get();
-        dd($chats_kita);
+                        ->where('to_id', $user_id)->get();
+        return view('konsultasi.chat', compact('chats_kita', 'user'));
     }
 
     public function store (Request $request){
@@ -47,5 +48,7 @@ class ChatController extends Controller
         $validatedData['to_id'] = $id_lain;
         
         Chat::create($validatedData);
+
+        return redirect ('');
     }
 }

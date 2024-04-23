@@ -28,7 +28,7 @@ class ReportController extends Controller
         // $handling = Handling_Status::where('id', $reports->handling__statuses_id)->get();
         // @dd($reports->judul_laporan);
         
-        return view('konsultasi.index', compact('reports', 'user'));
+        return view('pengaduan.index', compact('reports', 'user'));
     }
 
     /**
