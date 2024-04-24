@@ -60,4 +60,9 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
+    public function chat()
+    {
+        return $this->hasMany(Chat::class);
+    }
+
 }
