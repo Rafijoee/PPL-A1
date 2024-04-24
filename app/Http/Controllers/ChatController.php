@@ -28,9 +28,12 @@ class ChatController extends Controller
                         ->where('to_id', $id)
                         ->orWhere('from_id', $id) 
                         ->where('to_id', $user_id)->get();
+        $profile = Auth::user()->profile;                
+        $kecamatan_kita = $profile->kecamatan_id;
+        $profile_lain = Profile::where('kecamatan_id',$kecamatan_kita)->where('id', '!=', $profile->id)->first();
         // salahanya disini ya, bismillah besok bisa
         // dd($chats_kita);
-        return view('konsultasi.chat', compact('chats_kita', 'user'));
+        return view('konsultasi.chat', compact('chats_kita', 'user', 'profile_lain'));
     }
 
     public function store (Request $request){
