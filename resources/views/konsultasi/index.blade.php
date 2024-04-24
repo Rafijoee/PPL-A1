@@ -8,7 +8,7 @@
     <title>MONITOR | KONSULTASI</title>
 </head>
 <body class="bg-[#F2FBFF]">
-    <div class="p-4 sm:ml-80 mt-16 mb-96 mx-10">
+    <div class="p-4 sm:ml-64 mt-16 mb-96 mx-10">
         <h1 class="font-bold text-4xl">Konsultasi</h1>
         <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl mt-12 ">
             
