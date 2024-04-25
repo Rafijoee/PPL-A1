@@ -27,6 +27,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('login', [AuthController::class, 'login'])->name('login');
 Route::post('login', [AuthController::class, 'authenticate'])->name('authenticate');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
@@ -34,9 +35,6 @@ Route::get('register', [AuthController::class, 'form_register'])->name('form_reg
 Route::post('register', [AuthController::class, 'register'])->name('register');
 
 
-Route::get('/chat', [ChatController::class, 'index']);
-Route::post('/chat', [ChatController::class, 'store']);
-Route::get('/chat/{id}', [ChatController::class, 'show'])->name('chat.show');
 
 
 
@@ -51,12 +49,17 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 Route::middleware('petani')->group(function(){
+    Route::get('/chat', [ChatController::class, 'index']);
+    Route::post('/chat', [ChatController::class, 'store']);
+    Route::get('/chat/{id}', [ChatController::class, 'show'])->name('chat.show');
     Route::group(['prefix' => 'dashboard'], function() {
         Route::resource('/pengaduan', ReportController::class);
     });
 });
 
 Route::middleware('penyuluh')->group(function(){
+    Route::get('/konsultasi-penyuluh', [ChatController::class, 'index2']);
+    Route::get('/konsultasi-penyuluh/{id}', [ChatController::class, 'show2']);
     Route::group(['prefix' => 'dashboard'], function() {
         Route::get('/pengaduan-penyuluh/edit/{pengaduan_penyuluh}', [ReportPenyuluhController::class, 'edit2']);
         Route::put('/pengaduan-penyuluh/edit/{pengaduan_penyuluh}', [ReportPenyuluhController::class, 'update2']);

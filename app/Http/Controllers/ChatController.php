@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
+    // ini itu index dari petani
     public function index (){
         $user = Auth::user();
         $profile = Auth::user()->profile;
@@ -31,8 +32,6 @@ class ChatController extends Controller
         $profile = Auth::user()->profile;                
         $kecamatan_kita = $profile->kecamatan_id;
         $profile_lain = Profile::where('kecamatan_id',$kecamatan_kita)->where('id', '!=', $profile->id)->first();
-        // salahanya disini ya, bismillah besok bisa
-        // dd($chats_kita);
         return view('konsultasi.chat', compact('chats_kita', 'user', 'profile_lain'));
     }
 
@@ -55,5 +54,42 @@ class ChatController extends Controller
         Chat::create($validatedData);
 
         return redirect ()->back();
+    }
+
+    // Untuk Penyuluh
+    public function index2 (){
+        $user = Auth::user();
+        $user_id = Auth::user()->id;
+        $profile = Auth::user()->profile;
+        
+        $kecamatan_kita = $profile->kecamatan_id;
+        $profile_lain = Profile::where('kecamatan_id',$kecamatan_kita)->where('id', '!=', $profile->id)->first();
+        $id_lain = $profile_lain->id;
+        
+        $chats_kita = Chat::where('to_id', $user_id)->get();
+        $tos_id = Chat::where('from_id', $user_id)->pluck('to_id');
+
+        $append = array();
+        foreach ($tos_id as $to_id){
+            $yang_chat_kita = Profile::where('user_id', $to_id)->pluck('nama');
+        }
+
+
+        // dd($chats_kita->toArray());
+        return view('konsultasi.app', compact('profile_lain', 'id_lain', 'user', 'yang_chat_kita'));
+    }
+
+    public function show2 ($id){
+        $user = Auth::user();
+        $user_id = Auth::user()->id;
+        $chats_kita = Chat::where('from_id', $user_id)
+                        ->where('to_id', $id)
+                        ->orWhere('from_id', $id) 
+                        ->where('to_id', $user_id)->get();
+        $profile = Auth::user()->profile;                
+        $kecamatan_kita = $profile->kecamatan_id;
+        $profile_lain = Profile::where('kecamatan_id',$kecamatan_kita)->where('id', '!=', $profile->id)->first();
+        
+        return view('konsultasi.app', compact('chats_kita', 'user', 'profile_lain'));
     }
 }

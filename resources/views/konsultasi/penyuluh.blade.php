@@ -1,15 +1,14 @@
-@extends('layouts.navbar')
-@extends('layouts.dashboard2')
 @extends('layouts.index')
 @section('title', 'Konsultasi')
-    <div class="p-4 sm:ml-64 text-justify mt-12">
+
+<div class="p-4 sm:ml-64 text-justify mt-12">
         <form class="space-y-4 md:space-y-6" method="post" action="/chat" enctype="multipart/form-data">
             @csrf
             <div class="bg-gray-100">
                 <div class="max-w-full bg-white rounded-lg shadow-lg w-full">
                     <!-- Chat Header -->
                     <div class="bg-gray-200 px-4 py-2 rounded-t-lg flex items-center justify-between mt-0">
-                        <div class="flex items-center ">
+                        <div class="flex items-center">
                             <img class="w-8 h-8 rounded-full mr-2" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="Sender">
                             <h1 class="text-lg font-bold">{{$profile_lain->nama}}</h1>
                         </div>
