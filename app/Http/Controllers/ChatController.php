@@ -74,6 +74,8 @@ class ChatController extends Controller
             $yang_chat_kita = Profile::where('user_id', $to_id)->pluck('nama');
         }
 
+        //Ini ntar yang dilanjutkan, sekarang masih capek, mungkin besok
+
 
         // dd($chats_kita->toArray());
         return view('konsultasi.app', compact('profile_lain', 'id_lain', 'user', 'yang_chat_kita'));
