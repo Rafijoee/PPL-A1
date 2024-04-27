@@ -59,6 +59,7 @@ Route::middleware('petani')->group(function(){
 
 Route::middleware('penyuluh')->group(function(){
     Route::get('/konsultasi-penyuluh', [ChatController::class, 'index2']);
+    Route::post('/konsultasi-penyuluh', [ChatController::class, 'store2']);
     Route::get('/konsultasi-penyuluh/{id}', [ChatController::class, 'show2']);
     Route::group(['prefix' => 'dashboard'], function() {
         Route::get('/pengaduan-penyuluh/edit/{pengaduan_penyuluh}', [ReportPenyuluhController::class, 'edit2']);

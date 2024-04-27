@@ -69,16 +69,12 @@ class ChatController extends Controller
         $chats_kita = Chat::where('to_id', $user_id)->get();
         $tos_id = Chat::where('from_id', $user_id)->pluck('to_id');
 
-        $append = array();
         foreach ($tos_id as $to_id){
-            $yang_chat_kita = Profile::where('user_id', $to_id)->pluck('nama');
+            $kontaks = Profile::where('user_id', $to_id)->pluck('nama');
         }
 
-        //Ini ntar yang dilanjutkan, sekarang masih capek, mungkin besok
-
-
-        // dd($chats_kita->toArray());
-        return view('konsultasi.app', compact('profile_lain', 'id_lain', 'user', 'yang_chat_kita'));
+        // dd($to_id);
+        return view('konsultasi.app', compact('profile_lain', 'id_lain', 'user', 'kontaks', 'to_id'));
     }
 
     public function show2 ($id){
@@ -91,7 +87,34 @@ class ChatController extends Controller
         $profile = Auth::user()->profile;                
         $kecamatan_kita = $profile->kecamatan_id;
         $profile_lain = Profile::where('kecamatan_id',$kecamatan_kita)->where('id', '!=', $profile->id)->first();
+        $chats_kita = Chat::where('to_id', $user_id)->get();
+        $tos_id = Chat::where('from_id', $user_id)->pluck('to_id');
+
+        foreach ($tos_id as $to_id){
+            $kontaks = Profile::where('user_id', $to_id)->pluck('nama');
+        }
         
-        return view('konsultasi.app', compact('chats_kita', 'user', 'profile_lain'));
+        return view('konsultasi.penyuluh', compact('chats_kita', 'user', 'profile_lain', 'kontaks', 'to_id'));
+    }
+
+    public function store2 (Request $request){
+        $user = Auth::user()->roles_id;
+        $id_kita = Auth::user()->id;
+        $profile = Auth::user()->profile;
+        $kecamatan_kita = $profile->kecamatan_id;
+        $profile_lain = Profile::where('kecamatan_id',$kecamatan_kita)->where('id', '!=', $profile->id)->first();
+        $id_lain = $profile_lain->user_id;
+
+
+        $validatedData = $request->validate([
+            'body' => 'required',
+        ]);
+
+        $validatedData['from_id'] = $id_kita;
+        $validatedData['to_id'] = $id_lain;
+        
+        Chat::create($validatedData);
+
+        return redirect ()->back();
     }
 }
