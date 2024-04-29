@@ -26,6 +26,9 @@ use App\Http\Controllers\ReportPemerintahController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/coba', function () {
+    return view('coba');
+});
 
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
