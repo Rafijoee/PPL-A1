@@ -7,12 +7,14 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\Models\Handling_Status;
 use App\Models\Kecamatan;
+use App\Models\User;
 use Illuminate\support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
-use Illuminate\Contracts\Encryption\DecryptException;   
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Notification;
 
 class ReportController extends Controller
 {
@@ -65,7 +67,17 @@ class ReportController extends Controller
         $validatedData['handling__statuses_id'] = 1;
         $validatedData['verification_statuses_id'] = 1;
 
-        Report::create($validatedData);
+        $pengaduan = Report::create($validatedData);
+        $user_id = Auth::user()->id;
+        $profile = Profile::where('user_id', $user_id)->first();
+        $kecamatan_id = $profile->kecamatan_id;
+        $penyuluh = User::where('roles_id', 2)
+                        ->with(['profile' => function ($query) use ($kecamatan_id) {
+                            $query->where('kecamatan_id', $kecamatan_id);
+        }]) ->get();
+
+        Notification::send($penyuluh, new \App\Notifications\Pengaduan($pengaduan));
+
 
 
         
@@ -99,6 +111,7 @@ class ReportController extends Controller
         $user_id = Auth::user()->id;
         $decryptedID = Crypt::decryptString($id);
         $reports = Report::find($decryptedID);
+        // dd($reports);
 
         $model = Report::findOrFail($decryptedID);
 

@@ -85,8 +85,9 @@ class ReportPenyuluhController extends Controller
         $user_id = Auth::user()->id;
         $decryptedID = Crypt::decryptString($id);
         $reports = Report::find($decryptedID);
-
+        
         $model = Report::findOrFail($decryptedID);
+        // dd($model);
         $kecamatan_id = $reports->kecamatan_id;
         $kecamatans = Kecamatan::all();
         $namakecamatan = Kecamatan::where('id', $kecamatan_id)->first();
@@ -106,6 +107,8 @@ class ReportPenyuluhController extends Controller
         $kecamatan_id = $reports->kecamatan_id;
         $kecamatans = Kecamatan::all();
         $namakecamatan = Kecamatan::where('id', $kecamatan_id)->first();
+
+        
 
         $model = Report::findOrFail($decryptedID);
         return view("pengaduan-penyuluh.create", compact('reports', 'model', 'namakecamatan', 'user'));
