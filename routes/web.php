@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KonsultasiController;
 use App\Http\Controllers\ReportAdminController;
+use App\Http\Controllers\NewsPemerintahController;
 use App\Http\Controllers\ReportPenyuluhController;
 use App\Http\Controllers\ReportPemerintahController;
 
@@ -80,3 +81,8 @@ Route::middleware('admin')->group(function(){
     });
 });
 
+Route::middleware('pemerintah')->group(function(){
+    Route::group(['prefix' => 'dashboard'], function() {
+        Route::resource('/berita-pemerintah', NewsPemerintahController::class);
+    });
+});
