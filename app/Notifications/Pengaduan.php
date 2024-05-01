@@ -15,12 +15,12 @@ class Pengaduan extends Notification
      * Create a new notification instance.
      */
 
-    private $reports;
+    private $report;
 
 
-    public function __construct($reports)
+    public function __construct($report)
     {
-        $this->reports = $reports;
+        $this->report = $report;
     }
 
     /**
@@ -52,9 +52,9 @@ class Pengaduan extends Notification
     public function toArray(object $notifiable)
     {
         return [
-            'report_id' => $this->reports->id,
-            'report_title' => $this->reports->title,
-            'messages' => $this->reports->user->name. ' Mengirim Pengaduan',
+            'report_id' => $this->report->id,
+            'report_title' => $this->report->title,
+            'messages' => $this->report->user->name. ' Mengirim Pengaduan',
         ];
     }
 }

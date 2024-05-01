@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Handling_Status;
 use App\Models\Kecamatan;
 use App\Models\User;
+use App\Notifications\Pengaduan;
 use Illuminate\support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -74,9 +75,13 @@ class ReportController extends Controller
         $penyuluh = User::where('roles_id', 2)
                         ->with(['profile' => function ($query) use ($kecamatan_id) {
                             $query->where('kecamatan_id', $kecamatan_id);
-        }]) ->get();
-
-        Notification::send($penyuluh, new \App\Notifications\Pengaduan($pengaduan));
+        }])
+        ->get();
+        
+        $penyuluh->each(function ($penyu) {
+            $report = Report::all();
+            $penyu->notify(new Pengaduan($report));
+        });
 
 
 

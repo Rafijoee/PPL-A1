@@ -15,6 +15,27 @@
                 </div>
                 <div class="flex items-center">
                     <div class="flex items-center ms-3">
+                    <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" class="text-white bg-[#40C6A1] hover:bg-[#40C6A1] focus:ring-4 focus:outline-none focus:ring-[#40C6A1] font-medium rounded-lg text-sm mr-8 py-3.5 text-center inline-flex items-center dark:bg-[#40C6A1] dark:hover:bg-[#40C6A1] dark:focus:ring-[#40C6A1]" type="button"> <i class="fa-regular fa-bell fa-2xl " style="color: #727479;"> </i>
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+    
+                    </button>
+
+                    <!-- Dropdown menu -->
+                    <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-92  dark:bg-gray-700">
+                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
+                                    <li class=""> 
+                                        <a href="#" id="" class="w-full max-w-xs text-gray-900 bg-white rounded-lg shadow dark:bg-gray-800 dark:text-gray-300" role="alert">
+                                            <div class="flex items-center">
+                                                <div class="ms-3 text-sm font-normal">
+                                                    <div class="text-sm font-semibold text-gray-900 dark:text-white">   sdaa</div>
+                                                    <div class="text-sm font-normal">commented on your photo</div>
+                                                    <span class="text-xs font-medium text-blue-600 dark:text-blue-500">a few seconds ago</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                        </ul>
+                    </div>
                         <div>
                             <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
                                 <span class="sr-only">Open user menu</span>
