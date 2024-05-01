@@ -13,11 +13,12 @@ class DashboardController extends Controller
         $user = Auth::user();
         $user_id = Auth::user()->id;
         $notifs = DB::table('notifications')->where('notifiable_id', $user_id)->pluck('data');
-        // foreach ($notifs as $notif)
-        // $userArray = json_decode($notif, true);
-        // $messages = $userArray['messages'];
+        foreach ($notifs as $notif)
+        $userArray = json_decode($notif, true);
+        $messages = $userArray['messages'];
+        $judul = $userArray['title'];
         
-        // dd($messages);
+        dd($messages);
 
         return view('layouts.dashboard', compact('user', 'notifs'));
     }

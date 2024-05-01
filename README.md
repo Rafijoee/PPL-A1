@@ -15,7 +15,6 @@ HOW TO INSTALL THIS APP
 6. npm install
 7. npm run dev
 8. php artisan serve
-9. composer require munafio/chatify (WAJIB COK ASU IKI !!!)
 
 
 

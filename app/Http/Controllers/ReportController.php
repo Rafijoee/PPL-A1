@@ -78,14 +78,7 @@ class ReportController extends Controller
         }])
         ->get();
         
-        $penyuluh->each(function ($penyu) {
-            $report = Report::all();
-            $penyu->notify(new Pengaduan($report));
-        });
-
-
-
-        
+        Notification::send($penyuluh, new Pengaduan($pengaduan));
         // $title = $request ->input("judul_laporan");
         // $content = $request->input("isi_aduan");
         // $alamat = $request->input("alamat");

@@ -53,7 +53,7 @@ class Pengaduan extends Notification
     {
         return [
             'report_id' => $this->report->id,
-            'report_title' => $this->report->title,
+            'report_title' => $this->report->judul_laporan,
             'messages' => $this->report->user->name. ' Mengirim Pengaduan',
         ];
     }
