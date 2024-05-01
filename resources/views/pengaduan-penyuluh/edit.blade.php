@@ -16,7 +16,7 @@
     </style>
 </head>
 <body class="bg-[#F2FBFF] text-[#185141]">
-    <div class="p-4 sm:ml-64 mt-16 mb-96 text-justify ">
+    <div class="p-4 sm:ml-72 mt-16 mb-96 text-justify ">
         <form method="post" action="/dashboard/pengaduan-penyuluh/edit/{{ Crypt::encryptString($reports["id"]) }}">
             @method('put')
             @csrf

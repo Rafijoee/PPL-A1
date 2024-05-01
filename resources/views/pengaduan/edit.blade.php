@@ -18,7 +18,7 @@
 
 </head>
 <body class="bg-[#F2FBFF] text-[#185141]">
-    <div class="p-4 sm:ml-64 mt-16 mb-60">
+    <div class="p-4 sm:ml-72 mt-16 mb-60">
         <h1 class="font-bold text-4xl border-b-2">Perbarui Aduan</h1>
 
         <div class="mt-10 flex w-full justify-center">
