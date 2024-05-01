@@ -18,7 +18,7 @@
 
 </head>
 <body class="bg-[#F2FBFF] text-[#185141]">
-    <div class="p-4 sm:ml-64 mt-16 mb-60">
+    <div class="p-4 sm:ml-72 mt-16 mb-60">
         <div class="border-b-4 border-[#185141]">
             <h1 class="font-bold text-7xl">Laporan Pengaduan</h1>
             <hr class="mt-5">

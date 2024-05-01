@@ -7,7 +7,7 @@
     <title>Pengaduan</title>
 </head>
 <body class="bg-[#F2FBFF]">
-    <div class="p-4 sm:ml-64 mt-16">
+    <div class="p-4 sm:ml-72 mt-16">
         <h1 class="font-bold text-4xl">Pengaduan</h1>
 
         @if (session()->has('success'))

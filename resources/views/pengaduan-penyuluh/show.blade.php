@@ -8,7 +8,7 @@
     <title>MONITOR | RIWAYAT ADUAN</title>
 </head>
 <body class="bg-[#F2FBFF] text-[#185141]">
-    <div class="p-4 sm:ml-64 mt-16 mb-96 text-justify ">
+    <div class="p-4 sm:ml-72 mt-16 mb-96 text-justify ">
         <h2 class="text-4xl font-bold">{{ $reports->judul_laporan }}</h2>
         <p>{{ $reports->updated_at->format('D d M Y H:i:s') }}</p>
         <br>
