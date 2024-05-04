@@ -11,6 +11,7 @@ use App\Http\Controllers\KonsultasiController;
 use App\Http\Controllers\ReportAdminController;
 use App\Http\Controllers\ReportPenyuluhController;
 use App\Http\Controllers\ReportPemerintahController;
+use App\Http\Controllers\NotifikasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,7 @@ Route::post('login', [AuthController::class, 'authenticate'])->name('authenticat
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('register', [AuthController::class, 'form_register'])->name('form_register');
 Route::post('register', [AuthController::class, 'register'])->name('register');
-
+Route::get('inbox', [NotifikasiController::class, 'index'])->name('inbox');
 
 
 

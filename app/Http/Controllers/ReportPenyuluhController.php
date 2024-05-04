@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Report;
 use App\Models\Profile;
 use App\Models\Kecamatan;
+use App\Models\Notifikasi;
 use App\Models\VerificationStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -146,6 +147,16 @@ class ReportPenyuluhController extends Controller
                 'isi_aduan_penyuluh' => $validatedData['isi_aduan_penyuluh'],
                 'verification_statuses_id' => $verif
               ]);
+        $profile = Auth::user()->profile;
+        $kecamatan_kita = $profile->kecamatan_id;
+        $profile_lain = Profile::where('kecamatan_id',$kecamatan_kita)->where('id', '!=', $profile->id)->pluck('user_id');
+        foreach ($profile_lain as $profile) {    
+            $notifikasi = new Notifikasi();
+            $notifikasi->user_id = Auth::user()->id;
+            $notifikasi->to_id = Report::where('id', $reports->id)->pluck('user_id')->first();
+            $notifikasi->title = $validatedData['isi_aduan_penyuluh'];
+            $notifikasi->save();
+        }
 
         return redirect('/dashboard/pengaduan-penyuluh')->with('success', 'Aduan berhasil diperbarui!');
     }

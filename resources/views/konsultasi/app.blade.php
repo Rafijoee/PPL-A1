@@ -25,7 +25,7 @@
 
                 </div>
                 <div class=" p-4 overflow-y-auto flex flex-col h-[78vh]" style=>
-                    <img class="h-full" src="{{ asset('images/Konsultasi.jpg') }}" alt="Deskripsi Gambar">
+                    <img class="h-full scale-150" src="{{ asset('images/konsultasi_baru.png') }}" alt="Deskripsi Gambar">
 
                 </div>
                 <!-- Chat Input -->

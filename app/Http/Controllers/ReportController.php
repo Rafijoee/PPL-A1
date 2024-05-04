@@ -7,6 +7,7 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\Models\Handling_Status;
 use App\Models\Kecamatan;
+use App\Models\Notifikasi;
 use App\Models\User;
 use App\Notifications\Pengaduan;
 use Illuminate\support\Facades\DB;
@@ -27,10 +28,6 @@ class ReportController extends Controller
         $user = Auth::user();
         $user_id = Auth::user()->id;
         $reports = Report::where('user_id', $user_id)->get();
-        
-        // $handling = Handling_Status::where('id', $reports->handling__statuses_id)->get();
-        // @dd($reports->judul_laporan);
-        
         return view('pengaduan.index', compact('reports', 'user'));
     }
 
@@ -69,34 +66,16 @@ class ReportController extends Controller
         $validatedData['verification_statuses_id'] = 1;
 
         $pengaduan = Report::create($validatedData);
-        $user_id = Auth::user()->id;
-        $profile = Profile::where('user_id', $user_id)->first();
-        $kecamatan_id = $profile->kecamatan_id;
-        $penyuluh = User::where('roles_id', 2)
-                        ->with(['profile' => function ($query) use ($kecamatan_id) {
-                            $query->where('kecamatan_id', $kecamatan_id);
-        }])
-        ->get();
-        
-        Notification::send($penyuluh, new Pengaduan($pengaduan));
-        // $title = $request ->input("judul_laporan");
-        // $content = $request->input("isi_aduan");
-        // $alamat = $request->input("alamat");
-        // $user = Auth::user()->id;
-        // $foto = $request->file('image')->store('post-images');
-
-
-        // Report::create([
-        //     'user_id' => $user,
-        //     'judul_laporan' => $title,
-        //     'alamat' => $alamat,
-        //     'isi_aduan' => $content,
-        //     'handling__statuses_id' => 1,
-        //     'verification_statuses_id' => 1,
-        //     'foto_lokasi' => $foto
-        // ]);
-        // Report::create($validatedData);
-
+        $profile = Auth::user()->profile;                
+        $kecamatan_kita = $profile->kecamatan_id;
+        $profile_lain = Profile::where('kecamatan_id',$kecamatan_kita)->where('id', '!=', $profile->id)->pluck('user_id');
+        foreach ($profile_lain as $profile) {
+            $notifikasi = new Notifikasi();
+            $notifikasi->user_id = Auth::user()->id;
+            $notifikasi->to_id = $profile;
+            $notifikasi->title = $validatedData['judul_laporan'];
+            $notifikasi->save();
+        }
         return redirect('/dashboard/pengaduan')->with('success', 'Aduan berhasil dikirimkan!');
     }
 
