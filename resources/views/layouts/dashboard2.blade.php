@@ -40,8 +40,6 @@
                 </a>
             </li>
             @endif
-
-<<<<<<< HEAD
             @if ($user->roles_id == 3)
             <li>
                 <a href="/konsultasi-penyuluh" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -56,9 +54,15 @@
                     <span class="flex-1 ms-3 text-xl whitespace-nowrap">Konsultasi</span>
                 </a>
             </li>
+            @elseif ($user->roles_id == 4)
+            <li>
+                <a href="/dashboard/berita-pemerintah" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-comments w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <span class="flex-1 ms-3 text-xl whitespace-nowrap">Berita</span>
+                </a>
+            </li>
             @else
             @endif
-
             <li>
                 <a href="/inbox" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                     <i class="fa-solid fa-envelope text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i> <span class="flex-1 ms-3 text-xl whitespace-nowrap">Inbox</span>
@@ -67,31 +71,3 @@
         </ul>
     </div>
 </aside>
-=======
-                @if ($user->roles_id == 3)
-                    <li>
-                        <a href="/konsultasi-penyuluh" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                            <i class="fa-solid fa-comments w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                            <span class="flex-1 ms-3 text-xl whitespace-nowrap">Konsultasi</span>
-                        </a>
-                    </li>
-                @elseif ($user->roles_id == 2)
-                    <li>
-                        <a href="/chat" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                            <i class="fa-solid fa-comments w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                            <span class="flex-1 ms-3 text-xl whitespace-nowrap">Konsultasi</span>
-                        </a>
-                    </li>
-                @elseif ($user->roles_id == 4)
-                    <li>
-                        <a href="/dashboard/berita-pemerintah" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                            <i class="fa-solid fa-comments w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                            <span class="flex-1 ms-3 text-xl whitespace-nowrap">Berita</span>
-                        </a>
-                    </li>
-                @else
-                @endif
-            </ul>
-        </div>
-    </aside>
->>>>>>> b87bd2772ce98881a87cfc099336096d3cfc56cc

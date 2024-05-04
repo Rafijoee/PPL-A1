@@ -13,17 +13,6 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         $user_id = Auth::user()->id;
-<<<<<<< HEAD
-=======
-        // $notifs = DB::table('notifications')->where('notifiable_id', $user_id)->pluck('data');
-        // foreach ($notifs as $notif)
-        // $userArray = json_decode($notif, true);
-        // $messages = $userArray['messages'];
-        // $judul = $userArray['title'];
-        
-        // dd($messages);
-
->>>>>>> b87bd2772ce98881a87cfc099336096d3cfc56cc
-        return view('layouts.dashboard', compact('user'));
+        return view('layouts.dashboardasli', compact('user'));
     }
 }

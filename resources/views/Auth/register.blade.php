@@ -13,7 +13,7 @@
     <form action="{{route('register')}}" method="POST">
         @method('POST')
         @csrf
-        <section class="bg-gray-50 dark:bg-gray-900 mt-16">
+        <section class="bg-[#F2FBFF] dark:bg-gray-900 mt-16">
             <div class="flex flex-col items-center justify-center px-6 pb-8 pt-0 mx-auto md:h-screen lg:py-0">
                 <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                     <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -54,7 +54,7 @@
                                 <input type="password" name="password_confirmation" id="password" placeholder="*********" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div class="mt-2">
-                                <button type="submit" class="border-2 border-indigo-700 bg-indigo-700 text-white w-full h-10 py-1 rounded-md hover:bg-transparent hover:text-indigo-700 font-semibold">Buat Akun</button>
+                                <button type="submit" class="border-2 border-[#40c6A1] bg-[#40c6A1] text-white w-full h-10 py-1 rounded-md hover:bg-transparent hover:text-[#40c6A1] font-semibold">Buat Akun</button>
                             </div>
                             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                                 Sudah mempunyai akun? <a href="{{route('login')}}" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Masuk</a>

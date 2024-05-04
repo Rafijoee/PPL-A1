@@ -53,8 +53,10 @@ class AuthController extends Controller
         ]);
         $validate_data['roles_id'] = '2';
         
-        User::create($validate_data);
+        $user = User::create($validate_data);
+        Auth::login($user);
 
-        return redirect('login');
+        
+        return redirect('/dashboard');
     }
 }
