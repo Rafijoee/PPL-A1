@@ -88,6 +88,8 @@ class ReportPenyuluhController extends Controller
         $reports = Report::find($decryptedID);
         
         $model = Report::findOrFail($decryptedID);
+        $id_petanis = Report::where('id', $reports->id)->pluck('user_id');
+        $kecamatan_petani = Profile::where('user_id', $id_petanis)->pluck('kecamatan_id')->first();
         // dd($model);
         $kecamatan_id = $reports->kecamatan_id;
         $kecamatans = Kecamatan::all();
