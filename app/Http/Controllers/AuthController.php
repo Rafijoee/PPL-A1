@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kecamatan;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Contracts\Session\Session;
@@ -41,8 +42,9 @@ class AuthController extends Controller
 
     public function form_register()
     {
+        $kecamatans = Kecamatan::get();
 
-        return view('auth.register');
+        return view('auth.register', compact('kecamatans'));
     }
 
     public function register(Request $request)
@@ -51,19 +53,27 @@ class AuthController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6|confirmed',
-        ]);
-        $validate_data['roles_id'] = '2';
-        
-        $user = User::create($validate_data);
-        
-        $profile = $request->validate([
             'nik' => 'required|numeric',
             'no_hp' => 'required|numeric',
             'alamat' => 'required',
             'kecamatan_id' => 'required'
         ]);
+        $validate_data['roles_id'] = '2';
+        
+        $user = new User();
+        $user->email = $validate_data['email'];
+        $user->name = $validate_data['name'];
+        $user->password = bcrypt($validate_data['password']);
+        $user->save();
 
-        $profile = Profile::create($profile);
+        $profile = new Profile();
+        $profile->user_id = $user->id;
+        $profile->nama = $validate_data['name'];
+        $profile->no_hp = $validate_data['no_hp'];
+        $profile->nik = $validate_data['nik'];
+        $profile->alamat = $validate_data['alamat'];
+        $profile->kecamatan_id = $validate_data['kecamatan_id'];
+        $profile->save();
         
         Auth::login($user);
         return redirect('/dashboard');
