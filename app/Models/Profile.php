@@ -9,6 +9,14 @@ class Profile extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'nama',
+        'nik',
+        'no_hp',
+        'alamat',
+        'kecamatan_id'
+    ];
     public function kecamatan(){
         return $this->hasMany(Kecamatan::class);
     }

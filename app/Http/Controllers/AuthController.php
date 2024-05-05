@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
@@ -54,9 +55,17 @@ class AuthController extends Controller
         $validate_data['roles_id'] = '2';
         
         $user = User::create($validate_data);
-        Auth::login($user);
-
         
+        $profile = $request->validate([
+            'nik' => 'required|numeric',
+            'no_hp' => 'required|numeric',
+            'alamat' => 'required',
+            'kecamatan_id' => 'required'
+        ]);
+
+        $profile = Profile::create($profile);
+        
+        Auth::login($user);
         return redirect('/dashboard');
     }
 }
