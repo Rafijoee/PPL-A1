@@ -66,35 +66,25 @@ class ChatController extends Controller
         $profile_lain = Profile::where('kecamatan_id',$kecamatan_kita)->where('id', '!=', $profile->id)->first();
         $id_lain = $profile_lain->id;
         
-        $chats_kita = Chat::where('to_id', $user_id)->get();
-        $tos_id = Chat::where('from_id', $user_id)->pluck('to_id');
-
-        foreach ($tos_id as $to_id){
-            $kontaks = Profile::where('user_id', $to_id)->pluck('nama');
-        }
+        $from_id = Chat::where('to_id', $user_id)->pluck('from_id')->first();
+        $kontaks = Profile::where('user_id', $from_id)->pluck('nama');
 
         // dd($to_id);
-        return view('konsultasi.app', compact('profile_lain', 'id_lain', 'user', 'kontaks', 'to_id'));
+        return view('konsultasi.app', compact('profile_lain', 'id_lain', 'user', 'kontaks','from_id'));
     }
 
     public function show2 ($id){
         $user = Auth::user();
         $user_id = Auth::user()->id;
+        $from_id = Chat::where('to_id', $user_id)->pluck('from_id')->first();
+        $kontaks = Profile::where('user_id', $from_id)->pluck('nama');
         $chats_kita = Chat::where('from_id', $user_id)
                         ->where('to_id', $id)
                         ->orWhere('from_id', $id) 
                         ->where('to_id', $user_id)->get();
         $profile = Auth::user()->profile;                
-        $kecamatan_kita = $profile->kecamatan_id;
-        $profile_lain = Profile::where('kecamatan_id',$kecamatan_kita)->where('id', '!=', $profile->id)->first();
-        $chats_kita = Chat::where('to_id', $user_id)->get();
-        $tos_id = Chat::where('from_id', $user_id)->pluck('to_id');
 
-        foreach ($tos_id as $to_id){
-            $kontaks = Profile::where('user_id', $to_id)->pluck('nama');
-        }
-        
-        return view('konsultasi.penyuluh', compact('chats_kita', 'user', 'profile_lain', 'kontaks', 'to_id'));
+        return view('konsultasi.penyuluh', compact('chats_kita', 'user','kontaks', 'from_id'));
     }
 
     public function store2 (Request $request){
