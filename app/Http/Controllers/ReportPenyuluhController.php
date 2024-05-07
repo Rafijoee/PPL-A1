@@ -156,6 +156,7 @@ class ReportPenyuluhController extends Controller
             $notifikasi = new Notifikasi();
             $notifikasi->user_id = Auth::user()->id;
             $notifikasi->to_id = Report::where('id', $reports->id)->pluck('user_id')->first();
+            $notifikasi->report_id = $reports->id;
             $notifikasi->title = $validatedData['isi_aduan_penyuluh'];
             $notifikasi->save();
         }

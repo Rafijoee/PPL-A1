@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->integer('to_id');
+            $table->foreignId('report_id');
             $table->string('title');
             $table->timestamp('read_at')->nullable();
             $table->timestamps();

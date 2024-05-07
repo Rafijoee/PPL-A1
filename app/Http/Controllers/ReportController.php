@@ -66,6 +66,8 @@ class ReportController extends Controller
         $validatedData['verification_statuses_id'] = 1;
 
         $pengaduan = Report::create($validatedData);
+        $reportId = $pengaduan->id;
+
         $profile = Auth::user()->profile;                
         $kecamatan_kita = $profile->kecamatan_id;
         $profile_lain = Profile::where('kecamatan_id',$kecamatan_kita)->where('id', '!=', $profile->id)->pluck('user_id');
@@ -73,6 +75,7 @@ class ReportController extends Controller
             $notifikasi = new Notifikasi();
             $notifikasi->user_id = Auth::user()->id;
             $notifikasi->to_id = $profile;
+            $notifikasi->report_id = $reportId;
             $notifikasi->title = $validatedData['judul_laporan'];
             $notifikasi->save();
         }
