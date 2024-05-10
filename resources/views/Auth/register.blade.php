@@ -23,7 +23,7 @@
                         <hr class="h-px my-8 bg-gray-300 border-0 dark:bg-gray-700">
                         <div class="space-y-4 md:space-y-6">
                             <div>
-                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
+                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Lengkap</label>
                                 <input type="text" name="name" id="name" class="form-control @error('name') border-red-500 @enderror bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#40C6A1] focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan Nama Anda...">
                                 @error('name')
                                 <div class="invalid-feedback text-red-500">
@@ -93,7 +93,7 @@
                                 <input type="password" name="password_confirmation" id="password" placeholder="*********" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#40C6A1] focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             </div>
                             <div class="mt-2">
-                                <button type="submit" class="border-2 border-[#40c6A1] bg-[#40c6A1] text-white w-full h-10 py-1 rounded-md hover:bg-transparent hover:text-[#40c6A1] font-semibold">Buat Akun</button>
+                                <button type="submit" class="border-2 border-[#40c6A1] bg-[#40c6A1] text-white w-full h-10 py-1 rounded-md hover:bg-transparent hover:text-[#40c6A1] font-semibold">Daftar</button>
                             </div>
                             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                                 Sudah mempunyai akun? <a href="{{route('login')}}" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Masuk</a>
