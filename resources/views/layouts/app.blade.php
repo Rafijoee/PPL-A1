@@ -21,7 +21,8 @@
                     @if(Auth::check())
                     <a href="{{route('logout')}}" type="button" class="text-white border-indigo-700 bg-indigo-700 hover:bg-indigo-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">logout</a>
                     @else
-                    <a href="{{url('/login')}}" type="button" class="text-white border-indigo-700 bg-indigo-700 hover:bg-indigo-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Login</a>
+                    <a href="{{url('/login')}}" type="button" class="text-white border-indigo-700 bg-indigo-700 hover:bg-indigo-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800 mr-10">Login</a>
+                    <a href="{{url('/register')}}" type="button" class="-mr-5 text-white border-indigo-700 bg-indigo-700 hover:bg-indigo-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Daftar</a>
                     @endif
                 </div>
                 <div class=" items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">

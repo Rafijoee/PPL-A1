@@ -14,7 +14,6 @@ class NotifikasiController extends Controller
         $id = Auth::user()->id;
         $notifs = Notifikasi::where('to_id', $id)->get();
         
-        // dd($notifs);
         return view ('notifikasi.index', compact('user', 'notifs'));
     }
 }
