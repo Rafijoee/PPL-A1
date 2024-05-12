@@ -40,6 +40,9 @@
                             Judul Aduan
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Tanggal Aduan
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Status Verifikasi
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -57,23 +60,30 @@
                             {{ $loop->iteration }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $report->judul_laporan }}
+                            <div class="max-[1500px]:w-28">
+                                {{ $report->judul_laporan }}
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="max-[1500px]:w-28">
+                                {{ $report->created_at }}
+                            </div>
                         </td>
                         <td class="px-6 py-4">    
                             @if ($report->verification_statuses_id == 2)
-                                <div class="w-1/2 px-2 text-center bg-yellow-200 rounded-lg text-gray-900">
+                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-yellow-200 rounded-lg text-gray-900">
                                     sedang diverifikasi
                                 </div>
                             @elseif ($report->verification_statuses_id == 3)
-                                <div class="w-1/2 px-2 text-center bg-lime-300 rounded-lg text-gray-900">
+                                <div class="w-1/2 px-2 text-center max-[1500px]:w-24 bg-lime-300 rounded-lg text-gray-900">
                                 sudah diverifikasi
                                 </div>
                             @elseif ($report->verification_statuses_id == 4)
-                                <div class="w-1/2 px-2 text-center bg-red-300 rounded-lg text-gray-900">
+                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-red-300 rounded-lg text-gray-900">
                                 Aduan ditolak
                                 </div>
                             @else
-                                <div class="w-1/2 px-2 text-center bg-sky-300 rounded-lg text-gray-900">
+                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-sky-300 rounded-lg text-gray-900">
                                 belum diverifikasi
                                 </div>
                             @endif
@@ -81,15 +91,15 @@
                         <td class="px-6 py-4">
                             
                             @if ($report->handling__statuses_id == 2)
-                                <div class="w-1/2 px-2 text-center bg-yellow-200 rounded-lg text-gray-900">
+                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-yellow-200 rounded-lg text-gray-900">
                                 sedang ditindaklanjuti
                                 </div>
                             @elseif ($report->handling__statuses_id == 3)
-                                <div class="w-1/2 px-2 text-center bg-lime-300 rounded-lg text-gray-900">
+                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-lime-300 rounded-lg text-gray-900">
                                 sudah ditindaklanjuti
                                 </div>
                             @else
-                                <div class="w-1/2 px-2 text-center bg-sky-300 rounded-lg text-gray-900">
+                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-sky-300 rounded-lg text-gray-900">
                                 belum ditindaklanjuti
                                 </div>
                             @endif
@@ -103,6 +113,9 @@
             </table>
         </div>
 
+        <div class="mt-10">
+            <a href="/dashboard/berita-pemerintah/create" class="text-white bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">Buat Berita</a>
+        </div>
     </div>
 </body>
 </html>

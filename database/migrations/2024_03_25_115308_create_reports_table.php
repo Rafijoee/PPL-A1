@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('foto_penyuluh')->nullable();
             $table->text('tanggapan_penyuluh')->nullable();
             $table->text('tanggapan_pemerintah')->nullable();
+            $table->integer('jadi_berita')->nullable();
             $table->timestamps();
         });
     }

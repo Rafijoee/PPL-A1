@@ -84,6 +84,7 @@ Route::middleware('admin')->group(function(){
 
 Route::middleware('pemerintah')->group(function(){
     Route::group(['prefix' => 'dashboard'], function() {
+        Route::get('/berita-pemerintah/checkSlug', [NewsPemerintahController::class, 'checkSlug']);
         Route::resource('/berita-pemerintah', NewsPemerintahController::class);
     });
 });
