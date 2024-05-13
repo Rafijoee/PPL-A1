@@ -17,7 +17,7 @@ class NewsPemerintahController extends Controller
      */
     public function index()
     {
-        $news = News::all();
+        $news = News::latest()->paginate(5);
         $user = Auth::user();
         $reports = Report::where('handling__statuses_id', 3)->get();
         $reports = Report::where('jadi_berita', 0)->get();
