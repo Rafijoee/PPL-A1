@@ -6,14 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pengaduan | Buat Aduan</title>
 
-    {{-- Trix Editor --}}
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
-    <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
-    <style>
-        trix-toolbar [data-trix-button-group="file-tools"]{
-            display:none;
-        }
-    </style>
 </head>
 
 </head>
