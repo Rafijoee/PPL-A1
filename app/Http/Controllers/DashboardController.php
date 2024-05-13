@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use App\Models\Notifikasi;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -13,6 +15,9 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         $user_id = Auth::user()->id;
-        return view('layouts.dashboardasli', compact('user'));
+        $news = News::latest()->paginate(5);
+        $body = $news[0]->isi_berita;
+        $body = Str::limit(strip_tags($body), 200);
+        return view('layouts.dashboardasli', compact('user', 'news', 'body'));
     }
 }
