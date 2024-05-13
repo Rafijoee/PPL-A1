@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Kecamatan;
+use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,47 +17,62 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-    public function edit(Request $request): View
+    public function index()
     {
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+        $user_id = Auth::user()->id;
+        $profile = Profile::Where('user_id', $user_id)->first();
+        $kecamatans = Kecamatan::all();
+        return view ('users.index', compact('profile', 'kecamatans'));
     }
 
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function edit ()
     {
-        $request->user()->fill($request->validated());
+        $user_id = Auth::user()->id;
+        $profile = Profile::Where('user_id', $user_id)->first();
+        $kecamatans = Kecamatan::all();
+        return view ('users.edit', compact('profile', 'kecamatans'));
+    }
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
+    public function update(Request $request)
+    {
+        $user_id = Auth::user()->id;
 
-        $request->user()->save();
+        $validate_data = $request->validate([
+            'name' => 'required',
+            'nik' => 'required|numeric',
+            'no_hp' => 'required|numeric',
+            'alamat' => 'required',
+            'kecamatan_id' => 'required'
+        ]);
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        $nama = $request->name;
+        $nik = $request->nik;
+        $no_hp = $request->no_hp;
+        $alamat = $request->alamat;
+        $kecamatan_id = $request->kecamatan_id;
+
+
+
+        $user = User::find($user_id);
+        $user->name = $nama;
+        
+        $profile = Profile::where('user_id', $user_id)->first();
+        $profile->nama = $nama;
+        $profile->nik = $nik;
+        $profile->no_hp = $no_hp;
+        $profile->alamat = $alamat;
+        $profile->kecamatan_id = $kecamatan_id;
+        $user->save();
+        $profile->save();
+
+        return redirect()->route('profile.index')->with('success', 'Data profil berhasil diperbarui.');
     }
 
     /**
      * Delete the user's account.
      */
-    public function destroy(Request $request): RedirectResponse
-    {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
 
-        $user = $request->user();
-
-        Auth::logout();
-
-        $user->delete();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return Redirect::to('/');
-    }
 }

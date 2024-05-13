@@ -43,8 +43,9 @@ Route::get('inbox', [NotifikasiController::class, 'index'])->name('inbox');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::group(['prefix' => 'profile'], function () {
-        Route::get('/', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
+        Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+        Route::get('/update', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/update', [ProfileController::class, 'update'])->name('profile.update');
     });
 });
 
