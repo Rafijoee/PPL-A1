@@ -40,7 +40,7 @@
         </div>
         <div class="image relative text-center isolate">
           <div class="image__bg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[450px] w-[450px] bg-teal-500 rounded-full z-[-1]"></div>
-          <img src="{{asset('images/notifikasi.png')}}" alt="header image" class="w-full max-w-md" />
+          <img src="{{asset('images/dokterb.png')}}" alt="header image" class="w-full max-w-md" />
           <div class="image__content absolute top-1/2 left-1/2 transform -translate-x-[calc(50%+3rem)] -translate-y-[calc(50%+2rem)] flex items-center gap-4 p-4 bg-white rounded-md shadow-md">
             <span class="text-teal-500 bg-teal-100 p-2 rounded-full text-xl">
               <i class="ri-user-3-line"></i>
