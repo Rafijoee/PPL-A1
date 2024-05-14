@@ -61,9 +61,9 @@
         <div class="mt-10 flex justify-center mx-auto">
             <a href="#" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row w-10/12 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                 <div class="md:w-full">
-                    <img class="object-cover w-full rounded-t-lg h-96 md:h-96 md:w-full md:rounded-none md:rounded-s-lg" src="{{ asset('storage/'.$news[0]->image) }}" alt="">
-                    <h5 class="absolute -mt-16 ml-3 mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">{{ $news[0]->judul_berita }}</h5>
-                    <h5 class="absolute -mt-8 ml-3 mb-2 text-sm font-normal tracking-tight text-white dark:text-white">{{ $news[0]->updated_at->format('D d M Y') }}</h5>
+                    <img class="object-cover w-full rounded-t-lg h-96 md:h-96 md:w-full md:rounded-none md:rounded-s-lg" src="{{ asset('storage/'.$news[0]?->image) }}" alt="">
+                    <h5 class="absolute -mt-16 ml-3 mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">{{ $news[0]?->judul_berita }}</h5>
+                    <h5 class="absolute -mt-8 ml-3 mb-2 text-sm font-normal tracking-tight text-white dark:text-white">{{ $news[0]?->updated_at->format('D d M Y') }}</h5>
                 </div>
                 <div class="flex flex-col justify-between p-8 md:p-10 md:w-72">
                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $body }}</p>
