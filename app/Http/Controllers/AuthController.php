@@ -58,10 +58,11 @@ class AuthController extends Controller
             'alamat' => 'required',
             'kecamatan_id' => 'required'
         ]);
-        $validate_data['roles_id'] = '2';
+        $roles = $validate_data['roles_id'] = '2';
         
         $user = new User();
         $user->email = $validate_data['email'];
+        $user->roles_id = $roles;
         $user->name = $validate_data['name'];
         $user->password = bcrypt($validate_data['password']);
         $user->save();

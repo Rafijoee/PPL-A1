@@ -28,6 +28,12 @@ use App\Http\Controllers\NotifikasiController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/coba', function () {
+    return view('coba');
+});
+Route::get('/coba2', function () {
+    return view('coba2');
+});
 
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
@@ -43,9 +49,9 @@ Route::get('inbox', [NotifikasiController::class, 'index'])->name('inbox');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::group(['prefix' => 'profile'], function () {
-        Route::get('/', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
-        Route::delete('/', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+        Route::get('/update', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/update', [ProfileController::class, 'update'])->name('profile.update');
     });
 });
 

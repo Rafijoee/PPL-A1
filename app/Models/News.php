@@ -9,7 +9,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class News extends Model
 {
     use HasFactory;
-    use Sluggable;
+    use sluggable;
 
     protected $fillable = [
         'judul_berita',
