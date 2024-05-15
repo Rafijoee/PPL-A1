@@ -20,4 +20,10 @@ class DashboardController extends Controller
         $body = Str::limit(strip_tags($body), 200);
         return view('layouts.dashboardasli', compact('user', 'news', 'body'));
     }
+    public function show(News $news, $id)
+    {
+        $berita = News::where('slug', $id)->first();
+        $user = Auth::user();
+        return view('berita.show', compact('user', 'berita'));
+    }
 }

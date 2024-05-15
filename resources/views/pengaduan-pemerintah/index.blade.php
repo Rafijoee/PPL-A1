@@ -55,7 +55,7 @@
                         <td class="px-6 py-4">
                             {{ $loop->iteration }}
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 capitalize">
                             {{ $report->judul_laporan }}
                         </td>
                         <td class="px-6 py-4">    
