@@ -58,17 +58,44 @@
         </div>
     
         
-        <div class="mt-10 flex justify-center mx-auto">
-            <a href="#" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row w-10/12 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <div class="mt-10 sm:ml-10 flex justify-center mx-auto">
+            <a href="#" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row w-11/12 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                 <div class="md:w-full">
-                    <img class="object-cover w-full rounded-t-lg h-96 md:h-96 md:w-full md:rounded-none md:rounded-s-lg" src="{{ asset('storage/'.$news[0]->image) }}" alt="">
-                    <h5 class="absolute -mt-16 ml-3 mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">{{ $news[0]->judul_berita }}</h5>
-                    <h5 class="absolute -mt-8 ml-3 mb-2 text-sm font-normal tracking-tight text-white dark:text-white">{{ $news[0]->updated_at->format('D d M Y') }}</h5>
+                    <img class="object-cover w-full rounded-t-lg h-96 md:h-96 md:w-full border border-gray-400 md:rounded-none md:rounded-s-lg" src="{{ asset('storage/'.$news[0]?->image) }}" alt="">
+                    <div class="text-balance">
+                        <h5 class="absolute -mt-24 sm:-mt-32 xl:-mt-16 ml-3 mr-20 sm:mr-20 md:mr-80 mb-2 text-2xl font-bold tracking-tight text-white dark:text-white">{{ $news[0]?->judul_berita }}</h5>
+                    </div>
+                    <h5 class="absolute -mt-96 xl:-mt-8 ml-3 mb-2 text-sm font-normal tracking-tight text-white dark:text-white">{{ $news[0]?->updated_at->translatedFormat('l, d F Y H: i') }}</h5>
                 </div>
                 <div class="flex flex-col justify-between p-8 md:p-10 md:w-72">
                     <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $body }}</p>
                 </div>
             </a>
+        </div>
+
+        <div class="mt-10 mb-60 ml-24 mr-10 gap-2 grid justify-between grid-cols-4 max-[1500px]:grid-cols-2 max-[800px]:grid-cols-1">
+            @foreach ($news->skip(1) as $berita) 
+            <div class="max-w-sm h-[450px] relative flex flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <a href="#">
+                    <img class="rounded-t-lg h-44 mx-auto" src="{{ asset('storage/'.$berita->image) }}" alt="" />
+                </a>
+                <div class="p-5">
+                    <a href="#">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $berita->judul_berita }}</h5>
+                    </a>
+                    <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> -->
+                    <p class="mb-3 font-normal text-gray-400">Tanggal penulisan: {{ $berita->updated_at->format('D d M Y H:i') }}</p>
+                    <div class="absolute top-96">
+                        <a href="/dashboard/berita-pemerintah/{{ $berita->slug }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Read more
+                            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endforeach
         </div>
     
     </div>
