@@ -126,7 +126,7 @@ class ReportPenyuluhController extends Controller
         $reports = Report::find($decryptedID);
 
         $validatedData = $request->validate([
-            'foto' => 'file|image|max:20480',
+            'foto' => 'required|file|image|max:20480',
             'isi_aduan_penyuluh' => 'required|max:255'
         ]);
 

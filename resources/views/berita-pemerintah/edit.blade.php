@@ -44,7 +44,7 @@
                         </div>
                     @enderror
                 </div>
-                <button type="submit" class="mt-10 w-full text-white bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">Perbarui</button>
+                <button type="submit" class="mt-10 w-full text-white bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">Simpan</button>
             </form>
         </div>
     </div>

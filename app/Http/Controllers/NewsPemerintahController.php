@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use App\Models\Report;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
@@ -20,7 +21,6 @@ class NewsPemerintahController extends Controller
         $news = News::latest()->paginate(5);
         $user = Auth::user();
         $reports = Report::where('handling__statuses_id', 3)->get();
-        $reports = Report::where('jadi_berita', 0)->get();
         $reports = $reports->reverse();
         return view('berita-pemerintah.index', compact('user', 'reports', 'news'));
     }
@@ -54,16 +54,25 @@ class NewsPemerintahController extends Controller
         $validatedData['user_id'] = Auth::user()->id;
 
         News::create($validatedData);
-        return redirect('/dashboard/berita-pemerintah')->with('success', 'Aduan berhasil dikirimkan!');
+        return redirect('/dashboard/berita-pemerintah')->with('success', 'Berita berhasil diunggah!');
 
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(News $news)
+    public function show(News $news, $id)
     {
-        //
+
+        setlocale(LC_TIME, 'id_ID');
+        Carbon::setLocale('id');
+        $berita = News::where('slug', $id)->first();
+        $user = Auth::user();
+        // $tanggal = $berita->updated_at;
+        // $tanggal = Carbon::now();
+        // $tanggalFull = $tanggal->formatLocalized('%A, %d %B %Y');
+        // dd($tanggalFull);
+        return view('berita-pemerintah.show', compact('user', 'berita'));
     }
 
     /**
@@ -102,7 +111,7 @@ class NewsPemerintahController extends Controller
         News::where('slug', $id)
             ->update($validatedData);
         
-        return redirect('/dashboard/berita-pemerintah')->with('success', 'Aduan berhasil diperbarui!');
+        return redirect('/dashboard/berita-pemerintah')->with('success', 'Berita berhasil diubah!');
     }
 
     /**

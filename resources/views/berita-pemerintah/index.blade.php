@@ -8,7 +8,7 @@
     <title>Berita</title>
 </head>
 <body class="bg-[#F2FBFF] text-[#185141]">
-    <div class="p-4 sm:ml-72 mt-16">
+    <div class="p-4 sm:ml-72 mt-20">
         <h1 class="font-bold text-4xl">Berita</h1>
 
         @if (session()->has('success'))
@@ -28,100 +28,19 @@
         </div>
         @endif
 
-
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-[#40C6A1] dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            No.
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Judul Aduan
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Tanggal Aduan
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Status Verifikasi
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Status Handling
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($reports as $report)                  
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-6 py-4">
-                            {{ $loop->iteration }}
-                        </td>
-                        <td class="px-6 py-4">
-                            <div class="max-[1500px]:w-28">
-                                {{ $report->judul_laporan }}
-                            </div>
-                        </td>
-                        <td class="px-6 py-4">
-                            <div class="max-[1500px]:w-28">
-                                {{ $report->created_at }}
-                            </div>
-                        </td>
-                        <td class="px-6 py-4">    
-                            @if ($report->verification_statuses_id == 2)
-                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-yellow-200 rounded-lg text-gray-900">
-                                    sedang diverifikasi
-                                </div>
-                            @elseif ($report->verification_statuses_id == 3)
-                                <div class="w-1/2 px-2 text-center max-[1500px]:w-24 bg-lime-300 rounded-lg text-gray-900">
-                                sudah diverifikasi
-                                </div>
-                            @elseif ($report->verification_statuses_id == 4)
-                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-red-300 rounded-lg text-gray-900">
-                                Aduan ditolak
-                                </div>
-                            @else
-                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-sky-300 rounded-lg text-gray-900">
-                                belum diverifikasi
-                                </div>
-                            @endif
-                        </td>
-                        <td class="px-6 py-4">
-                            
-                            @if ($report->handling__statuses_id == 2)
-                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-yellow-200 rounded-lg text-gray-900">
-                                sedang ditindaklanjuti
-                                </div>
-                            @elseif ($report->handling__statuses_id == 3)
-                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-lime-300 rounded-lg text-gray-900">
-                                sudah ditindaklanjuti
-                                </div>
-                            @else
-                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-sky-300 rounded-lg text-gray-900">
-                                belum ditindaklanjuti
-                                </div>
-                            @endif
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="/dashboard/berita-pemerintah/{{ Crypt::encryptString($report["id"]) }}" class="font-medium text-[#40C6A1] hover:underline">Lihat</a>
-                        </td>
-                    @endforeach
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="mt-10">
-            <a href="/dashboard/berita-pemerintah/create" class="text-white bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">Buat Berita</a>
-        </div>
-
-        <div class="mt-10 mb-60 gap-2 relative grid justify-between grid-cols-4 max-[1500px]:grid-cols-2 max-[800px]:grid-cols-1">
+        <div class="mt-5 mb-60 gap-2  grid justify-between grid-cols-4 max-[1500px]:grid-cols-2 max-[800px]:grid-cols-1">
+            <a href="/dashboard/berita-pemerintah/create">
+                <div class="max-w-sm h-[450px] flex flex-col items-center justify-center bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                    <svg class="w-16 h-16 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 12h14m-7 7V5"/>
+                    </svg>
+                    <p class="font-bold text-2xl text-white">Buat Berita</p>
+                </div>
+            </a>
             @foreach ($news as $berita) 
-            <div class="max-w-sm h-[450px] flex flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div class="max-w-sm h-[450px] relative flex flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
-                    <img class="rounded-t-lg h-44 mx-auto" src="{{ asset('storage/'.$berita->image) }}" alt="" />
+                    <img class="rounded-t-lg h-44 w-full mx-auto" src="{{ asset('storage/'.$berita->image) }}" alt="" />
                 </a>
                 <div class="p-5">
                     <a href="#">
@@ -130,7 +49,7 @@
                     <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> -->
                     <p class="mb-3 font-normal text-gray-400">Tanggal penulisan: {{ $berita->updated_at->format('D d M Y H:i') }}</p>
                     <div class="absolute top-96">
-                        <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <a href="/dashboard/berita-pemerintah/{{ $berita->slug }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             Read more
                             <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
