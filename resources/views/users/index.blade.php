@@ -60,7 +60,7 @@
                             </div>
                             <div>
                                 <label for="no_hp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No Telepon</label>
-                                <input type="text" name="no_hp" id="no_hp" class="form-control @error('no_hp') border-red-500 @enderror bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#40C6A1] focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{$profile->no_hp}}">
+                                <input type="text" name="no_hp" id="no_hp" class="form-control @error('no_hp') border-red-500 @enderror bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#40C6A1] focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{$profile->no_hp}}" disabled>
                                 @error('no_hp')
                                 <div class="invalid-feedback text-red-500">
                                     {{ $message }}
@@ -88,10 +88,11 @@
                                     @endforeach
                                 </select>
                             </div>
-
-                            <div class="mt-2">
-                                <a href="/profile/update" type="" class="border-2 border-[#40c6A1] bg-[#40c6A1] text-white  h-10 py-1 px-[330px] rounded-md hover:bg-transparent hover:text-[#40c6A1] font-semibold">Edit</a>
-                            </div>
+                            @if ($roles_id == 2 )
+                                <div class="mt-2">
+                                    <a href="/profile/update" type="" class="border-2 border-[#40c6A1] bg-[#40c6A1] text-white  h-10 py-1 px-[330px] rounded-md hover:bg-transparent hover:text-[#40c6A1] font-semibold">Edit</a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -72,7 +72,7 @@
                             </div>
 
                             <div class="mt-2">
-                                <button type="submit" class="border-2 border-[#40c6A1] bg-[#40c6A1] text-white w-full h-10 py-1 rounded-md hover:bg-transparent hover:text-[#40c6A1] font-semibold">Simpan Data Profile</button>
+                                <button type="submit" class="border-2 border-[#40c6A1] bg-[#40c6A1] text-white w-full h-10 py-1 rounded-md hover:bg-transparent hover:text-[#40c6A1] font-semibold">Simpan Perubahan</button>
                             </div>
                         </div>
                     </div>

@@ -21,8 +21,9 @@ class ProfileController extends Controller
     {
         $user_id = Auth::user()->id;
         $profile = Profile::Where('user_id', $user_id)->first();
+        $roles_id = Auth::user()->roles_id;
         $kecamatans = Kecamatan::all();
-        return view ('users.index', compact('profile', 'kecamatans'));
+        return view ('users.index', compact('profile', 'kecamatans', 'roles_id'));
     }
 
     /**

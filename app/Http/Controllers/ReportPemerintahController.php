@@ -96,12 +96,6 @@ class ReportPemerintahController extends Controller
 
         $notifikasi = new Notifikasi();
         $notifikasi->user_id = Auth::user()->id;
-        $notifikasi->to_id = $id_petani;
-        $notifikasi->title = $tanggapan_pemerintah;
-        $notifikasi->save();
-
-        $notifikasi = new Notifikasi();
-        $notifikasi->user_id = Auth::user()->id;
         $notifikasi->to_id = $id_penyuluh;
         $notifikasi->report_id = $reports->id;
         $notifikasi->title = $tanggapan_pemerintah;

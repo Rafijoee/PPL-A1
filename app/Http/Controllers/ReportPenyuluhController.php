@@ -151,15 +151,20 @@ class ReportPenyuluhController extends Controller
               ]);
         $profile = Auth::user()->profile;
         $kecamatan_kita = $profile->kecamatan_id;
-        $profile_lain = Profile::where('kecamatan_id',$kecamatan_kita)->where('id', '!=', $profile->id)->pluck('user_id');
-        foreach ($profile_lain as $profile) {    
-            $notifikasi = new Notifikasi();
-            $notifikasi->user_id = Auth::user()->id;
-            $notifikasi->to_id = Report::where('id', $reports->id)->pluck('user_id')->first();
-            $notifikasi->report_id = $reports->id;
-            $notifikasi->title = $validatedData['isi_aduan_penyuluh'];
-            $notifikasi->save();
-        }
+        $profile_lain = Profile::where('kecamatan_id',$kecamatan_kita)->where('id', '!=', $profile->id)->pluck('user_id')->first();
+        $notifikasi = new Notifikasi();
+        $notifikasi->user_id = Auth::user()->id;
+        $notifikasi->to_id = Report::where('id', $reports->id)->pluck('user_id')->first();
+        $notifikasi->report_id = $reports->id;
+        $notifikasi->title = $validatedData['isi_aduan_penyuluh'];
+        $notifikasi->save();
+        
+        $notifikasi1 = new Notifikasi();
+        $notifikasi1->user_id = Auth::user()->id;
+        $notifikasi1->to_id = 2;
+        $notifikasi1->report_id = $reports->id;
+        $notifikasi1->title = $validatedData['isi_aduan_penyuluh'];
+        $notifikasi1->save();
 
         return redirect('/dashboard/pengaduan-penyuluh')->with('success', 'Aduan berhasil diperbarui!');
     }
