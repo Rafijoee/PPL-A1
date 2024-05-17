@@ -1,11 +1,5 @@
 @extends('layouts.dashboard')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pengaduan</title>
-</head>
+@section('title', 'MONITOR | PENGADUAN')
 <body class="bg-[#F2FBFF]">
     <div class="p-4 sm:ml-72 mt-16">
         <h1 class="font-bold text-4xl">Pengaduan</h1>
@@ -97,6 +91,7 @@
                         </td>
                         <td class="px-6 py-4">
                             <a href="/dashboard/pengaduan/{{ Crypt::encryptString($report["id"]) }}" class="font-medium text-[#40C6A1] hover:underline">Lihat</a>
+                            <a href="/dashboard/pengaduan-riwayat/{{ Crypt::encryptString($report["id"]) }}" class="font-medium text-[#40C6A1] hover:underline ml-5">Riwayat</a>
                         </td>
                     @endforeach
                     </tr>

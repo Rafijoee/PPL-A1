@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\Report;
 use App\Models\Notifikasi;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class DashboardController extends Controller
 {
@@ -25,5 +27,14 @@ class DashboardController extends Controller
         $berita = News::where('slug', $id)->first();
         $user = Auth::user();
         return view('berita.show', compact('user', 'berita'));
+    }
+
+    public function riwayat(Report $report, $id)
+    {
+        $user = Auth::user();
+        $decryptedID = Crypt::decryptString($id);
+        $reports = Report::find($decryptedID);
+        
+        return view('pengaduan.riwayat', compact('user', 'reports'));
     }
 }

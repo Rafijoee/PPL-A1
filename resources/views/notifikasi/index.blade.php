@@ -1,9 +1,10 @@
 @extends('layouts.dashboard')
+@section('title', 'MONITOR | NOTIFIKASI')
 
 <body class="bg-[#F2FBFF]">
 
-    <div class="ml-64 mt-20 h-full">
-        <div class=" mx-20 mt-40 bg-white rounded-2xl border-8">
+    <div class="sm:ml-64 ml-8 mt-20 h-full w-[88%]">
+        <div class=" sm:mx-20 mt-40 pb-10 bg-white rounded-2xl border-8">
 
             <h1 class="font-bold text-4xl m-7">Notifikasi</h1>
 

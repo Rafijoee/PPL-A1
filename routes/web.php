@@ -49,6 +49,7 @@ Route::get('inbox', [NotifikasiController::class, 'index'])->name('inbox');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('dashboard/berita/{id}', [DashboardController::class, 'show'])->name('berita.show');
+    Route::get('dashboard/pengaduan-riwayat/{id}',[DashboardController::class, 'riwayat'])->name('pengaduan.riwayat');
     Route::group(['prefix' => 'profile'], function () {
         Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
         Route::get('/update', [ProfileController::class, 'edit'])->name('profile.edit');
