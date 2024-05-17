@@ -1,76 +1,295 @@
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <title>Web Design Mastery | Travel Worldwide</title>
-</head>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <title>Web Design Mastery | MEDIBuddy</title>
+  <title>Animated Login Form</title>
+  @vite(['resources/css/app.css','resources/js/app.js'])
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      overflow: hidden;
+    }
+
+    .wave {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .container {
+      width: 100vw;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 7rem;
+      padding: 0 2rem;
+    }
+
+    .img {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .login-content {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+    }
+
+    .img img {
+      width: 500px;
+    }
+
+    form {
+      width: 360px;
+    }
+
+    .login-content img {
+      height: 100px;
+    }
+
+    .login-content h2 {
+      margin: 15px 0;
+      color: #333;
+      text-transform: uppercase;
+      font-size: 2.9rem;
+    }
+
+    .login-content .input-div {
+      position: relative;
+      display: grid;
+      grid-template-columns: 7% 93%;
+      margin: 25px 0;
+      padding: 5px 0;
+      border-bottom: 2px solid #d9d9d9;
+    }
+
+    .login-content .input-div.one {
+      margin-top: 0;
+    }
+
+    .i {
+      color: #d9d9d9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .i i {
+      transition: 0.3s;
+    }
+
+    .input-div>div {
+      position: relative;
+      height: 45px;
+    }
+
+    .input-div>div>h5 {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    .input-div:before,
+    .input-div:after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      width: 0%;
+      height: 2px;
+      background-color: #38d39f;
+      transition: 0.4s;
+    }
+
+    .input-div:before {
+      right: 50%;
+    }
+
+    .input-div:after {
+      left: 50%;
+    }
+
+    .input-div.focus:before,
+    .input-div.focus:after {
+      width: 50%;
+    }
+
+    .input-div.focus>div>h5 {
+      top: -5px;
+      font-size: 15px;
+    }
+
+    .input-div.focus>.i>i {
+      color: #38d39f;
+    }
+
+    .input-div>div>input {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      outline: none;
+      background: none;
+      padding: 0.5rem 0.7rem;
+      font-size: 1.2rem;
+      color: #555;
+      font-family: "poppins", sans-serif;
+    }
+
+    .input-div.pass {
+      margin-bottom: 4px;
+    }
+
+    a {
+      display: block;
+      text-align: right;
+      text-decoration: none;
+      color: #999;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      color: #38d39f;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      height: 50px;
+      border-radius: 25px;
+      outline: none;
+      border: none;
+      background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+      background-size: 200%;
+      font-size: 1.2rem;
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+      text-transform: uppercase;
+      margin: 1rem 0;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+
+    .btn:hover {
+      background-position: right;
+    }
+
+    @media screen and (max-width: 1050px) {
+      .container {
+        grid-gap: 5rem;
+      }
+    }
+
+    @media screen and (max-width: 1000px) {
+      form {
+        width: 290px;
+      }
+
+      .login-content h2 {
+        font-size: 2.4rem;
+        margin: 8px 0;
+      }
+
+      .img img {
+        width: 400px;
+      }
+    }
+
+    @media screen and (max-width: 900px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .img {
+        display: none;
+      }
+
+      .wave {
+        display: none;
+      }
+
+      .login-content {
+        justify-content: center;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 
-<body class="font-roboto">
-    <div class="container mx-auto min-h-screen flex flex-col">
-        <nav class="p-8 flex items-center justify-between gap-4">
-            <div class="text-2xl font-semibold text-teal-600">MEDIBuddy</div>
-            <ul class="hidden md:flex list-none items-center gap-8">
-                <li><a href="#" class="text-gray-500 hover:text-teal-600 transition">Home</a></li>
-                <li><a href="#" class="text-gray-500 hover:text-teal-600 transition">About Us</a></li>
-                <li><a href="#" class="text-gray-500 hover:text-teal-600 transition">Courses</a></li>
-                <li><a href="#" class="text-gray-500 hover:text-teal-600 transition">Pages</a></li>
-                <li><a href="#" class="text-gray-500 hover:text-teal-600 transition">Blog</a></li>
-                <li><a href="#" class="text-gray-500 hover:text-teal-600 transition">Contact</a></li>
-            </ul>
-            <button class="btn bg-teal-500 text-white px-8 py-4 rounded-md hover:bg-teal-700 transition">Register Now</button>
-        </nav>
-        <header class="flex-1 p-4 md:p-8 grid md:grid-cols-2 gap-8 items-center">
-            <div class="content">
-                <h1 class="text-4xl font-bold text-gray-900 mb-4">
-                    <span class="font-normal">Get Quick</span><br />Medical Services
-                </h1>
-                <p class="text-gray-500 mb-8 leading-7">
-                    In today's fast-paced world, access to prompt and efficient medical
-                    services is of paramount importance. When faced with a medical
-                    emergency or seeking immediate medical attention, the ability to
-                    receive quick medical services can significantly impact the outcome
-                    of a situation.
-                </p>
-                <button class="btn bg-teal-500 text-white px-8 py-4 rounded-md hover:bg-teal-700 transition">Get Services</button>
-            </div>
-            <div class="image relative text-center isolate">
-                <div class="image__bg absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[450px] w-[450px] bg-teal-500 rounded-full z-[-1]"></div>
-                <img src="{{asset('images/header.png')}}" alt="header image" class="w-full max-w-md"/>
-                <div class="image__content absolute top-1/2 left-1/2 transform -translate-x-[calc(50%+3rem)] -translate-y-[calc(50%+2rem)] flex items-center gap-4 p-4 bg-white rounded-md shadow-md">
-                    <span class="text-teal-500 bg-teal-100 p-2 rounded-full text-xl">
-                        <i class="ri-user-3-line"></i>
-                    </span>
-                    <div class="details">
-                        <h4 class="text-xl font-semibold text-gray-900">1520+</h4>
-                        <p class="text-gray-500">Active Clients</p>
-                    </div>
-                </div>
-                <div class="image__content absolute top-1/2 left-1/2 transform translate-x-[2rem] translate-y-[2.5rem] p-4 bg-white rounded-md shadow-md">
-                    <ul class="list-none grid gap-4">
-                        <li class="flex items-start gap-2 text-gray-500">
-                            <span class="text-xl text-teal-500"><i class="ri-check-line"></i></span>
-                            Get 20% off on every 1st month
-                        </li>
-                        <li class="flex items-start gap-2 text-gray-500">
-                            <span class="text-xl text-teal-500"><i class="ri-check-line"></i></span>
-                            Expert Doctors
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </header>
+<body>
+  <img class="wave" src="{{asset('images/wave.png')}}" />
+  <div class="container">
+    <div class="img">
+      <img src="img/bg.svg" />
+
     </div>
+    <div class="login-content">
+      <form action="index.html">
+        <img src="img/avatar.svg" />
+        <h2 class="title">Welcome</h2>
+        <div class="input-div one">
+          <div class="i ">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="ml-3">
+            <input type="email" name="email" id="email" class="bg-white border border-white text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan Email Anda..." required="">
+          </div>
+        </div>
+        <div class="input-div pass">
+          <div class="i">
+            <i class="fas fa-lock"></i>
+          </div>
+          <div class="ml-3">
+            <input type="password" name="password" id="password" placeholder="Masukkan Kata Sandi Anda..." class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+          </div>
+        </div>
+        <input type="submit" class="btn" value="Login" />
+        <a href="{{route('form_register')}}" class="text-sm font-light text-gray-500 dark:text-gray-400">
+          Belum mempunyai akun? Buat Akun</a>
+        </p>
+      </form>
+    </div>
+  </div>
+  <script>
+    const inputs = document.querySelectorAll(".input");
+
+    function addcl() {
+      let parent = this.parentNode.parentNode;
+      parent.classList.add("focus");
+    }
+
+    function remcl() {
+      let parent = this.parentNode.parentNode;
+      if (this.value == "") {
+        parent.classList.remove("focus");
+      }
+    }
+
+    inputs.forEach((input) => {
+      input.addEventListener("focus", addcl);
+      input.addEventListener("blur", remcl);
+    });
+  </script>
 </body>
 
 </html>

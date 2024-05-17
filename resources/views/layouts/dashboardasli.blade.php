@@ -2,42 +2,43 @@
 @extends('layouts.navbar')
 @extends('layouts.dashboard2')
 @section('title', 'Dashboard')
+
 <body class="bg-[#F2FBFF]">
     <div class="p-4 sm:ml-64 text-justify mt-20 sm:mr-5">
         <div id="default-carousel" class="relative w-full pl-20 pr-20 ml-5" data-carousel="slide">
-            <!-- Carousel wrapper -->
             <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-                <!-- Item 1 -->
+                @if (Auth::user()->roles_id == 2 )
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="#">
-                        <img src="{{asset('images/logo_dinas.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                        <img src="{{asset('images/aduan_petani.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
-                <!-- Item 2 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="#">
-                        <img src="{{asset('images/logo_dinas.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                        <img src="{{asset('images/aduan_penyuluhdanpetani.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
-                <!-- Item 3 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="#">
-                        <img src="{{asset('images/logo_dinas.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                        <img src="{{asset('images/konsultasi.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
-                <!-- Item 4 -->
+                @endif
+                @if (Auth::user()->roles_id == 3)
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="#">
-                        <img src="{{asset('images/logo_dinas.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                        <img src="{{asset('images/aduan_penyuluh.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
-                <!-- Item 5 -->
-                <a href="#">
-                    <img src="{{asset('images/logo_dinas.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                </a>
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <a href="#">
+                        <img src="{{asset('images/aduan_penyuluhdanpetani.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </a>
+                </div>
+                @endif
             </div>
-    
-    
+
+
             <!-- Slider controls -->
             <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
                 <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#40C6A1] dark:bg-gray-800/30 group-focus:outline-none">
@@ -56,14 +57,14 @@
                 </span>
             </button>
         </div>
-    
+
         <div class="pl-4 pr-4 xl:pr-12 m-3 sm:ml-20 mt-20 flex flex-row">
             <p class="font-bold text-2xl xl:text-5xl">Berita Terbaru</p>
             <div class="xl:ml-10 mt-7 mx-auto bg-gray-200 w-[72%] max-h-1"></div>
         </div>
-        
+
         <div class="mt-10 sm:ml-10 flex justify-center mx-auto">
-            <a href="dashboard/berita/{{$news[0]->slug}}" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row w-11/12 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+            <a href="dashboard/berita/{{$news[0]?->slug}}" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row w-11/12 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                 <div class="md:w-full">
                     <img class="object-cover w-full rounded-t-lg h-96 md:h-96 md:w-full border  border-gray-400 md:rounded-none md:rounded-s-lg" src="{{ asset('storage/'.$news[0]?->image) }}" alt="">
                     <div class="text-balance whitespace-normal hyphens-auto">
@@ -83,7 +84,7 @@
         </div>
 
         <div class="mt-5 mb-60 ml-[100px] mr-16 gap-2 grid justify-between grid-cols-4 max-[1500px]:grid-cols-2 max-[800px]:grid-cols-1">
-            @foreach ($news->skip(1) as $berita) 
+            @foreach ($news->skip(1) as $berita)
             <div class="max-w-sm h-[380px] relative flex flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="dashboard/berita/{{$berita->slug}}">
                     <img class="rounded-t-lg h-44 w-full mx-auto" src="{{ asset('storage/'.$berita->image) }}" alt="" />
@@ -108,6 +109,6 @@
             </div>
             @endforeach
         </div>
-    
+
     </div>
 </body>

@@ -65,7 +65,7 @@
             @endif
             <li>
                 <a href="/inbox" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                    <i class="fa-solid fa-envelope text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i> <span class="flex-1 ms-3 text-xl whitespace-nowrap">Inbox</span>
+                    <i class="fa-solid fa-envelope text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i> <span class="flex-1 ms-3 text-xl whitespace-nowrap">Notifikasi</span>
                 </a>
             </li>
         </ul>
