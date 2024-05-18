@@ -60,7 +60,7 @@
 
         <div class="pl-4 pr-4 xl:pr-12 m-3 sm:ml-20 mt-20 flex flex-row">
             <p class="font-bold text-2xl xl:text-5xl">Berita Terbaru</p>
-            <div class="xl:ml-10 mt-7 mx-auto bg-gray-200 w-[72%] max-h-1"></div>
+            <div class="xl:ml-10 mt-7 mx-auto bg-gray-900 w-[72%] max-h-1"></div>
         </div>
 
         <div class="mt-10 sm:ml-10 flex justify-center mx-auto">
@@ -84,8 +84,13 @@
         </div>
 
         <div class="mt-5 mb-60 ml-[100px] mr-16 gap-2 grid justify-between grid-cols-4 max-[1500px]:grid-cols-2 max-[800px]:grid-cols-1">
+<<<<<<< HEAD
             @foreach ($news->skip(1) as $berita)
             <div class="max-w-sm h-[380px] relative flex flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+=======
+            @foreach ($news->skip(1) as $berita) 
+            <div class="max-w-sm h-[380px] relative flex flex-col bg-white hover:bg-gray-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+>>>>>>> 5dffccbc423fc2ceafb18ae56b318572127a2da5
                 <a href="dashboard/berita/{{$berita->slug}}">
                     <img class="rounded-t-lg h-44 w-full mx-auto" src="{{ asset('storage/'.$berita->image) }}" alt="" />
                 </a>
