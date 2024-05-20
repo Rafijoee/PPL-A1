@@ -84,13 +84,9 @@
         </div>
 
         <div class="mt-5 mb-60 ml-[100px] mr-16 gap-2 grid justify-between grid-cols-4 max-[1500px]:grid-cols-2 max-[800px]:grid-cols-1">
-<<<<<<< HEAD
-            @foreach ($news->skip(1) as $berita)
-            <div class="max-w-sm h-[380px] relative flex flex-col bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-=======
+
             @foreach ($news->skip(1) as $berita) 
             <div class="max-w-sm h-[380px] relative flex flex-col bg-white hover:bg-gray-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
->>>>>>> 5dffccbc423fc2ceafb18ae56b318572127a2da5
                 <a href="dashboard/berita/{{$berita->slug}}">
                     <img class="rounded-t-lg h-44 w-full mx-auto" src="{{ asset('storage/'.$berita->image) }}" alt="" />
                 </a>

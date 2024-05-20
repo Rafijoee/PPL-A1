@@ -4,53 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrasi</title>
-    @vite(['resources/css/app.css','resources/js/app.js'])
+    <title>Login</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <form action="{{route('register')}}" method="POST">
-        @method('POST')
-        @csrf
-        <section class="bg-gray-100 ">
-            <div class="max-w-md mx-auto py-10">
-                <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-                    <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                        <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white text-center">
-                            <i class="fa-solid fa-user-plus mr-3"></i>Buat Akun
-                        </h1>
-                        <hr class="h-px my-8 bg-gray-300 border-0 dark:bg-gray-700">
-                        <div class="space-y-4 md:space-y-6">
-                            <div>
-                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Lengkap</label>
-                                <input type="text" name="name" id="name" class="form-control @error('name') border-red-500 @enderror bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#40C6A1] focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan Nama Anda...">
-                                @error('name')
-                                <div class="invalid-feedback text-red-500">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+    <div class="relative">
+        <img src="{{ asset('images/auth.png') }}" alt="Background Image" class="w-full">
+        <div class="absolute inset-0">
+            <div class="fixed top-0 right-0 w-[661px] bg-[#FFFFFF] bg-opacity-80 m-10 rounded-xl p-4 flex flex-col justify-center items-center">
+                <img src="{{ asset('images/logo_akun.png') }}" class="scale-75" alt="">
+                <h1 class="mt-4 text-4xl font-poppins font-bold text-[#185141]">Buat Akun</h1>
+
+                <div class="flex flex-col w-full mt-4 overflow-y-auto h-[500px]">
+                    <form action="{{ url('register') }}" method="post" class="form-control">
+                        @method('POST')
+                        @csrf
+                        <div class="m-12">
+                            <label for="name" class="text-xl font-poppins font-bold text-[#185141]">Nama Lengkap</label>
+                            <input type="text" name="name" id="name" class="mt-6 border-none bg-transparent focus:outline-none sm:text-sm block w-full p-2.5">
+                            <hr class="border-t-2 border-[#185141]">
+                            @error('name')
+                            <div class="invalid-feedback text-red-500">
+                                {{ $message }}
                             </div>
-                            <div>
-                                <label for="nik" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIK</label>
-                                <input type="text" name="nik" id="nik" class="form-control @error('nik') border-red-500 @enderror bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#40C6A1] focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan Nomor Induk Keluarga anda...">
-                                @error('nik')
-                                <div class="invalid-feedback text-red-500">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                            @enderror
+                        </div>
+                        <div class="m-12">
+                            <label for="nik" class="text-xl font-poppins font-bold text-[#185141]">NIK</label>
+                            <input type="text" name="nik" id="nik" class="mt-6 border-none bg-transparent focus:outline-none sm:text-sm block w-full p-2.5" >
+                            <hr class="border-t-2 border-[#185141]">
+                            @error('nik')
+                            <div class="invalid-feedback text-red-500">
+                                {{ $message }}
                             </div>
-                            <div>
-                                <label for="no_hp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">No Telepon</label>
-                                <input type="text" name="no_hp" id="no_hp" class="form-control @error('no_hp') border-red-500 @enderror bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#40C6A1] focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan No Telepon Anda...">
-                                @error('no_hp')
-                                <div class="invalid-feedback text-red-500">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                            @enderror
+                        </div>
+                        <div class="m-12">
+                            <label for="no_hp" class="text-xl font-poppins font-bold text-[#185141]">No Telepon</label>
+                            <input type="text" name="no_hp" id="no_hp" class="mt-6 border-none bg-transparent focus:outline-none sm:text-sm block w-full p-2.5">
+                            <hr class="border-t-2 border-[#185141]">
+                            @error('no_hp')
+                            <div class="invalid-feedback text-red-500">
+                                {{ $message }}
                             </div>
-                            <div>
-                                <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Alamat</label>
+                            @enderror
+                            <div class="my-12">
+                                <label for="alamat" class="text-xl font-poppins font-bold text-[#185141]">Alamat</label>
                                 <textarea type="text" name="alamat" id="alamat" rows="4" class=" form-control @error('alamat') border-red-500 @enderror bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#40C6A1] focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan Alamat Anda..."></textarea>
                                 @error('alamat')
                                 <div class="invalid-feedback text-red-500">
@@ -58,8 +60,8 @@
                                 </div>
                                 @enderror
                             </div>
-                            <div>
-                                <label for="kecamatan" class="block mb-2 text-3xl font-medium dark:text-white">Kecamatan</label>
+                            <div class="my-12">
+                                <label for="kecamatan" class="block text-xl font-poppins font-bold text-[#185141]">Kecamatan</label>
                                 <select name="kecamatan_id" id="kecamatan" class="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                                     @foreach ($kecamatans as $kecamatan )
                                     @if(old('kecamatan_id') == $kecamatan->id)
@@ -70,41 +72,44 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div>
-                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                                <input type="email" name="email" id="email" class="form-control @error('email') border-red-500 @enderror bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#40C6A1] focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan Email Anda...">
+                            <div class="my-12">
+                                <label for="email" class="text-xl font-poppins font-bold text-[#185141]">Email</label>
+                                <input type="email" name="email" id="email" class="mt-6 border-none bg-transparent focus:outline-none sm:text-sm block w-full p-2.5">
+                                <hr class="border-t-2 border-[#185141]">
                                 @error('email')
                                 <div class="invalid-feedback text-red-500">
                                     {{ $message }}
                                 </div>
                                 @enderror
                             </div>
-                            <div>
-                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kata Sandi</label>
-                                <input type="password" name="password" id="password" placeholder="Masukkan Kata Sandi Anda..." class="form-control @error('password') border-red-500 @enderror bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#40C6A1] focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <div class="y-12">
+                                <label for="password" class="text-xl font-poppins font-bold text-[#185141]">Kata Sandi</label>
+                                <input type="password" name="password" id="password" class="mt-6 border-none bg-transparent focus:outline-none sm:text-sm block w-full p-2.5">
+                                <hr class="border-t-2 border-[#185141]">
                                 @error('password')
-                                <div class="invalid-feedback text-red-500 ">
+                                <div class="invalid-feedback text-red-500">
                                     {{ $message }}
                                 </div>
                                 @enderror
                             </div>
-                            <div>
-                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Konfirmasi Kata Sandi</label>
-                                <input type="password" name="password_confirmation" id="password" placeholder="*********" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#40C6A1] focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <div class="my-12">
+                                <label for="password" class="text-xl font-poppins font-bold text-[#185141]">Konfirmasi Kata Sandi</label>
+                                <input type="password" name="password_confirmation" id="password" class="mt-6 border-none bg-transparent focus:outline-none sm:text-sm block w-full p-2.5">
+                                <hr class="border-t-2 border-[#185141]">
                             </div>
-                            <div class="mt-2">
-                                <button type="submit" class="border-2 border-[#40c6A1] bg-[#40c6A1] text-white w-full h-10 py-1 rounded-md hover:bg-transparent hover:text-[#40c6A1] font-semibold">Daftar</button>
+                            <div class="">
+                                <a href="#" class="flex justify-end text-sm underline text-[#185141] font-bold underline-offset-1 font-poppins">Lupa Password ?</a>
                             </div>
-                            <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                                Sudah mempunyai akun? <a href="{{route('login')}}" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Masuk</a>
-                            </p>
-                        </div>
-                    </div>
+                            <div class="mt-5 flex justify-center">
+                                <button type="submit" class="text-xl font-poppins font-bold border-2 bg-[#40C6A1] text-white flex items-center py-2 px-10 rounded-md hover:bg-transparent hover:text-[#40C6A1]">Daftar</button>
+                            </div>
+                            <div class="m-12">
+                                <p class="flex justify-center text-sm  text-[#185141] font-bold  font-poppins">Sudah Punya Akun? <a href="{{route('login')}}" class="underline">Masuk</a></p>
+                            </div>
+                    </form>
                 </div>
             </div>
-        </section>
-    </form>
-</body>
 
+</body>
 
 </html>
