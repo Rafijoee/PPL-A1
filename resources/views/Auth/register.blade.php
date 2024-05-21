@@ -34,7 +34,7 @@
                         </div>
                         <div class="m-12">
                             <label for="nik" class="text-xl font-poppins font-bold text-[#185141]">NIK</label>
-                            <input type="text" name="nik" id="nik" class="mt-6 border-none bg-transparent focus:outline-none sm:text-sm block w-full p-2.5" >
+                            <input type="text" name="nik" id="nik" class="mt-6 border-none bg-transparent focus:outline-none sm:text-sm block w-full p-2.5">
                             <hr class="border-t-2 border-[#185141]">
                             @error('nik')
                             <div class="invalid-feedback text-red-500">
@@ -101,7 +101,7 @@
                                 <a href="#" class="flex justify-end text-sm underline text-[#185141] font-bold underline-offset-1 font-poppins">Lupa Password ?</a>
                             </div>
                             <div class="mt-5 flex justify-center">
-                                <button type="submit" class="text-xl font-poppins font-bold border-2 bg-[#40C6A1] text-white flex items-center py-2 px-10 rounded-md hover:bg-transparent hover:text-[#40C6A1]">Daftar</button>
+                                <button type="submit" class="text-xl font-poppins font-bold border-2 bg-[#185141] text-white flex items-center py-2 px-10 rounded-md hover:bg-transparent hover:text-[#185141]">Daftar</button>
                             </div>
                             <div class="m-12">
                                 <p class="flex justify-center text-sm  text-[#185141] font-bold  font-poppins">Sudah Punya Akun? <a href="{{route('login')}}" class="underline">Masuk</a></p>
@@ -109,7 +109,8 @@
                     </form>
                 </div>
             </div>
-
+        </div>
+    </div>
 </body>
 
 </html>

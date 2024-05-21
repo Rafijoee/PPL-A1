@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Kecamatan extends Model
 {
     use HasFactory;
-    public function profile(){
-        return $this->belongsTo(Profile::class);
+    public function profiles()
+    {
+        return $this->hasMany(Profile::class);
     }
 }

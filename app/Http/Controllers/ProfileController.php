@@ -19,29 +19,30 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         $user_id = Auth::user()->id;
         $profile = Profile::Where('user_id', $user_id)->first();
         $roles_id = Auth::user()->roles_id;
         $kecamatans = Kecamatan::all();
-        return view ('users.index', compact('profile', 'kecamatans', 'roles_id'));
+        return view('users.index', compact('profile', 'kecamatans', 'roles_id', 'user','user_id'));
     }
 
     /**
      * Update the user's profile information.
      */
-    public function edit ()
+    public function edit()
     {
         $user_id = Auth::user()->id;
         $profile = Profile::Where('user_id', $user_id)->first();
         $kecamatans = Kecamatan::all();
-        return view ('users.edit', compact('profile', 'kecamatans'));
+        $user = Auth::user();
+        return view('users.edit', compact('profile', 'kecamatans', 'user'));
     }
 
     public function update(Request $request)
     {
         $user_id = Auth::user()->id;
-
-        $validate_data = $request->validate([
+        $validated_data = $request->validate([
             'name' => 'required',
             'nik' => 'required|numeric',
             'no_hp' => 'required|numeric',
@@ -49,24 +50,16 @@ class ProfileController extends Controller
             'kecamatan_id' => 'required'
         ]);
 
-        $nama = $request->name;
-        $nik = $request->nik;
-        $no_hp = $request->no_hp;
-        $alamat = $request->alamat;
-        $kecamatan_id = $request->kecamatan_id;
-
-
-
         $user = User::find($user_id);
-        $user->name = $nama;
-        
-        $profile = Profile::where('user_id', $user_id)->first();
-        $profile->nama = $nama;
-        $profile->nik = $nik;
-        $profile->no_hp = $no_hp;
-        $profile->alamat = $alamat;
-        $profile->kecamatan_id = $kecamatan_id;
+        $user->name = $validated_data['name'];
         $user->save();
+
+        $profile = Profile::where('user_id', $user_id)->first();
+        $profile->nama = $validated_data['name']; // Pastikan Anda menggunakan key yang benar untuk memperbarui nama
+        $profile->nik = $validated_data['nik'];
+        $profile->no_hp = $validated_data['no_hp'];
+        $profile->alamat = $validated_data['alamat'];
+        $profile->kecamatan_id = $validated_data['kecamatan_id'];
         $profile->save();
 
         return redirect()->route('profile.index')->with('success', 'Data profil berhasil diperbarui.');
@@ -75,5 +68,4 @@ class ProfileController extends Controller
     /**
      * Delete the user's account.
      */
-
 }
