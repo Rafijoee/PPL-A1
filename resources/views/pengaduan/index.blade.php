@@ -1,5 +1,66 @@
 @extends('layouts.dashboard')
-@section('title', 'MONITOR | PENGADUAN')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONITOR | PENGADUAN</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- Demo styles -->
+    <style>
+      html,
+      body {
+        position: relative;
+        height: 100%;
+      }
+
+      body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+      }
+
+      .swiper {
+        width: 100%;
+        height: 100%;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        /* border-radius: 20px; */
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    </style>
+</head>
+</body>
+</html>
 <body class="bg-[#F2FBFF]">
     <div class="p-4 sm:ml-72 mt-16">
         <h1 class="font-bold text-4xl">Pengaduan</h1>
@@ -21,10 +82,7 @@
         </div>
         @endif
 
-        <div class="mt-10">
-            <a href="/dashboard/pengaduan/create" class="text-white bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">Tambahkan Aduan</a>
-        </div>
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
+        <!-- <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-[#40C6A1] dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -97,8 +155,97 @@
                     </tr>
                 </tbody>
             </table>
+        </div> -->
+
+            <!-- Swiper -->
+        <div class="swiper mySwiper mt-16">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide h-96 rounded-xl bg-[#40C6A1] hover:bg-[#40A1A1]">
+                    <a href="/dashboard/pengaduan/create" class="rounded-xl w-full">
+                        <div class="h-[450px] rounded-xl flex flex-col items-center justify-center focus:ring-4 border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700">
+                            <svg class="w-16 h-16 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 12h14m-7 7V5"/>
+                            </svg>
+                            <p class="font-bold text-2xl text-white">Buat Pengaduan</p>
+                        </div>
+                    </a>
+                </div>
+                @foreach ($reports as $report )
+                    <div class="swiper-slide h-96 relative rounded-xl">
+                            <div class="mx-5">
+                                <p>{{ $report->judul_laporan }}</p>
+                            </div>
+                            <div>
+                                <div class="">
+                                    @if ($report->handling__statuses_id == 2)
+                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-yellow-200 rounded-lg text-gray-900">
+                                        sedang ditindaklanjuti
+                                        </div>
+                                    @elseif ($report->handling__statuses_id == 3)
+                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-lime-300 rounded-lg text-gray-900">
+                                        sudah ditindaklanjuti
+                                        </div>
+                                    @else
+                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-sky-300 rounded-lg text-gray-900">
+                                        belum ditindaklanjuti
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="badge">
+                            @if ($report->verification_statuses_id == 2)
+                                <div class="absolute top-2 right-2 text-sm w-1/3 bg-yellow-200 rounded-lg text-gray-900">
+                                    sedang diverifikasi
+                                </div>
+                            @elseif ($report->verification_statuses_id == 3)
+                                <div class="absolute top-2 right-2 text-sm w-1/3 bg-lime-300 rounded-lg text-gray-900">
+                                sudah diverifikasi
+                                </div>
+                            @elseif ($report->verification_statuses_id == 4)
+                                <div class="absolute top-2 right-2 px-0.5 text-sm w-1/3 bg-red-300 rounded-lg text-gray-900">
+                                Aduan ditolak
+                                </div>
+                            @else
+                                <div class=" absolute top-2 right-2 text-sm w-1/3 bg-sky-300 rounded-lg text-gray-900">
+                                belum diverifikasi
+                                </div>
+                            @endif
+                            </div>
+                            <div class="absolute bottom-16">
+                                <a href="/dashboard/pengaduan/{{ Crypt::encryptString($report["id"]) }}" class="bg-[#40C6A1] hover:bg-[#40A1A1] py-0.5 px-5 rounded-md text-white">lihat</a>
+                            </div>
+                            <div class="absolute bottom-6 mt-3">
+                                <a href="/dashboard/pengaduan-riwayat/{{ Crypt::encryptString($report["id"]) }}" class="py-1 px-3.5 rounded-md text-gray-500 hover:text-gray-300">Riwayat</a>
+                            </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="swiper-button-next text-[#40A1A1]"></div>
+            <div class="swiper-button-prev  text-[#40A1A1]"></div>
+            <div class="swiper-pagination "></div>
         </div>
+        
 
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 5,
+        spaceBetween: 30,
+        slidesPerGroup: 5,
+        loop: true,
+        loopFillGroupWithBlank: true,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    </script>
 </body>
 </html>
