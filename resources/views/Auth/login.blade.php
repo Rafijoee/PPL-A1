@@ -15,12 +15,12 @@
         <img src="{{ asset('images/auth.png') }}" alt="Background Image" class="w-full">
         <div class="absolute inset-0">
             <!-- div card -->
-            <div class="fixed top-0 right-0 w-[661px] bg-[#FFFFFF] bg-opacity-80 m-10 rounded-xl p-4 flex flex-col justify-center items-center">
+            <div class="fixed top-0 right-0 w-[661px] bg-[#FFFFFF] bg-opacity-80 sm:mr-20 sm:mt-5 rounded-xl sm:p-4 flex flex-col justify-center items-center">
                 <!-- Card Content Lainnya -->
                 <img src="{{ asset('images/logo_akun.png') }}" class="scale-75" alt="">
-                <h1 class="mt-4 text-4xl font-poppins font-bold text-[#185141]">Masuk</h1>
+                <h1 class="sm:mt-4 text-4xl font-poppins font-bold text-[#185141]">Masuk</h1>
 
-                <div class="flex flex-col w-full mt-4">
+                <div class="flex flex-col sm:w-full sm:mt-4 m-92">
                     <form action="{{url('login')}}" method="post" class="form-control">
                         @method('POST')
                         @csrf
@@ -43,7 +43,7 @@
                             <a href="#" class="flex justify-end text-sm underline text-[#185141] font-bold underline-offset-1 font-poppins">Lupa Password ?</a>
                         </div>
                         <div class="mt-5 flex justify-center">
-                            <button type="submit" class="text-xl font-poppins font-bold border-2 bg-[#40C6A1] text-white flex items-center py-2 px-10 rounded-md hover:bg-transparent hover:text-[#40C6A1]">Masuk</button>
+                            <button type="submit" class="text-xl font-poppins font-bold border-2 bg-[#185141] text-white flex items-center py-2 px-10 rounded-md hover:bg-transparent hover:text-[#185141]">Masuk</button>
                         </div>
                         <div class="m-12">
                             <p class="flex justify-center text-sm  text-[#185141] font-bold  font-poppins">Belum Punya Akun? <a href="{{route('form_register')}}" class="underline">Buat Akun</a></p>

@@ -27,7 +27,7 @@ class ReportController extends Controller
     {
         $user = Auth::user();
         $user_id = Auth::user()->id;
-        $reports = Report::where('user_id', $user_id)->get();
+        $reports = Report::latest()->where('user_id', $user_id)->get();
         return view('pengaduan.index', compact('reports', 'user'));
     }
 
@@ -37,7 +37,7 @@ class ReportController extends Controller
     public function create()
     {
         $user = Auth::user();
-        return view('pengaduan.create',[
+        return view('pengaduan.create', [
             'kecamatans' => Kecamatan::all()
         ], compact('user'));
     }
@@ -55,11 +55,30 @@ class ReportController extends Controller
             'isi_aduan' => 'required',
         ]);
 
-        if($request->file('image')){
+
+        $excludedWords = ['di', 'ke', 'dari', 'pada', 'yang'];
+
+        $judulWords = array_filter(explode(' ', strtolower($request->input('judul_laporan'))), function ($word) use ($excludedWords) {
+            return !in_array($word, $excludedWords);
+        });
+        $isiWords = array_filter(explode(' ', strtolower($request->input('isi_aduan'))), function ($word) use ($excludedWords) {
+            return !in_array($word, $excludedWords);
+        });
+
+        $kata_sama = array_intersect($judulWords, $isiWords);
+
+
+        if (empty($kata_sama)) {
+            // Tambahkan error message jika tidak ada kata yang sama
+            return redirect()->back()->withErrors(['isi_aduan' => 'Judul dan isi aduan harus memiliki setidaknya beberapa kata yang sama.']);
+        }
+
+        if ($request->file('image')) {
             $validatedData['foto_lokasi'] = $request->file('image')->store('post-images');
         }
 
-        
+
+
         // $validatedData['foto_lokasi'] = $request->file('image')->store('post-images');
         $validatedData['user_id'] = Auth::user()->id;
         $validatedData['handling__statuses_id'] = 1;
@@ -68,17 +87,23 @@ class ReportController extends Controller
         $pengaduan = Report::create($validatedData);
         $reportId = $pengaduan->id;
 
-        $profile = Auth::user()->profile;                
+        $profile = Auth::user()->profile;
         $kecamatan_kita = $profile->kecamatan_id;
-        $profile_lain = Profile::where('kecamatan_id',$kecamatan_kita)->where('id', '!=', $profile->id)->pluck('user_id');
-        foreach ($profile_lain as $profile) {
-            $notifikasi = new Notifikasi();
-            $notifikasi->user_id = Auth::user()->id;
-            $notifikasi->to_id = $profile;
-            $notifikasi->report_id = $reportId;
-            $notifikasi->title = $validatedData['judul_laporan'];
-            $notifikasi->save();
-        }
+        $profile_lain = Profile::where('kecamatan_id', $kecamatan_kita)->where('id', '!=', $profile->id)->pluck('user_id')->first();
+        $notifikasi = new Notifikasi();
+        $notifikasi->user_id = Auth::user()->id;
+        $notifikasi->to_id = $profile_lain;
+        $notifikasi->report_id = $reportId;
+        $notifikasi->title = $validatedData['judul_laporan'];
+
+        $notifikasi->save();
+        $notifikasi = new Notifikasi();
+        $notifikasi->user_id = Auth::user()->id;
+        $notifikasi->to_id = 2;
+        $notifikasi->report_id = $reportId;
+        $notifikasi->title = $validatedData['judul_laporan'];
+        $notifikasi->save();
+
         return redirect('/dashboard/pengaduan')->with('success', 'Aduan berhasil dikirimkan!');
     }
 
@@ -97,9 +122,9 @@ class ReportController extends Controller
 
         $kecamatan_id = $reports->kecamatan_id;
         $namakecamatan = Kecamatan::where('id', $kecamatan_id)->first();
-        
 
-        return view("pengaduan.show", compact('model','reports', 'namakecamatan', 'user'));
+
+        return view("pengaduan.show", compact('model', 'reports', 'namakecamatan', 'user'));
 
         // return view("pengaduan.show",[
         //     'report'=> $report
@@ -139,9 +164,9 @@ class ReportController extends Controller
         // if($request->file('image')){
         //     $validatedData['foto_lokasi'] = $request->file('image')->store('post-images');
         // }
-        
-        if($request->file('image')){
-            if($request->oldImage){
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
             $validatedData['foto_lokasi'] = $request->file('image')->store('post-images');
@@ -153,8 +178,8 @@ class ReportController extends Controller
         $validatedData['kecamatan_id'] = $request->input('kecamatan_id');
 
         Report::where('id', $reports->id)
-              ->update($validatedData);
-        
+            ->update($validatedData);
+
         return redirect('/dashboard/pengaduan')->with('success', 'Aduan berhasil diperbarui!');
     }
 

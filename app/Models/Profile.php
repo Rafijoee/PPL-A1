@@ -17,8 +17,9 @@ class Profile extends Model
         'alamat',
         'kecamatan_id'
     ];
-    public function kecamatan(){
-        return $this->hasMany(Kecamatan::class);
+    public function kecamatan()
+    {
+        return $this->belongsTo(Kecamatan::class);
     }
 
     public function user(){

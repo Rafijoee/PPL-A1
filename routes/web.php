@@ -14,6 +14,9 @@ use App\Http\Controllers\ReportAdminController;
 use App\Http\Controllers\NewsPemerintahController;
 use App\Http\Controllers\ReportPenyuluhController;
 use App\Http\Controllers\ReportPemerintahController;
+use App\Http\Controllers\User\Petani\AduanController;
+use App\Http\Controllers\User\Petani\KonsultasiController as PetaniKonsultasiController;
+use App\Http\Controllers\User\Petani\TanggapanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +71,12 @@ Route::middleware('petani')->group(function(){
     Route::group(['prefix' => 'dashboard'], function() {
         Route::resource('/pengaduan', ReportController::class);
     });
+    Route::group(['prefix' => 'tutorial'], function() {
+        Route::resource('/konsultasi', PetaniKonsultasiController::class);
+        Route::resource('/aduan', AduanController::class);
+        Route::resource('/tanggapan', TanggapanController::class);
+    });
+
 });
 
 Route::middleware('penyuluh')->group(function(){

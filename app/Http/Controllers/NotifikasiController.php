@@ -12,7 +12,7 @@ class NotifikasiController extends Controller
     public function index(){
         $user = Auth::user();
         $id = Auth::user()->id;
-        $notifs = Notifikasi::where('to_id', $id)->get();
+        $notifs = Notifikasi::latest()->where('to_id', $id)->get();
         
         return view ('notifikasi.index', compact('user', 'notifs'));
     }
