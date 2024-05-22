@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\News;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ChatController;
@@ -8,11 +9,11 @@ use App\Http\Controllers\ChatifyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KonsultasiController;
+use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\ReportAdminController;
 use App\Http\Controllers\NewsPemerintahController;
 use App\Http\Controllers\ReportPenyuluhController;
 use App\Http\Controllers\ReportPemerintahController;
-use App\Http\Controllers\NotifikasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,9 @@ use App\Http\Controllers\NotifikasiController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $news = News::latest()->get();
+    // dd($news);
+    return view('welcome', compact('news'));
 });
 Route::get('/coba', function () {
     return view('coba');
