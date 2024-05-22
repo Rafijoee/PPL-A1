@@ -23,15 +23,25 @@
                         <img src="{{asset('images/konsultasi.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
-                @endif
-                @if (Auth::user()->roles_id == 3)
+                @elesif(Auth::user()->roles_id == 3)
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <a href="#">
+                    <a href="tutorial-penyuluh/aduan">
                         <img src="{{asset('images/aduan_penyuluh.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <a href="#">
+                    <a href="tutorial-penyuluh/konsultasi">
+                        <img src="{{asset('images/aduan_penyuluhdanpetani.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </a>
+                </div>
+                @elseif (Auth::user()->roles_id == 4)
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <a href="tutorial-pemerintah/berita">
+                        <img src="{{asset('images/aduan_penyuluh.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </a>
+                </div>
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <a href="tutorial-penyuluh/aduan">
                         <img src="{{asset('images/aduan_penyuluhdanpetani.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
@@ -85,7 +95,7 @@
 
         <div class="mt-5 mb-60 ml-[100px] mr-16 gap-2 grid justify-between grid-cols-4 max-[1500px]:grid-cols-2 max-[800px]:grid-cols-1">
 
-            @foreach ($news->skip(1) as $berita) 
+            @foreach ($news->skip(1) as $berita)
             <div class="max-w-sm h-[380px] relative flex flex-col bg-white hover:bg-gray-100 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="dashboard/berita/{{$berita->slug}}">
                     <img class="rounded-t-lg h-44 w-full mx-auto" src="{{ asset('storage/'.$berita->image) }}" alt="" />
