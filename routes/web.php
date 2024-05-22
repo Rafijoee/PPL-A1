@@ -71,7 +71,7 @@ Route::middleware('petani')->group(function(){
     Route::group(['prefix' => 'dashboard'], function() {
         Route::resource('/pengaduan', ReportController::class);
     });
-    Route::group(['prefix' => 'tutorial'], function() {
+    Route::group(['prefix' => 'tutorial-petani'], function() {
         Route::resource('/konsultasi', PetaniKonsultasiController::class);
         Route::resource('/aduan', AduanController::class);
         Route::resource('/tanggapan', TanggapanController::class);
@@ -87,6 +87,11 @@ Route::middleware('penyuluh')->group(function(){
         Route::get('/pengaduan-penyuluh/edit/{pengaduan_penyuluh}', [ReportPenyuluhController::class, 'edit2']);
         Route::put('/pengaduan-penyuluh/edit/{pengaduan_penyuluh}', [ReportPenyuluhController::class, 'update2']);
         Route::resource('/pengaduan-penyuluh', ReportPenyuluhController::class);
+    });
+    Route::group(['prefix' => 'tutorial-penyuluh'], function() {
+        Route::resource('/konsultasi', PetaniKonsultasiController::class);
+        Route::resource('/aduan', AduanController::class);
+        Route::resource('/tanggapan', TanggapanController::class);
     });
 });
 
