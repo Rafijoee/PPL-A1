@@ -17,10 +17,11 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         $user_id = Auth::user()->id;
+        $roles = $user->roles_id;
         $news = News::latest()->paginate(5);
         $body = $news[0]?->isi_berita;
         $body = Str::limit(strip_tags($body), 200);
-        return view('layouts.dashboardasli', compact('user', 'news', 'body'));
+        return view('layouts.dashboardasli', compact('user', 'news', 'body', 'roles'));
     }
     public function show(News $news, $id)
     {

@@ -97,7 +97,7 @@ Route::middleware('penyuluh')->group(function(){
 Route::middleware('pemerintah')->group(function(){
     Route::group(['prefix' => 'dashboard'], function() {
         Route::resource('/pengaduan-pemerintah', ReportPemerintahController::class);
-    });
+    }); 
     Route::group(['prefix' => 'tutorial-pemerintah'], function() {
         Route::resource('/berita', PetaniKonsultasiController::class);
         Route::resource('/aduan', AduanController::class);
