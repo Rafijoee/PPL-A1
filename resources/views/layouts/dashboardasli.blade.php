@@ -15,39 +15,45 @@
                     </a>
                 </div>
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <a href="tutorial-petani/tanggapan">
-                        <img src="{{asset('images/aduan_penyuluhdanpetani.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    <a href="tutorial-petani/konsultasi">
+                        <img src="{{asset('images/caraousel_petani_konsultasi.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <a href="tutorial-petani/konsultasi">
-                        <img src="{{asset('images/konsultasi.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    <a href="tutorial-petani/tanggapan">
+                        <img src="{{asset('images/caraousel_petani_notif.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
                 @endif
                 @if($roles == 3)
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="tutorial-penyuluh/aduan">
-                        <img src="{{asset('images/aduan_penyuluh.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                        <img src="{{asset('images/caraousel_penyuluh_aduan.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="tutorial-penyuluh/konsultasi">
-                        <img src="{{asset('images/aduan_penyuluhdanpetani.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                        <img src="{{asset('images/caraousel_penyuluh_konsultasi2.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </a>
+                </div>
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                    <a href="tutorial-penyuluh/verifikasi">
+                        <img src="{{asset('images/caraousel_penyuluh_notif.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
                 @endif
                 @if ($roles ==  4)
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="tutorial-pemerintah/berita">
-                        <img src="{{asset('images/aduan_penyuluh.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                        <img src="{{asset('images/berita_pemerintah.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <a href="tutorial-penyuluh/aduan">
-                        <img src="{{asset('images/aduan_penyuluhdanpetani.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    <a href="tutorial-pemerintah/berita">
+                        <img src="{{asset('images/aduan_pemerintah.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
+
                 @endif
             </div>
 

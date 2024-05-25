@@ -56,7 +56,7 @@ class ReportPenyuluhController extends Controller
         $user_id = Auth::user()->id;
         $profile = Profile::where('user_id', $user_id)->first();
         $kecamatan_id = $profile->kecamatan_id;
-        $reports = Report::where('kecamatan_id', $kecamatan_id)->get();
+        $reports = Report::latest()->where('kecamatan_id', $kecamatan_id)->get();
 
         return view('pengaduan-penyuluh.index', compact('reports', 'user'));
     }

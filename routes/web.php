@@ -14,6 +14,11 @@ use App\Http\Controllers\ReportAdminController;
 use App\Http\Controllers\NewsPemerintahController;
 use App\Http\Controllers\ReportPenyuluhController;
 use App\Http\Controllers\ReportPemerintahController;
+use App\Http\Controllers\User\Pemerintah\AduanController as PemerintahAduanController;
+use App\Http\Controllers\User\Pemerintah\BeritaController;
+use App\Http\Controllers\User\Penyuluh\AduanController as PenyuluhAduanController;
+use App\Http\Controllers\User\Penyuluh\konsultasiController as PenyuluhKonsultasiController;
+use App\Http\Controllers\User\Penyuluh\verifikasiController;
 use App\Http\Controllers\User\Petani\AduanController;
 use App\Http\Controllers\User\Petani\KonsultasiController as PetaniKonsultasiController;
 use App\Http\Controllers\User\Petani\TanggapanController;
@@ -89,31 +94,28 @@ Route::middleware('penyuluh')->group(function(){
         Route::resource('/pengaduan-penyuluh', ReportPenyuluhController::class);
     });
     Route::group(['prefix' => 'tutorial-penyuluh'], function() {
-        Route::resource('/konsultasi', PetaniKonsultasiController::class);
-        Route::resource('/aduan', AduanController::class);
+        Route::resource('/aduan', PenyuluhAduanController::class);
+        Route::resource('/konsultasi', PenyuluhKonsultasiController::class);
+        Route::resource('/verifikasi', verifikasiController::class);
+
     });
 });
 
 Route::middleware('pemerintah')->group(function(){
     Route::group(['prefix' => 'dashboard'], function() {
         Route::resource('/pengaduan-pemerintah', ReportPemerintahController::class);
+        Route::get('/berita-pemerintah/checkSlug', [NewsPemerintahController::class, 'checkSlug']);
+        Route::put('dashboard/berita-pemerintah/{id}', [NewsPemerintahController::class, 'update'])->name('berita-pemerintah.update');
+        Route::resource('/berita-pemerintah', NewsPemerintahController::class);
     }); 
     Route::group(['prefix' => 'tutorial-pemerintah'], function() {
-        Route::resource('/berita', PetaniKonsultasiController::class);
-        Route::resource('/aduan', AduanController::class);
+        Route::resource('/berita', BeritaController::class);
+        Route::resource('/aduan', PemerintahAduanController::class);
     });
 });
 
 Route::middleware('admin')->group(function(){
     Route::group(['prefix' => 'dashboard'], function() {
         Route::resource('/pengaduan-admin', ReportAdminController::class);
-    });
-});
-
-Route::middleware('pemerintah')->group(function(){
-    Route::group(['prefix' => 'dashboard'], function() {
-        Route::get('/berita-pemerintah/checkSlug', [NewsPemerintahController::class, 'checkSlug']);
-        Route::put('dashboard/berita-pemerintah/{id}', [NewsPemerintahController::class, 'update'])->name('berita-pemerintah.update');
-        Route::resource('/berita-pemerintah', NewsPemerintahController::class);
     });
 });
