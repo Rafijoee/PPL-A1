@@ -158,7 +158,7 @@
         </div> -->
 
             <!-- Swiper -->
-        <div class="swiper mySwiper mt-16">
+        <div class="swiper mySwiper mt-16 border-[#40C6A1]">
             <div class="swiper-wrapper">
                 <div class="swiper-slide h-96 rounded-xl bg-[#40C6A1] hover:bg-[#40A1A1]">
                     <a href="/dashboard/pengaduan/create" class="rounded-xl w-full">
@@ -171,8 +171,8 @@
                     </a>
                 </div>
                 @foreach ($reports as $report )
-                    <div class="swiper-slide h-96 relative rounded-xl">
-                            <div class="mx-5">
+                    <div class="swiper-slide h-96 relative rounded-xl border border-[#40C6A1]">
+                            <div class="mx-5 ">
                                 <p>{{ $report->judul_laporan }}</p>
                             </div>
                             <div>

@@ -6,16 +6,17 @@
     <div class="sm:ml-72 mt-28 sm:mt-32 mb-64 flex justify-center">
         <div class="bg-white border-4 rounded-xl pb-12 mx-16 w-full">
             <div class="flex justify-center my-6 mx-32 flex-col">
-                <h1 class="font-bold text-4xl text-center font-poppins">Cara Konsultasi<h1>
+                <h1 class="font-extrabold text-4xl text-center font-poppins text-[#185141]">Tutorial Melakukan Konsultasi</h1>
                 <hr class="border-t-2 border-[#185141]">
-                <div class="mx-4 mb-4 mt-8">1. </div>
-                <img src="" class="m-8" alt="">
-                <div class="m-4">2. Pilih Penyuluh yang tersedia di wilayah anda</div>
-                <img src="{{asset('images/konsultasi_petani1.png')}}" class="m-8" alt="">
-                <div class="m-4">3. Tulis Pesan yang ingin ditanyakan</div>
-                <img src="{{asset('images/konsultasi_petani2.png')}}" class="m-8" alt="">
-                <div class="m-4">4. Pesan yang dikirim dan diterima akan ditampilkan dilayar</div>
-                <img src="{{asset('images/konsultasi_petani3.png')}}" class="m-8" alt="">
+                <ol class="list-decimal list-inside mx-4 text-[#185141] mt-8 space-y-4 font-semibold">
+                    <li>Klik "Konsultasi"</li>
+                    <li>Pilih chat Petani yang akan di balas </li>
+                    <img src="{{asset('images/konsultasi_penyulu.png')}}" class="mx-8 my-4" alt="">
+                    <li>Tulis Pesan yang ingin anda tanyakan ke penyuluh. Lalu klik “Kirim”</li>
+                    <img src="{{asset('images/konsultasi_petani2.png')}}" class="mx-8 my-4" alt="">
+                    <li>Pesan anda akan tampil dan menunggu balasan dari penyuluh</li>
+                    <img src="{{asset('images/konsultasi_petani3.png')}}" class="mx-8 my-4" alt="">
+                </ol>
             </div>
         </div>
         <div class="flex justify-center mx-32">
@@ -23,6 +24,5 @@
         </div>
         <div>
         </div>
-    </div>
     </div>
 </body>
