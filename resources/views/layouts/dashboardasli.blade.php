@@ -3,6 +3,7 @@
 @extends('layouts.dashboard2')
 @section('title', 'Dashboard')
 
+<!-- Dashboard page -->
 <body class="bg-[#F2FBFF]">
     <div class="p-4 sm:ml-64 text-justify mt-20 sm:mr-5">
         <div id="default-carousel" class="relative w-full pl-20 pr-20 ml-5" data-carousel="slide">
@@ -23,7 +24,8 @@
                         <img src="{{asset('images/konsultasi.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
-                @elesif($roles == 3)
+                @endif
+                @if($roles == 3)
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="tutorial-penyuluh/aduan">
                         <img src="{{asset('images/aduan_penyuluh.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
@@ -34,7 +36,8 @@
                         <img src="{{asset('images/aduan_penyuluhdanpetani.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
-                @elseif ($roles ==  4)
+                @endif
+                @if ($roles ==  4)
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="tutorial-pemerintah/berita">
                         <img src="{{asset('images/aduan_penyuluh.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">

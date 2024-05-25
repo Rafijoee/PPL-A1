@@ -10,13 +10,12 @@
                     </svg>
                 </button>
                 <a href="/" class="flex ms-2 md:me-24">
-                    <img src="{{asset('images/logo_dinas.png')}}" class="h-12 me-3" alt="FlowBite Logo" />
+                    <img src="{{asset('images/logo.png')}}" class="h-10" alt="Logo" />
                 </a>
             </div>
             <div class="flex items-center">
                 <div class="flex items-center ms-3">
                     <div class=" mr-2.5 bg-[#178948] rounded-lg">
-
                         <p class="px-4 py-1 text-white">{{Auth::user()->name}}</p>
                     </div>
                     <div>
