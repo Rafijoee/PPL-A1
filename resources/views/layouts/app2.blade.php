@@ -23,10 +23,9 @@
                 </a>
                 <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                     @if(Auth::check())
-                    <a href="{{route('logout')}}" type="button" class="text-white border-indigo-700 bg-indigo-700 hover:bg-indigo-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">logout</a>
+                    <a href="{{route('logout')}}" type="button" class="text-white border-indigo-700 bg-[#1A6E57] hover:text-white hover:bg-[#1A5F57] hover:border hover:border-[#1A6E57] focus:ring-4 font-medium rounded-lg text-sm px-4 py-2 text-center mr-10">logout</a>
                     @else
-                    <a href="{{url('/login')}}" type="button" class="text-white border-indigo-700 bg-indigo-700 hover:bg-indigo-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800 mr-10">Login</a>
-                    <a href="{{url('/register')}}" type="button" class="-mr-5 text-white border-indigo-700 bg-indigo-700 hover:bg-indigo-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800">Daftar</a>
+                    <a href="{{url('/login')}}" type="button" class="text-white border-indigo-700 bg-[#1A6E57] hover:text-white hover:bg-[#1A5F57] hover:border hover:border-[#1A6E57] focus:ring-4 font-medium rounded-lg text-sm px-4 py-2 text-center mr-10">Masuk</a>
                     @endif
                 </div>
                 <div class=" items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta">
