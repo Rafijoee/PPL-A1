@@ -27,7 +27,11 @@
                 <p class="-mt-8 ml-8 font-medium mb-10 sm:mt-10">Bermitra dengan Dinas Ketahanan Pangan Jember</p>
             </div>
             <div class="sm:mt-5 mt-3">
-                <a href="{{ route('login') }}" class="font-bold text-[#efefef] bg-[#1A6E57] py-2 px-10 rounded-xl sm:py-3.5 sm:px-20 sm:text-xl">Masuk</a>
+                @if (Auth::check())
+                    <a href="{{ route('dashboard') }}"  class="font-bold text-[#efefef] bg-[#1A6E57] hover:text-[#1A6E57] hover:bg-[#F2FBFF] hover:border-[#1A6E57] hover:border-2 py-2 px-10 rounded-xl sm:py-3.5 sm:px-20 sm:text-xl">Dashboard</a>
+                @else
+                    <a href="{{ route('login') }}" class="font-bold text-[#efefef] bg-[#1A6E57] hover:text-[#1A6E57] hover:bg-[#F2FBFF] hover:border-[#1A6E57] hover:border-2 py-2 px-10 rounded-xl sm:py-3.5 sm:px-20 sm:text-xl">Masuk</a>
+                @endif
             </div>
         </div>
     </div>
