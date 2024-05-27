@@ -25,7 +25,12 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect('/dashboard');
         } else {
-            return redirect('login')->with('error', 'Email atau Kata sandi salah !');
+            if($request->email && $request->password){
+                return redirect('login')->with('error', 'Email atau Kata sandi salah !');
+            }
+            else{
+                return redirect('login')->with('error', 'Email atau Kata sandi tidak boleh kosong !');
+            }
         }
     }
 
