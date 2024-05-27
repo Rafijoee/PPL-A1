@@ -95,6 +95,7 @@
                         </td>
                         <td class="px-6 py-4">
                             <a href="/dashboard/pengaduan-pemerintah/{{ Crypt::encryptString($report["id"]) }}/edit" class="font-medium text-[#40C6A1] hover:underline">Lihat</a>
+                            <a href="/dashboard/pengaduan-riwayat/{{ Crypt::encryptString($report["id"]) }}" class="font-medium ml-3 text-gray-400 hover:underline">Riwayat</a>
                         </td>
                     @endforeach
                     </tr>

@@ -94,6 +94,7 @@
                         </td>
                         <td class="px-6 py-4">
                             <a href="/dashboard/pengaduan-penyuluh/{{ Crypt::encryptString($report["id"]) }}" class="font-medium text-[#40C6A1] hover:underline">Lihat</a>
+                            <a href="/dashboard/pengaduan-riwayat/{{ Crypt::encryptString($report["id"]) }}" class="font-medium ml-3 text-gray-400 hover:underline">Riwayat</a>
                             @if ($report->isi_aduan_penyuluh == NULL)
                                 @if ($report->verification_statuses_id != 4)
                                     <a href="/dashboard/pengaduan-penyuluh/{{ Crypt::encryptString($report["id"]) }}/edit" class="text-white bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2 ml-3">Buat Aduan</a>

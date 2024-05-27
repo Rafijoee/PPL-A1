@@ -31,12 +31,12 @@
                         @endif
                         <div class="m-12">
                             <label for="email" class="text-xl font-poppins font-bold text-[#185141]">Email</label>
-                            <input type="email" name="email" id="email" class="mt-6 border-none bg-transparent focus:outline-none sm:text-sm block w-full p-2.5" required="">
+                            <input type="email" name="email" id="email" class="mt-6 border-none bg-transparent focus:outline-none sm:text-sm block w-full p-2.5">
                             <hr class="border-t-2 border-[#185141]">
                         </div>
                         <div class="m-12">
                             <label for="password" class="text-xl font-poppins font-bold text-[#185141]">Kata Sandi</label>
-                            <input type="password" name="password" id="password" class="mt-6 border-none bg-transparent focus:outline-none sm:text-sm block w-full p-2.5" required="">
+                            <input type="password" name="password" id="password" class="mt-6 border-none bg-transparent focus:outline-none sm:text-sm block w-full p-2.5">
                             <hr class="border-t-2 border-[#185141]">
                         </div>
                         <div class="m-12">
@@ -46,7 +46,7 @@
                             <button type="submit" class="text-xl font-poppins font-bold border-2 bg-[#185141] text-white flex items-center py-2 px-10 rounded-md hover:bg-transparent hover:text-[#185141]">Masuk</button>
                         </div>
                         <div class="m-12">
-                            <p class="flex justify-center text-sm  text-[#185141] font-bold  font-poppins">Belum Punya Akun? <a href="{{route('form_register')}}" class="underline">Buat Akun</a></p>
+                            <p class="flex justify-center text-sm  text-[#185141] font-bold  font-poppins">Belum Punya Akun? <a href="{{route('form_register')}}" class="underline">Daftar</a></p>
                         </div>
                     </form>
                 </div>
