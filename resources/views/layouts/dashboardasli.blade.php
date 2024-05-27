@@ -1,6 +1,4 @@
-@extends('layouts.index')
-@extends('layouts.navbar')
-@extends('layouts.dashboard2')
+@extends('layouts.dashboard')
 @section('title', 'Dashboard')
 
 <!-- Dashboard page -->
