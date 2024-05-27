@@ -16,6 +16,9 @@
         <div class="relative my-8 mx-4 sm:my-20 sm:mx-44">
             <img src="{{ asset('images/profile.png') }}" alt="Background Image" class="w-full h-auto sm:h-full object-cover">
             <div class="absolute inset-0 flex flex-col sm:flex-row">
+                <div class="absolute top-6 left-6 bg-white bg-opacity-40 rounded-full p-2">
+                    <a href="/profile"><i class="fa-solid fa-arrow-left fa-xl" style="color: #ffffff;"></i></a>
+                </div>
                 <div class="w-full sm:w-2/5 flex justify-center items-center bg-black bg-opacity-50 sm:bg-transparent">
                     <div class="flex flex-col justify-center items-center p-4">
                         <img src="{{ asset('images/logo_akun.png') }}" class="scale-75 sm:scale-110" alt="">
