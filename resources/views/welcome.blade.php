@@ -28,9 +28,9 @@
             </div>
             <div class="sm:mt-5 mt-3">
                 @if (Auth::check())
-                    <a href="{{ route('dashboard') }}"  class="font-bold text-[#efefef] bg-[#1A6E57] hover:text-[#1A6E57] hover:bg-[#F2FBFF] hover:border-[#1A6E57] hover:border-2 py-2 px-10 rounded-xl sm:py-3.5 sm:px-20 sm:text-xl">Dashboard</a>
+                <a href="{{ route('dashboard') }}" class="font-bold text-[#efefef] bg-[#1A6E57] hover:text-[#1A6E57] hover:bg-[#F2FBFF] hover:border-[#1A6E57] hover:border-2 py-2 px-10 rounded-xl sm:py-3.5 sm:px-20 sm:text-xl">Dashboard</a>
                 @else
-                    <a href="{{ route('login') }}" class="font-bold text-[#efefef] bg-[#1A6E57] hover:text-[#1A6E57] hover:bg-[#F2FBFF] hover:border-[#1A6E57] hover:border-2 py-2 px-10 rounded-xl sm:py-3.5 sm:px-20 sm:text-xl">Masuk</a>
+                <a href="{{ route('login') }}" class="font-bold text-[#efefef] bg-[#1A6E57] hover:text-[#1A6E57] hover:bg-[#F2FBFF] hover:border-[#1A6E57] hover:border-2 py-2 px-10 rounded-xl sm:py-3.5 sm:px-20 sm:text-xl">Masuk</a>
                 @endif
             </div>
         </div>
@@ -40,7 +40,7 @@
         <div class="bg-white bg-opacity-85  sm:w-2/3 w-full absolute sm:top-[615px] top-60 sm:rounded-xl shadow-md  p-10">
             <p>tentang kami</p>
             <p class="text-5xl font-bold my-4">Apa itu Monitor</p>
-            <p class="text-justify">Monitor adalah platform digital yang menghubungkan petani dengan penyuluh dan Dinas Ketahanan Pangan Kabupaten Jember . Platform kami hadir untuk mempermudah pengaduan dan mempercepat  penyelesaian masalah yang dialami oleh petani di Kabupaten Jember.</p>
+            <p class="text-justify">Monitor adalah platform digital yang menghubungkan petani dengan penyuluh dan Dinas Ketahanan Pangan Kabupaten Jember . Platform kami hadir untuk mempermudah pengaduan dan mempercepat penyelesaian masalah yang dialami oleh petani di Kabupaten Jember.</p>
         </div>
         <p class="text-5xl font-bold mt-72 sm:mt-20">Layanan</p>
         <p class="mt-3 text-lg mb-10">layanan yang tersedia di Monitor</p>
@@ -85,22 +85,53 @@
     </div>
     <div class="w-screen mb-20">
         <div class="grid sm:grid-cols-4 justify-center gap-5 sm:gap-y-10 sm:ml-20 sm:mx-auto">
-            @foreach ($news as $berita) 
-                <div class="max-w-sm h-[380px] relative flex flex-col bg-white shadow hover:bg-gray-100 rounded-lg dark:bg-gray-800 dark:border-gray-700">
+            @foreach ($news as $berita)
+            <div class="max-w-sm h-[380px] relative flex flex-col bg-white shadow hover:bg-gray-100 rounded-lg dark:bg-gray-800 dark:border-gray-700">
+                <a href="dashboard/berita/{{$berita->slug}}">
+                    <img class="rounded-t-lg h-44 w-full mx-auto" src="{{ asset('storage/'.$berita->image) }}" alt="" />
+                </a>
+                <div class="pt-5 pl-2">
                     <a href="dashboard/berita/{{$berita->slug}}">
-                        <img class="rounded-t-lg h-44 w-full mx-auto" src="{{ asset('storage/'.$berita->image) }}" alt="" />
+                        <h5 class="mb-2 text-2xl capitalize font-bold tracking-tight text-gray-900 dark:text-white">{{ $berita->judul_berita }}</h5>
                     </a>
-                    <div class="pt-5 pl-2">
-                        <a href="dashboard/berita/{{$berita->slug}}">
-                            <h5 class="mb-2 text-2xl capitalize font-bold tracking-tight text-gray-900 dark:text-white">{{ $berita->judul_berita }}</h5>
-                        </a>
-                        <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> -->
-                        <div class="absolute top-80">
-                            <p class="mb-3 mr-5 font-normal text-gray-400">{{ $berita->updated_at->diffForHumans() }}</p>
+                    <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p> -->
+                    <div class="absolute top-80">
+                        <p class="mb-3 mr-5 font-normal text-gray-400">{{ $berita->updated_at->diffForHumans() }}</p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <div class="w-screen flex bg-[#F2FBFF]">
+            <div class="flex flex-row m-10 w-6/12">
+                <div class="w-full border-r-4">
+                    <div class="flex text-end my-6 flex-col mx-10">
+                        <h1 class="font-semibold text-4xl font-poppins text-[#185141]">Hubungi Kami</h1>
+                        <div class="mt-10">
+                            <h2 class="font-medium text-[#185141]">Email</h2>
+                            <h3 class="font-light text-[#525C60]">email@email.com</h3>
+                        </div>
+                        <div class="mt-10">
+                            <h2 class="font-medium text-[#185141]">Nomor</h2>
+                            <h3 class="font-light text-[#525C60]">666 888 888</h3>
+                        </div>
+                        <div class="mt-10">
+                            <h2 class="font-medium text-[#185141]">Alamat Dinas Ketahanan Pangan</h2>
+                            <h3 class="font-light text-[#525C60]">Jl. kita masih panjang</h3>
                         </div>
                     </div>
                 </div>
-            @endforeach
+            </div>
+            <div class="flex flex-col m-10 w-7/12">
+                <div class="mx-40">
+                    <img class="w-40" src="{{ asset('images/logo1.png') }}" alt="" />
+                </div>
+                <img class="w-80 mx-20 my-10" src="{{ asset('images/sosmed_footer.png') }}" alt="" />
+            </div>
+        </div>
+        <div class="w-screen bg-[#F2FBFF] flex-col items-center">
+            <hr class="sm:mx-auto border-y-2" />
+            <span class="block p-4 text-sm text-gray-500 sm:text-center dark:text-gray-400">Copyright © <strong>Monitor</strong></span>
         </div>
     </div>
 </div>
