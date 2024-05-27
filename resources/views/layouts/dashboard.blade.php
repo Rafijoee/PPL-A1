@@ -1,5 +1,4 @@
 @extends('layouts.index')
 @section('title', 'Dashboard')
 @extends('layouts.navbar')
-@extends('layouts.footer')
-@extends('layouts.dashboard2')
+@extends('layouts.sidebar')

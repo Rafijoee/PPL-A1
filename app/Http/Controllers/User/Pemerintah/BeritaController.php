@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User\Pemerintah;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BeritaController extends Controller
 {
@@ -12,7 +13,8 @@ class BeritaController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        return view('tutorial.pemerintah.berita', compact('user'));
     }
 
     /**

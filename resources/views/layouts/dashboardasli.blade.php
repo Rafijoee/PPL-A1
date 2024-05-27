@@ -1,6 +1,4 @@
-@extends('layouts.index')
-@extends('layouts.navbar')
-@extends('layouts.dashboard2')
+@extends('layouts.dashboard')
 @section('title', 'Dashboard')
 
 <!-- Dashboard page -->
@@ -39,7 +37,7 @@
                 @endif
                 @if($roles == 3)
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <a href="tutorial-penyuluh/aduan">
+                    <a href="tutorial-penyuluh/verifikasi">
                         <img src="{{asset('images/caraousel_penyuluh_aduan.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
@@ -49,7 +47,7 @@
                     </a>
                 </div>
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <a href="tutorial-penyuluh/verifikasi">
+                    <a href="tutorial-penyuluh/aduan">
                         <img src="{{asset('images/caraousel_penyuluh_notif.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
@@ -61,7 +59,7 @@
                     </a>
                 </div>
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <a href="tutorial-pemerintah/berita">
+                    <a href="tutorial-pemerintah/aduan">
                         <img src="{{asset('images/aduan_pemerintah.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
                     </a>
                 </div>
