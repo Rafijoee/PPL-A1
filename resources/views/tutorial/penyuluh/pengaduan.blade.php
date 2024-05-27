@@ -10,7 +10,7 @@
                 <hr class="border-t-2 border-[#185141]">
                 <ol class="list-decimal list-inside mx-4 text-[#185141] mt-8 space-y-4 font-semibold">
                     <li>Klik “Notifikasi”</li>
-                    <li>Notifikasi akan menampilkan tanggapan dari aduan petani.</li>
+                    <li>Notifikasi akan menampilkan aduan petani.</li>
                     <img src="{{asset('images/notifikasi_penyuluh.png')}}" class="mx-8 my-4" alt="">
                 </ol>
             </div>

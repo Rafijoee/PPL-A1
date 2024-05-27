@@ -49,7 +49,7 @@
                             <label for="no_hp" class="text-lg sm:text-xl font-poppins font-bold text-[#185141]">No handphone</label>
                             <input name="no_hp" id="no_hp" class="mt-2 sm:mt-4 border-none bg-transparent focus:outline-none text-sm sm:text-base block w-full" value="{{$profile->no_hp}}">
                             <hr class="border-t-2 border-[#185141]">
-                            @error('alamat')
+                            @error('no_hp')
                             <div class="invalid-feedback text-red-500">
                                 {{ $message }}
                             </div>

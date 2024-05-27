@@ -47,7 +47,7 @@
                 <div class="mx-2 sm:mx-12 my-4 sm:my-8">
                     <div class="mx-2 my-4">
                         <label for="name" class="text-lg sm:text-xl font-poppins font-bold text-[#185141]">Nama Lengkap</label>
-                        <input name="name" id="name" class="mt-2 sm:mt-4 border-none bg-transparent focus:outline-none ml-3  sm:text-lg block w-full" value="{{$user->name}}" readonly>
+                        <input name="name" id="name" class="mt-2 sm:mt-4 border-none bg-transparent focus:outline-none ml-3  sm:text-lg block w-full" value="{{$user?->name}}" readonly>
                         <hr class="border-t-2 border-[#185141]">
                         @error('name')
                         <div class="invalid-feedback text-red-500">
@@ -57,7 +57,7 @@
                     </div>
                     <div class="mx-2 my-4">
                         <label for="nik" class="text-lg sm:text-xl font-poppins font-bold text-[#185141]">NIK</label>
-                        <input  name="nik" id="nik" class="mt-2 sm:mt-4 border-none bg-transparent focus:outline-none ml-3 sm:text-lg block w-full" value="{{$profile->nik}}" readonly>
+                        <input  name="nik" id="nik" class="mt-2 sm:mt-4 border-none bg-transparent focus:outline-none ml-3 sm:text-lg block w-full" value="{{$profile?->nik}}" readonly>
                         <hr class="border-t-2 border-[#185141]">
                         @error('nik')
                         <div class="invalid-feedback text-red-500">
@@ -67,7 +67,7 @@
                     </div>
                     <div class="mx-2 my-4">
                         <label for="no_hp" class="text-lg sm:text-xl font-poppins font-bold text-[#185141]">No handphone</label>
-                        <input name="no_hp"  id="no_hp" class="mt-2 sm:mt-4 border-none bg-transparent focus:outline-none ml-3 sm:text-lg block w-full" value="{{$profile->no_hp}}" readonly>
+                        <input name="no_hp"  id="no_hp" class="mt-2 sm:mt-4 border-none bg-transparent focus:outline-none ml-3 sm:text-lg block w-full" value="{{$profile?->no_hp}}" readonly>
                         <hr class="border-t-2 border-[#185141]">
                         @error('no_hp')
                         <div class="invalid-feedback text-red-500">
@@ -77,7 +77,7 @@
                     </div>
                     <div class="mx-2 my-4">
                         <label for="alamat" class="text-lg sm:text-xl font-poppins font-bold text-[#185141]">Alamat</label>
-                        <input  name="alamat"  id="alamat" class="mt-2 sm:mt-4 border-none bg-transparent focus:outline-none ml-3 sm:text-lg block w-full" value="{{$profile->alamat}}" readonly>
+                        <input  name="alamat"  id="alamat" class="mt-2 sm:mt-4 border-none bg-transparent focus:outline-none ml-3 sm:text-lg block w-full" value="{{$profile?->alamat}}" readonly>
                         <hr class="border-t-2 border-[#185141]">
                         @error('alamat')
                         <div class="invalid-feedback text-red-500">
@@ -87,16 +87,7 @@
                     </div>
                     <div class="mx-2 my-4">
                         <label for="kecamatan" class="block text-lg sm:text-xl font-poppins font-bold text-[#185141]">Kecamatan</label>
-                        <input  name="kecamatan"  id="kecamatan" class="mt-2 sm:mt-4  border-none bg-transparent ml-3 focus:outline-none sm:text-lg block w-full" value="{{$kecamatan->name}}" readonly>
-                        <!-- <select name="kecamatan_id" id="kecamatan" class="mt-2 sm:mt-4 border-none bg-transparent focus:outline-none sm:text-sm block w-full">
-                            @foreach ($kecamatans as $kecamatan)
-                            @if(old('kecamatan_id', $profile->kecamatan_id) == $kecamatan->id)
-                            <option value="{{ $kecamatan->id }}" selected>{{ $kecamatan->name }}</option>
-                            @else
-                            <option value="{{ $kecamatan->id }}">{{ $kecamatan->name }}</option>
-                            @endif
-                            @endforeach
-                        </select> -->
+                        <input  name="kecamatan"  id="kecamatan" class="mt-2 sm:mt-4  border-none bg-transparent ml-3 focus:outline-none sm:text-lg block w-full" value="{{$kecamatan?->name}}" readonly>
                         <hr class="border-t-2 border-[#185141]">
                     </div>
                 </div>
