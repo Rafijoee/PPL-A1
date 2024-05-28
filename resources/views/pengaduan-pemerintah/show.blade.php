@@ -17,12 +17,13 @@
 </head>
 
 </head>
-<body class="bg-[#F2FBFF] text-[#185141]">
-    <div class="p-4 sm:ml-72 mt-16 mb-60">
-        <div class="border-b-4 border-[#185141]">
-            <h1 class="font-bold text-7xl">Laporan Pengaduan</h1>
-            <hr class="mt-5">
-        </div>    
+<body class="bg-[#F2FBFF] text-[#185141] flex flex-col sm:flex-row overflow-x-hidden">
+    <a href="/dashboard/pengaduan-penyuluh" class="sm:ml-80 sm:mt-32 max-h-8 mt-20 ml-3">
+        <svg class="w-[35px] h-[35px] text-[#185141] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 12h14M5 12l4-4m-4 4 4 4"/>
+        </svg>
+    </a>
+    <div class="p-4 w-full sm:mt-28 border-2 border-[#40C6A1] rounded-3xl mt-4 sm:mb-10 sm:ml-10 text-justify bg-white sm:mr-32">   
 
         <div class=" flex w-full justify-center">
             <form class=" w-2/3" method="post" action="/dashboard/pengaduan-pemerintah/{{ Crypt::encryptString($reports["id"]) }}" enctype="multipart/form-data">
@@ -30,7 +31,12 @@
                 @csrf
                 <h1 class="font-bold text-4xl">Aduan Petani</h1>
                 <p class="text-gray-300">{{ $namakecamatan->name }}, {{ $reports->created_at->format('D d M Y H:i:s') }}</p>
-                
+                <a href="/dashboard/pengaduan-riwayat/{{ Crypt::encryptString($reports["id"]) }}" class="text-white bg-[#037367] hover:bg-[#035367] font-medium rounded-lg text-md sm:px-10 px-8 sm:w-60 py-1.5 text-center sm:ml-[700px]">
+                    <div class="absolute sm:top-[222px] sm:left-[1527px] top-[237px] left-[21px]">
+                    </div>
+                    Lihat Riwayat
+                </a>
+
                 <div class="border-b-4 space-y-4 mt-3 pb-5 border-gray-200">
                     <div>
                         <label for="judul_laporan" class="block mb-2 text-3xl font-medium dark:text-white">Judul Aduan</label>

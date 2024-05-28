@@ -4,7 +4,7 @@
 <body class="bg-[#F2FBFF]">
     <div class="sm:ml-64 ml-8 mt-20 h-full w-[88%]">
         <div class=" sm:mx-20 mt-40 pb-10 bg-white rounded-2xl border-8">
-            <h1 class="font-bold text-4xl m-7">Riwayat Aduan</h1>
+            <h1 class="font-bold text-4xl m-7 text-center">Riwayat Aduan</h1>
             <hr>
             <div class="ml-20 mt-10">
                 <ol class="relative border-s border-gray-200 dark:border-gray-700">                  

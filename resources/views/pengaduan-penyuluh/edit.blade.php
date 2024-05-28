@@ -16,17 +16,25 @@
     </style>
 </head>
 <body class="bg-[#F2FBFF] text-[#185141]">
-    <div class="p-4 sm:ml-72 mt-16 mb-96 text-justify ">
+    <div class="p-4 sm:ml-80 sm:mr-12 sm:mt-28 border-2 border-[#40C6A1] rounded-3xl mt-24 ml-2 mr-1 mb-10 bg-white">  
         <form method="post" action="/dashboard/pengaduan-penyuluh/edit/{{ Crypt::encryptString($reports["id"]) }}">
             @method('put')
             @csrf
             <h2 class="text-4xl font-bold">{{ $reports->judul_laporan }}</h2>
             <p>{{ $reports->updated_at->format('D d M Y H:i:s') }}</p>
             <br>
-            <a href="/dashboard/pengaduan-penyuluh" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-1.5 text-center me-2 mb-28">Kembali</a>
+            <a href="/dashboard/pengaduan-riwayat/{{ Crypt::encryptString($reports["id"]) }}" class="text-white bg-[#037367] hover:bg-[#035367] font-medium rounded-lg text-md sm:px-10 px-8 sm:w-60 py-1.5 text-center sm:ml-[1100px] mr-3">
+                <div class="absolute sm:top-[222px] sm:left-[1527px] top-[237px] left-[21px]">
+                </div>
+                Lihat Riwayat
+            </a>
             @if ($reports->handling__statuses_id == 3)
             @else
-                <a href="/dashboard/pengaduan-penyuluh/{{ Crypt::encryptString($reports["id"]) }}/edit" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-1.5 text-center me-2 mb-28">Edit</a>
+            <a href="/dashboard/pengaduan-penyuluh/{{ Crypt::encryptString($reports["id"]) }}/edit" class="text-white bg-[#037367] hover:bg-[#035367] font-medium rounded-lg text-md sm:pl-12 sm:pr-10 px-8 py-1.5 text-center sm:ml-[20px]">
+                <div class="absolute sm:left-[1770px] sm:top-[220px] left-[200px] top-[237px]">
+                </div>
+                Edit
+            </a>
             @endif
             <h2 class="text-2xl font-bold mt-5">Isi Aduan Petani</h2>
             <div class="bg-gray-100 py-2 text-justify mt-3 px-2 rounded-lg">
