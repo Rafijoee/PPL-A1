@@ -20,7 +20,7 @@
             </li>
             @elseif ($user->roles_id == 3)
             <li>
-                <a href="/dashboard/pengaduan-penyuluh" class="dashboard-link flex items-center p-2 text-[#185141] rounded-lg dark:text-white hover:text-[#D3D3D3] hover:bg-gray-100 dark:hover:bg-gray-700 group {{ request()->is('dashboard/pengaduan-penyuluh') ? 'active' : '' }}">
+                <a href="/dashboard/pengaduan-penyuluh" class="dashboard-link flex items-center p-2 text-[#185141] rounded-lg dark:text-white hover:bg-[#26826F] hover:text-[#D3D3D3] dark:hover:bg-gray-700 group {{ request()->is('dashboard/pengaduan-penyuluh') ? 'active' : '' }}">
                     <i class="fa-solid fa-seedling w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                     <span class="flex-1 ms-3 whitespace-nowrap text-xl">Pengaduan</span>
                 </a>

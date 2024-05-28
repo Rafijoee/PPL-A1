@@ -178,15 +178,15 @@
                             <div>
                                 <div class="">
                                     @if ($report->handling__statuses_id == 2)
-                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-[#594FB7] rounded-lg text-gray-900">
+                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-[#594FB7] rounded-lg text-white">
                                         sedang ditindaklanjuti
                                         </div>
                                     @elseif ($report->handling__statuses_id == 3)
-                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-[#037367] rounded-lg text-gray-900">
+                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-[#037367] rounded-lg text-white">
                                         sudah ditindaklanjuti
                                         </div>
                                     @else
-                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-[#3197F2] rounded-lg text-gray-900">
+                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-[#3197F2] rounded-lg text-white">
                                         belum ditindaklanjuti
                                         </div>
                                     @endif
@@ -194,19 +194,19 @@
                             </div>
                             <div class="badge">
                             @if ($report->verification_statuses_id == 2)
-                                <div class="absolute top-2 right-2 text-sm w-1/3 bg-yellow-200 rounded-lg text-gray-900">
+                                <div class="absolute top-2 right-2 text-sm w-1/3 bg-yellow-200 rounded-lg text-white">
                                     sedang diverifikasi
                                 </div>
                             @elseif ($report->verification_statuses_id == 3)
-                                <div class="absolute top-2 right-2 text-sm w-1/3 bg-[#037367] rounded-lg text-gray-900">
+                                <div class="absolute top-2 right-2 text-sm w-1/3 bg-[#037367] rounded-lg text-white">
                                 sudah diverifikasi
                                 </div>
                             @elseif ($report->verification_statuses_id == 4)
-                                <div class="absolute top-2 right-2 px-0.5 text-sm w-1/3 bg-[#ED3131] rounded-lg text-gray-900">
+                                <div class="absolute top-2 right-2 px-0.5 text-sm w-1/3 bg-[#ED3131] rounded-lg text-white">
                                 Aduan ditolak
                                 </div>
                             @else
-                                <div class=" absolute top-2 right-2 text-sm w-1/3 bg-[#3197F2] rounded-lg text-gray-900">
+                                <div class=" absolute top-2 right-2 text-sm w-1/3 bg-[#3197F2] rounded-lg text-white">
                                 belum diverifikasi
                                 </div>
                             @endif

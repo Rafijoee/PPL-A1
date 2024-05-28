@@ -61,8 +61,11 @@ class AuthController extends Controller
             'nik' => 'required|numeric',
             'no_hp' => 'required|numeric',
             'alamat' => 'required',
-            'kecamatan_id' => 'required'
+            'kecamatan_id' => 'required',
+            'kelompok_tani' => 'required',
+            'status' => 'required'
         ]);
+        
         $roles = $validate_data['roles_id'] = '2';
         
         $user = new User();
