@@ -47,7 +47,7 @@
     </div>
     <div class="w-screen flex flex-col sm:flex-row items-center gap-7 sm:gap-0 sm:pb-52 pb-20 bg-[#F2FBFF] text-white">
         <div class="kotak-kiri bg-[#185141] rounded-xl w-2/3 sm:w-1/2 sm:mr-20 sm:ml-96 sm:pb-[23px] flex flex-col justify-center">
-            <img src="{{ asset('images/lp.png') }}" alt="" class="ml-[135px] sm:ml-48 -mt-5 sm:mt-5 scale-50 max-w-40">
+            <img src="{{ asset('images/lp.png') }}" alt="" class="ml-[135px] sm:ml-48 -mt-5 sm:mt-5 scale-50 max-w-40 flex justify-center">
             <p class="text-3xl font-bold text-center -mt-8">Pengaduan</p>
             <p class="text-lg text-center px-10 my-2">Membuat Aduan Lebih Mudah</p>
             <p class="text-sm text-center mx-5 pb-5 sm:mx-8">Adukan masalah terkait pertanian yang sedang dialami. Penyuluh dan pemerintah akan memverifikasi aduan anda dengan segera.</p>
