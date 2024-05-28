@@ -160,13 +160,13 @@
             <!-- Swiper -->
         <div class="swiper mySwiper mt-16 border-[#40C6A1]">
             <div class="swiper-wrapper">
-                <div class="swiper-slide h-96 rounded-xl bg-[#40C6A1] hover:bg-[#40A1A1]">
+                <div class="swiper-slide h-96 rounded-xl bg-[#037367] hover:bg-[#035367]">
                     <a href="/dashboard/pengaduan/create" class="rounded-xl w-full">
                         <div class="h-[450px] rounded-xl flex flex-col items-center justify-center focus:ring-4 border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700">
                             <svg class="w-16 h-16 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 12h14m-7 7V5"/>
                             </svg>
-                            <p class="font-bold text-2xl text-white">Buat Pengaduan</p>
+                            <p class="font-bold text-2xl text-white">Buat Aduan</p>
                         </div>
                     </a>
                 </div>
@@ -211,12 +211,12 @@
                                 </div>
                             @endif
                             </div>
-                            <div class="absolute bottom-16">
-                                <a href="/dashboard/pengaduan/{{ Crypt::encryptString($report["id"]) }}" class="bg-[#40C6A1] hover:bg-[#40A1A1] py-0.5 px-5 rounded-md text-white">lihat</a>
+                            <div class="absolute bottom-10">
+                                <a href="/dashboard/pengaduan/{{ Crypt::encryptString($report["id"]) }}" class="bg-[#037367] hover:bg-[#035367] py-0.5 px-5 rounded-md text-white">lihat</a>
                             </div>
-                            <div class="absolute bottom-6 mt-3">
+                            <!-- <div class="absolute bottom-6 mt-3">
                                 <a href="/dashboard/pengaduan-riwayat/{{ Crypt::encryptString($report["id"]) }}" class="py-1 px-3.5 rounded-md text-gray-500 hover:text-gray-300">Riwayat</a>
-                            </div>
+                            </div> -->
                     </div>
                 @endforeach
             </div>
