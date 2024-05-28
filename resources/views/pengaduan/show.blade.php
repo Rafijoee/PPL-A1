@@ -46,7 +46,7 @@
         <h2 class="text-2xl font-bold">Foto</h2>
         <img src="{{ asset('storage/'.$reports->foto_lokasi) }}" alt="" class="max-h-[800px] my-3">
         <!-- <a href="#" id="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2 ml-5 mr-5 mx-auto flex justify-center" onclick="hideShow()">Lihat Tanggapan</a> -->
-        <button id="button" class="text-white bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md  w-full py-2 px-2 mt-3" onclick="hideShow()">Lihat Tanggapan</button>       
+        <button id="button" class="text-white bg-[#185141] hover:bg-[#26826F] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md  w-full py-2 px-2 mt-3" onclick="hideShow()">Lihat Tanggapan</button>       
         <div class="mt-5" id="tanggapan" style="display: none;">
             <h2 class="text-2xl font-bold mt-5 border-t-2">Tanggapan Penyuluh</h2>
             @if ($reports->tanggapan_penyuluh)

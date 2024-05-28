@@ -53,7 +53,7 @@
                             @enderror
                             <div class="my-12">
                                 <label for="alamat" class="text-xl font-poppins font-bold text-[#185141]">Alamat</label>
-                                <textarea type="text" name="alamat" id="alamat" rows="4" class=" form-control @error('alamat') border-red-500 @enderror bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#40C6A1] focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan Alamat Anda..."></textarea>
+                                <textarea type="text" name="alamat" id="alamat" rows="4" class=" form-control @error('alamat') border-red-500 @enderror bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[#185141] focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan Alamat Anda..."></textarea>
                                 @error('alamat')
                                 <div class="invalid-feedback text-red-500">
                                     {{ $message }}

@@ -126,9 +126,9 @@
                     </select>
                 </div>
                 @if ($reports->tanggapan_pemerintah)
-                <button type="submit" class="mt-10 text-white w-full bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">Simpan</button>
+                <button type="submit" class="mt-10 text-white w-full bg-[#185141] hover:bg-[#26826F] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">Simpan</button>
                 @else
-                    <button id="button" class="text-white bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md  w-full py-2 px-2" onclick="hideShow()">Buat Tanggapan</button>
+                    <button id="button" class="text-white bg-[#185141] hover:bg-[#26826F] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md  w-full py-2 px-2" onclick="hideShow()">Buat Tanggapan</button>
                 @endif
                 <div class="mt-5" id="tanggapan" style="display: none;">
                     @if ($reports->tanggapan_pemerintah)    
@@ -145,7 +145,7 @@
                         </div>
                     @endif
 
-                    <button type="submit" class="mt-10 text-white w-full bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">Kirim</button>
+                    <button type="submit" class="mt-10 text-white w-full bg-[#185141] hover:bg-[#26826F] focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-md px-5 py-2.5 text-center me-2 mb-2">Kirim</button>
                 </div>
                 @endif
                 

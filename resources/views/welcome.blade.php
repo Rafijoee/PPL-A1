@@ -46,13 +46,13 @@
         <p class="mt-3 text-lg mb-10">layanan yang tersedia di Monitor</p>
     </div>
     <div class="w-screen flex flex-col sm:flex-row items-center gap-7 sm:gap-0 sm:pb-52 pb-20 bg-[#F2FBFF] text-white">
-        <div class="kotak-kiri bg-[#40C6A1] rounded-xl w-2/3 sm:w-1/2 sm:mr-20 sm:ml-96 sm:pb-[23px] flex flex-col justify-center">
-            <img src="{{ asset('images/lp.png') }}" alt="" class="ml-[135px] sm:ml-48 -mt-5 sm:mt-5 scale-50 max-w-40">
+        <div class="kotak-kiri bg-[#185141] rounded-xl w-2/3 sm:w-1/2 sm:mr-20 sm:ml-96 sm:pb-[23px] flex flex-col justify-center">
+            <img src="{{ asset('images/lp.png') }}" alt="" class="ml-[135px] sm:ml-48 -mt-5 sm:mt-5 scale-50 max-w-40 flex justify-center">
             <p class="text-3xl font-bold text-center -mt-8">Pengaduan</p>
             <p class="text-lg text-center px-10 my-2">Membuat Aduan Lebih Mudah</p>
             <p class="text-sm text-center mx-5 pb-5 sm:mx-8">Adukan masalah terkait pertanian yang sedang dialami. Penyuluh dan pemerintah akan memverifikasi aduan anda dengan segera.</p>
         </div>
-        <div class="kotak-kanan bg-[#40C6A1] rounded-xl w-2/3 sm:mr-96 sm:w-1/2 sm:ml-0 sm:pt-3 sm:pb-5 flex flex-col justify-center">
+        <div class="kotak-kanan bg-[#185141] rounded-xl w-2/3 sm:mr-96 sm:w-1/2 sm:ml-0 sm:pt-3 sm:pb-5 flex flex-col justify-center">
             <img src="{{ asset('images/ks.png') }}" alt="" class="ml-[135px] sm:ml-48 sm:mt-9 scale-75 max-w-40">
             <p class="text-3xl font-bold text-center">Konsultasi</p>
             <p class="text-lg text-center px-10 my-2">Konsultasi dengan Penyuluh Online</p>
@@ -79,7 +79,7 @@
 
     </div>
     <div class="mt-10">
-        <div class="w-screen flex items-center justify-center mb-20 bg-[#40C6A1] py-5">
+        <div class="w-screen flex items-center justify-center mb-20 bg-[#185141] py-5">
             <p class="text-center font-extrabold text-4xl text-white">Berita Terbaru</p>
         </div>
     </div>

@@ -2,16 +2,17 @@
 @section('title', 'Dashboard')
 
 <!-- Dashboard page -->
+
 <body class="bg-[#F2FBFF]">
     <div class="z-10 w-full sm:h-[51.5vh] h-[284px]  bg-opacity-20 sm:-mt-4 absolute bg-black"></div>
     <div class="">
-        <img src="{{ asset('images/sawah2.png') }}" alt="" class="mt-9 w-full sm:h-[50vh]">
+        <img src="{{ asset('images/sawah3.png') }}" alt="" class="mt-9 w-full sm:h-[50vh]">
         <div class="w-full">
-            <div class="z-10 w-1/2 sm:h-[50vh] absolute top-0 ml-3 mt-9 bg-white bg-opacity-15">
-                <p class="absolute sm:top-28 top-12 left-40 w-full sm:left-[700px] text-white font-semibold text-lg sm:text-3xl">Halo, {{$user->name}}!</p>
+            <div class="z-10 w-1/2 sm:h-[50vh] absolute top-0 ml-3 mt-9">
+            <p class=" absolute sm:top-28 top-12 left-40 w-full sm:left-[700px] text-white font-semibold text-lg sm:text-3xl">Halo {{$user->name}}</p>
                 <p class="absolute top-[102px] sm:top-36 left-40 sm:left-[700px] text-white font-black text-5xl sm:text-9xl shadow">Selamat</p>
                 <p class="absolute top-36 sm:top-64 sm:left-[1000px] left-56 text-white font-black text-5xl sm:text-9xl shadow">Datang</p>
-                <p class="absolute sm:top-[320px] top-52 left-32 w-full sm:w-96 sm:left-[350px] text-justify text-white font-semibold text-xs sm:text-lg">Buat aduan pertanian dengan mudah dari rumah tanpa harus mencetak dokumen. Pantau perkembangan aduan real time dengan sekali klik.</p>
+                <p class="absolute sm:top-[320px] top-52 left-32 w-full sm:w-96 sm:left-[330px] text-justify text-white font-semibold text-xs sm:text-sm">Buat aduan pertanian dengan mudah dari rumah tanpa harus mencetak dokumen. Pantau perkembangan aduan real time dengan sekali klik.</p>
             </div>
         </div>
     </div>
@@ -52,7 +53,7 @@
                     </a>
                 </div>
                 @endif
-                @if ($roles ==  4)
+                @if ($roles == 4)
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
                     <a href="tutorial-pemerintah/berita">
                         <img src="{{asset('images/berita_pemerintah.png')}}" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
@@ -70,7 +71,7 @@
 
             <!-- Slider controls -->
             <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#40C6A1] dark:bg-gray-800/30 group-focus:outline-none">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#185141] dark:bg-gray-800/30 group-focus:outline-none">
                     <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
                     </svg>
@@ -78,7 +79,7 @@
                 </span>
             </button>
             <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#40C6A1] dark:bg-[#40C6A1] group-hover:bg-[#40C6A1] dark:group-[#40C6A1] group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#185141] dark:bg-[#185141] group-hover:bg-[#185141] dark:group-[#185141] group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                     <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
                     </svg>

@@ -17,7 +17,7 @@
                 
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{$profile_lain->nama}}</h5>
                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Saya adalah seorang penyuluh petani yang berkomitmen untuk meningkatkan kesejahteraan dan produktivitas petani melalui pendekatan yang berbasis pengetahuan dan praktik terbaik. Saya memiliki pengalaman yang luas dan pemahaman yang baik dalam pertanian</p>
-                <a href="{{ 'chat/' . $profile_lain->user_id }}" class=" items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#40C6A1] rounded-lg hover:bg-[#40A1A1] focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-[#40A1A1]  dark:hover:bg-[#40A1A1]">Konsultasi Sekarang !</a>
+                <a href="{{ 'chat/' . $profile_lain->user_id }}" class=" items-center px-3 py-2 text-sm font-medium text-center text-white bg-[#185141] rounded-lg hover:bg-[#26826F] focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-[#26826F]  dark:hover:bg-[#26826F]">Konsultasi Sekarang !</a>
             </div>
         </div>
     </div>
