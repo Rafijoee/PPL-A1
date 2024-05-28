@@ -19,7 +19,7 @@
                 <h1 class="sm:mt-4 text-4xl font-poppins font-bold text-[#185141]">Buat Akun</h1>
 
                 <div class="flex flex-col sm:w-full mt-4 overflow-y-auto h-[500px]">
-                    <form action="{{ url('register') }}" method="post" class="form-control">
+                    <form action="{{ url('register') }}" method="post" class="form-control" enctype="multipart/form-data">
                         @method('POST')
                         @csrf
                         <div class="m-12">
@@ -71,6 +71,16 @@
                                     @endif
                                     @endforeach
                                 </select>
+                            </div>
+                            <div>
+                                <label for="kelompok_tani" class="block text-xl font-poppins font-bold text-[#185141]">Foto Kartu Kelompok Tani</label>
+                                <img class="object-scale-down max-h-80 w-auto" id="frame">
+                                <input class="@error('kelompok_tani') border-red-500 @enderror form-control mt-3 border-gray-300 rounded-lg bg-gray-50 border w-full" type="file" id="kelompok_tani" name="kelompok_tani" onchange="preview()">
+                                @error('kelompok_tani')
+                                <div class="invalid-feedback text-red-500">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                             <div class="my-12">
                                 <label for="email" class="text-xl font-poppins font-bold text-[#185141]">Email</label>

@@ -14,6 +14,7 @@ use App\Http\Controllers\ReportAdminController;
 use App\Http\Controllers\NewsPemerintahController;
 use App\Http\Controllers\ReportPenyuluhController;
 use App\Http\Controllers\ReportPemerintahController;
+use App\Http\Controllers\User\Admin\ValidasiStatus;
 use App\Http\Controllers\User\Pemerintah\AduanController as PemerintahAduanController;
 use App\Http\Controllers\User\Pemerintah\BeritaController;
 use App\Http\Controllers\User\Penyuluh\AduanController as PenyuluhAduanController;
@@ -59,6 +60,7 @@ Route::get('inbox', [NotifikasiController::class, 'index'])->name('inbox');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('dashboard2', [DashboardController::class, 'index2'])->name('dashboard2');
     Route::get('dashboard/berita/{id}', [DashboardController::class, 'show'])->name('berita.show');
     Route::get('dashboard/pengaduan-riwayat/{id}',[DashboardController::class, 'riwayat'])->name('pengaduan.riwayat');
     Route::group(['prefix' => 'profile'], function () {
@@ -115,6 +117,7 @@ Route::middleware('pemerintah')->group(function(){
 });
 
 Route::middleware('admin')->group(function(){
+    Route::resource('/validasi', ValidasiStatus::class);
     Route::group(['prefix' => 'dashboard'], function() {
         Route::resource('/pengaduan-admin', ReportAdminController::class);
     });

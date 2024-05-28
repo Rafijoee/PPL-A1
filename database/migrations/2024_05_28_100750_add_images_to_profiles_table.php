@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('profiles', function (Blueprint $table) {
             $table->string('kelompok_tani')->after('kecamatan_id');
-            $table->string('status')->after('kelompok_tani');
+            $table->string('status')->nullable()->after('kelompok_tani');
         });
     }
 
