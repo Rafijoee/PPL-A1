@@ -5,3 +5,7 @@
 * {
     font-family: "poppins", sans-serif;
 }
+
+.active {
+    @apply bg-[#185141] text-white;
+  }

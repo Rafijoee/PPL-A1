@@ -84,7 +84,7 @@
 
         <!-- <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-[#40C6A1] dark:bg-gray-700 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-[#185141] dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             No.
@@ -148,8 +148,8 @@
                             @endif
                         </td>
                         <td class="px-6 py-4">
-                            <a href="/dashboard/pengaduan/{{ Crypt::encryptString($report["id"]) }}" class="font-medium text-[#40C6A1] hover:underline">Lihat</a>
-                            <a href="/dashboard/pengaduan-riwayat/{{ Crypt::encryptString($report["id"]) }}" class="font-medium text-[#40C6A1] hover:underline ml-5">Riwayat</a>
+                            <a href="/dashboard/pengaduan/{{ Crypt::encryptString($report["id"]) }}" class="font-medium text-[#185141] hover:underline">Lihat</a>
+                            <a href="/dashboard/pengaduan-riwayat/{{ Crypt::encryptString($report["id"]) }}" class="font-medium text-[#185141] hover:underline ml-5">Riwayat</a>
                         </td>
                     @endforeach
                     </tr>
@@ -158,9 +158,9 @@
         </div> -->
 
             <!-- Swiper -->
-        <div class="swiper mySwiper mt-16 border-[#40C6A1]">
+        <div class="swiper mySwiper mt-16 border-[#185141]">
             <div class="swiper-wrapper">
-                <div class="swiper-slide h-96 rounded-xl bg-[#40C6A1] hover:bg-[#40A1A1]">
+                <div class="swiper-slide h-96 rounded-xl bg-[#185141] hover:bg-[#26826F]">
                     <a href="/dashboard/pengaduan/create" class="rounded-xl w-full">
                         <div class="h-[450px] rounded-xl flex flex-col items-center justify-center focus:ring-4 border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700">
                             <svg class="w-16 h-16 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -171,22 +171,22 @@
                     </a>
                 </div>
                 @foreach ($reports as $report )
-                    <div class="swiper-slide h-96 relative rounded-xl border border-[#40C6A1]">
+                    <div class="swiper-slide h-96 relative rounded-xl border border-[#185141]">
                             <div class="mx-5 ">
                                 <p>{{ $report->judul_laporan }}</p>
                             </div>
                             <div>
                                 <div class="">
                                     @if ($report->handling__statuses_id == 2)
-                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-yellow-200 rounded-lg text-gray-900">
+                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-[#594FB7] rounded-lg text-gray-900">
                                         sedang ditindaklanjuti
                                         </div>
                                     @elseif ($report->handling__statuses_id == 3)
-                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-lime-300 rounded-lg text-gray-900">
+                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-[#037367] rounded-lg text-gray-900">
                                         sudah ditindaklanjuti
                                         </div>
                                     @else
-                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-sky-300 rounded-lg text-gray-900">
+                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-[#3197F2] rounded-lg text-gray-900">
                                         belum ditindaklanjuti
                                         </div>
                                     @endif
@@ -198,21 +198,21 @@
                                     sedang diverifikasi
                                 </div>
                             @elseif ($report->verification_statuses_id == 3)
-                                <div class="absolute top-2 right-2 text-sm w-1/3 bg-lime-300 rounded-lg text-gray-900">
+                                <div class="absolute top-2 right-2 text-sm w-1/3 bg-[#037367] rounded-lg text-gray-900">
                                 sudah diverifikasi
                                 </div>
                             @elseif ($report->verification_statuses_id == 4)
-                                <div class="absolute top-2 right-2 px-0.5 text-sm w-1/3 bg-red-300 rounded-lg text-gray-900">
+                                <div class="absolute top-2 right-2 px-0.5 text-sm w-1/3 bg-[#ED3131] rounded-lg text-gray-900">
                                 Aduan ditolak
                                 </div>
                             @else
-                                <div class=" absolute top-2 right-2 text-sm w-1/3 bg-sky-300 rounded-lg text-gray-900">
+                                <div class=" absolute top-2 right-2 text-sm w-1/3 bg-[#3197F2] rounded-lg text-gray-900">
                                 belum diverifikasi
                                 </div>
                             @endif
                             </div>
                             <div class="absolute bottom-16">
-                                <a href="/dashboard/pengaduan/{{ Crypt::encryptString($report["id"]) }}" class="bg-[#40C6A1] hover:bg-[#40A1A1] py-0.5 px-5 rounded-md text-white">lihat</a>
+                                <a href="/dashboard/pengaduan/{{ Crypt::encryptString($report["id"]) }}" class="bg-[#185141] hover:bg-[#26826F] py-0.5 px-5 rounded-md text-white">lihat</a>
                             </div>
                             <div class="absolute bottom-6 mt-3">
                                 <a href="/dashboard/pengaduan-riwayat/{{ Crypt::encryptString($report["id"]) }}" class="py-1 px-3.5 rounded-md text-gray-500 hover:text-gray-300">Riwayat</a>
@@ -220,8 +220,8 @@
                     </div>
                 @endforeach
             </div>
-            <div class="swiper-button-next text-[#40A1A1]"></div>
-            <div class="swiper-button-prev  text-[#40A1A1]"></div>
+            <div class="swiper-button-next text-[#26826F]"></div>
+            <div class="swiper-button-prev  text-[#26826F]"></div>
             <div class="swiper-pagination "></div>
         </div>
         

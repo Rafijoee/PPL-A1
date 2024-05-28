@@ -32,7 +32,7 @@
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-[#40C6A1] dark:bg-gray-700 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-[#185141] dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
                             No.
@@ -62,19 +62,19 @@
                         </td>
                         <td class="px-6 py-4">    
                             @if ($report->verification_statuses_id == 2)
-                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-yellow-200 rounded-lg text-gray-900">
+                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-[#594FB7] rounded-lg text-gray-900">
                                     sedang diverifikasi
                                 </div>
                             @elseif ($report->verification_statuses_id == 3)
-                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-lime-300 rounded-lg text-gray-900">
+                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-[#037367] rounded-lg text-gray-900">
                                 sudah diverifikasi
                                 </div>
                             @elseif ($report->verification_statuses_id == 4)
-                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-red-300 rounded-lg text-gray-900">
+                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-[#ED3131] rounded-lg text-gray-900">
                                 Aduan ditolak
                                 </div>
                             @else
-                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-sky-300 rounded-lg text-gray-900">
+                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-[#3197F2] rounded-lg text-gray-900">
                                 belum diverifikasi
                                 </div>
                             @endif
@@ -82,22 +82,22 @@
                         <td class="px-6 py-4">
                             
                             @if ($report->handling__statuses_id == 2)
-                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-yellow-200 rounded-lg text-gray-900">
+                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-[#594FB7] rounded-lg text-gray-900">
                                 sedang ditindaklanjuti
                                 </div>
                             @elseif ($report->handling__statuses_id == 3)
-                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-lime-300 rounded-lg text-gray-900">
+                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-[#037367] rounded-lg text-gray-900">
                                 sudah ditindaklanjuti
                                 </div>
                             @else
-                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-sky-300 rounded-lg text-gray-900">
+                                <div class="w-1/2 px-2 text-center max-[1500px]:w-28 bg-[#ED3131] rounded-lg text-gray-900">
                                 belum ditindaklanjuti
                                 </div>
                             @endif
                         </td>
                         
                         <td class="px-6 py-4">
-                            <a href="/dashboard/pengaduan-admin/{{ Crypt::encryptString($report["id"]) }}" class="font-medium text-[#40C6A1] hover:underline">Lihat</a>
+                            <a href="/dashboard/pengaduan-admin/{{ Crypt::encryptString($report["id"]) }}" class="font-medium text-[#185141] hover:underline">Lihat</a>
                         </td>
                     @endforeach
                     </tr>

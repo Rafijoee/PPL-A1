@@ -30,7 +30,7 @@
 
         <div class="mt-5 mb-60 gap-2  grid justify-between grid-cols-4 max-[1500px]:grid-cols-2 max-[800px]:grid-cols-1">
             <a href="/dashboard/berita-pemerintah/create">
-                <div class="max-w-sm h-[450px] flex flex-col items-center justify-center bg-[#40C6A1] hover:bg-[#40A1A1] focus:ring-4 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <div class="max-w-sm h-[450px] flex flex-col items-center justify-center bg-[#185141] hover:bg-[#26826F] focus:ring-4 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                     <svg class="w-16 h-16 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 12h14m-7 7V5"/>
                     </svg>

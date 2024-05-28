@@ -1,5 +1,4 @@
-@extends('layouts.navbar')
-@extends('layouts.dashboard2')
+@extends('layouts.dashboard')
 @extends('layouts.index')
 @section('title', 'Konsultasi')
     <div class="p-4 sm:ml-64 text-justify mt-12">
@@ -47,7 +46,7 @@
                     <!-- Chat Input -->
                     <div class="bg-gray-200 px-4 py-2 rounded-b-lg fixed bottom-0 w-full justify-content-end">
                         <input type="text" name="body" id="body" class="w-[1160px] flex-1 appearance-none rounded-full py-2 px-3 mr-2 focus:outline-none focus:shadow-outline" placeholder="Type your message...">
-                        <button type="submit" class=" px-3 py-2 bg-[#40A1A1] text-white rounded-full hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Kirim</button>
+                        <button type="submit" class=" px-3 py-2 bg-[#185141] text-white rounded-full hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Kirim</button>
                     </div>
                 </div>
             </div>
