@@ -72,7 +72,6 @@ class ReportController extends Controller
             // Tambahkan error message jika tidak ada kata yang sama
             return redirect()->back()->withErrors(['isi_aduan' => 'Judul dan isi aduan harus memiliki setidaknya beberapa kata yang sama.']);
         }
-
         if ($request->file('image')) {
             $validatedData['foto_lokasi'] = $request->file('image')->store('post-images');
         }

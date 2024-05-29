@@ -31,6 +31,10 @@
             @csrf
                 <div class="border-b-4 border-gray-200">
                     <div>
+                        <label for="judul_laporan" class="block mb-2 text-2xl font-semibold text-gray-900 dark:text-white">Nama Petani</label>
+                        <input type="text" name="judul_laporan" id="judul_laporan" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="judul aduan"  value="{{ $user_name }}" readonly>
+                    </div>
+                    <div>
                         <label for="judul_laporan" class="block mb-2 text-2xl font-semibold text-gray-900 dark:text-white">Judul Aduan</label>
                         <input type="text" name="judul_laporan" id="judul_laporan" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="judul aduan"  value="{{ $reports->judul_laporan }}" readonly>
                     </div>

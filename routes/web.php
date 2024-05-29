@@ -8,6 +8,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ChatifyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FileDownloadController;
 use App\Http\Controllers\KonsultasiController;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\ReportAdminController;
@@ -72,6 +73,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 Route::middleware('petani')->group(function(){
+    Route::get('/download/{filename}', [FileDownloadController::class, 'downloadFile'])->name('download.file');
     Route::get('/chat', [ChatController::class, 'index']);
     Route::post('/chat', [ChatController::class, 'store']);
     Route::get('/chat/{id}', [ChatController::class, 'show'])->name('chat.show');
