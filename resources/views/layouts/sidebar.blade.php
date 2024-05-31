@@ -68,14 +68,6 @@
                     <span class="flex-1 ms-3 text-xl whitespace-nowrap">Notifikasi</span>
                 </a>
             </li>
-            @if ($user->roles_id == 1)
-            <li>
-                <a href="/validasi" class="dashboard-link flex items-center p-2 text-[#185141] rounded-lg dark:text-white hover:bg-[#26826F] hover:text-[#D3D3D3] dark:hover:bg-gray-700 group {{ request()->is('inbox') ? 'active' : '' }}">
-                    <i class="fa-solid fa-envelope text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
-                    <span class="flex-1 ms-3 text-xl whitespace-nowrap">validasi</span>
-                </a>
-            </li>
-            @endif
         </ul>
     </div>
 </aside>

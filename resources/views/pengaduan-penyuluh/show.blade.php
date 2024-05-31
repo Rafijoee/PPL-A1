@@ -39,7 +39,7 @@
         <p class="text-left"> {{$petani}}</p>
         <h2 class="text-2xl font-bold mt-5">Isi Aduan Petani</h2>
         <p class="">{!! $reports->isi_aduan !!}</p>
-        <br>
+        <br>    
         <h2 class="text-2xl font-bold">Foto dari Petani</h2>
         <img src="{{ asset('storage/'.$reports->foto_lokasi) }}" alt="" class="scale-75 max-h-[800px]">
         <div class="border-t-2 border-gray-200 mb-5">
