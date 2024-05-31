@@ -28,7 +28,7 @@ class AuthController extends Controller
 
             if ($profile) {
                 if ($profile->status === null) {
-                    return redirect('/dashboard2');
+                    return redirect('/dashboard');
                 } else {
                     return redirect('/dashboard');
                 }
@@ -73,7 +73,6 @@ class AuthController extends Controller
             'no_hp' => 'required|numeric',
             'alamat' => 'required',
             'kecamatan_id' => 'required',
-            'kelompok_tani' => 'required|image|file|max:20480',
         ]);
 
 
@@ -97,11 +96,10 @@ class AuthController extends Controller
         $profile->nik = $validate_data['nik'];
         $profile->alamat = $validate_data['alamat'];
         $profile->kecamatan_id = $validate_data['kecamatan_id'];
-        $profile->kelompok_tani = $validate_data['kelompok_tani'];
         $profile->save();
 
         Auth::login($user);
 
-        return redirect('/dashboard2');
+        return redirect('/dashboard');
     }
 }

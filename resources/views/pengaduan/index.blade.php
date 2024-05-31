@@ -81,9 +81,6 @@
         @endif
         <h1 class="font-bold text-4xl">Pengaduan</h1>
 
-        <div class="mt-5">
-            <a href="{{ route('download.file', ['filename' => 'pernyataan.pdf']) }}" class="bg-[#037367] hover:bg-[#035367] py-0.5 px-5 rounded-md text-white">Download Pernyataan</a>
-        </div>
 
 
         <!-- <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
@@ -218,9 +215,6 @@
                             <div class="absolute bottom-10 flex flex-col">
                                 <div class="flex-row">
                                     <a href="/dashboard/pengaduan/{{ Crypt::encryptString($report["id"]) }}" class="bg-[#037367] hover:bg-[#035367] py-0.5 px-5 rounded-md text-white">lihat</a>
-                                </div>
-                                <div class="flex-row mt-5">
-                                    <a href="#" class=" text-gray">Upload Pernyataan</a>
                                 </div>
                             </div>
                             

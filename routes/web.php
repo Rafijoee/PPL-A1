@@ -54,14 +54,12 @@ Route::post('login', [AuthController::class, 'authenticate'])->name('authenticat
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('register', [AuthController::class, 'form_register'])->name('form_register');
 Route::post('register', [AuthController::class, 'register'])->name('register');
-Route::get('inbox', [NotifikasiController::class, 'index'])->name('inbox');
 
 
 
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('dashboard2', [DashboardController::class, 'index2'])->name('dashboard2');
     Route::get('dashboard/berita/{id}', [DashboardController::class, 'show'])->name('berita.show');
     Route::get('dashboard/pengaduan-riwayat/{id}',[DashboardController::class, 'riwayat'])->name('pengaduan.riwayat');
     Route::group(['prefix' => 'profile'], function () {
@@ -69,6 +67,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/update', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/update', [ProfileController::class, 'update'])->name('profile.update');
     });
+    Route::resource('/inbox', NotifikasiController::class);
 });
 
 

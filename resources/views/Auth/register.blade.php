@@ -72,16 +72,6 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div>
-                                <label for="kelompok_tani" class="block text-xl font-poppins font-bold text-[#185141]">Foto Kartu Kelompok Tani</label>
-                                <img class="object-scale-down max-h-80 w-auto" id="frame">
-                                <input class="@error('kelompok_tani') border-red-500 @enderror form-control mt-3 border-gray-300 rounded-lg bg-gray-50 border w-full" type="file" id="kelompok_tani" name="kelompok_tani" onchange="preview()">
-                                @error('kelompok_tani')
-                                <div class="invalid-feedback text-red-500">
-                                    {{ $message }}
-                                </div>
-                                @enderror
-                            </div>
                             <div class="my-12">
                                 <label for="email" class="text-xl font-poppins font-bold text-[#185141]">Email</label>
                                 <input type="email" name="email" id="email" class="mt-6 border-none bg-transparent focus:outline-none sm:text-sm block w-full p-2.5">
