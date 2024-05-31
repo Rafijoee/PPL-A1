@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Report;
 use App\Models\Profile;
 use App\Models\Kecamatan;
 use App\Models\Notifikasi;
-use App\Models\VerificationStatus;
 use Illuminate\Http\Request;
+use App\Models\VerificationStatus;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
@@ -25,7 +26,10 @@ class ReportPenyuluhController extends Controller
 
         $model = Report::findOrFail($decryptedID);
         $verifs = VerificationStatus::all();
-        return view('pengaduan-penyuluh.edit', compact('reports', 'model', 'namakecamatan', 'verifs', 'user'));
+        $petani = $reports->user_id;
+        $username = User::where('id', $petani)->first();
+        $username = $username->name;
+        return view('pengaduan-penyuluh.edit', compact('reports', 'model', 'namakecamatan', 'verifs', 'user', 'username'));
     }
 
     public function update2(Request $request, Report $report, $id){
@@ -94,8 +98,11 @@ class ReportPenyuluhController extends Controller
         $kecamatan_id = $reports->kecamatan_id;
         $kecamatans = Kecamatan::all();
         $namakecamatan = Kecamatan::where('id', $kecamatan_id)->first();
-
-        return view('pengaduan-penyuluh.show', compact('model', 'reports', 'namakecamatan', 'user'));
+        
+        $petani = $reports->user_id;
+        $username = User::where('id', $petani)->first();
+        $username = $username->name;
+        return view('pengaduan-penyuluh.show', compact('model', 'reports', 'namakecamatan', 'user', 'username'));
     }
 
     /**
@@ -110,11 +117,14 @@ class ReportPenyuluhController extends Controller
         $kecamatan_id = $reports->kecamatan_id;
         $kecamatans = Kecamatan::all();
         $namakecamatan = Kecamatan::where('id', $kecamatan_id)->first();
+        $petani = $reports->user_id;
+        $username = User::where('id', $petani)->first();
+        $username = $username->name;
 
         
 
         $model = Report::findOrFail($decryptedID);
-        return view("pengaduan-penyuluh.create", compact('reports', 'model', 'namakecamatan', 'user'));
+        return view("pengaduan-penyuluh.create", compact('reports', 'model', 'namakecamatan', 'user', 'username'));
     }
 
     /**

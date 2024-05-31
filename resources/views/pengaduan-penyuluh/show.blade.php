@@ -33,6 +33,8 @@
                 Edit
             </a>
             @endif
+        <h2 class="text-2xl font-bold mt-5">Nama Petani</h2>
+        <p class="">{{ $username }}</p>
         <h2 class="text-2xl font-bold mt-5">Isi Aduan Petani</h2>
         <p class="text-right">{!! $reports->isi_aduan !!}</p>
         <br>

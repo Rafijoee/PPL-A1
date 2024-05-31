@@ -62,9 +62,12 @@ class ReportPemerintahController extends Controller
         $kecamatans = Kecamatan::all();
         $namakecamatan = Kecamatan::where('id', $kecamatan_id)->first();
         $handlings = Handling_Status::all();
+        $petani = $reports->user_id;
+        $username = User::where('id', $petani)->first();
+        $username = $username->name;
 
         $model = Report::findOrFail($decryptedID);
-        return view("pengaduan-pemerintah.show", compact('reports', 'model', 'namakecamatan', 'handlings', 'user'));
+        return view("pengaduan-pemerintah.show", compact('reports', 'model', 'namakecamatan', 'handlings', 'user', 'username'));
     }
 
     /**
