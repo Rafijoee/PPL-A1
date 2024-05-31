@@ -15,7 +15,7 @@
                 <div class="relative inline-block shrink-0">
                     <img class="w-[85,3px] h-12" src="{{asset('images/notifikasi.png')}}" />
                 </div>
-                <div class="ms-3 text-sm font-normal">
+                <a href="{{ route('pengaduan.show', Crypt::encryptString($notif->report_id)) }}" class="ms-3 text-sm font-normal">
                     @if ($notif->user_id > 2 )
                     <p class="text-sm font-semibold text-gray-900 dark:text-white m-1">Penyuluh Telah Memberi Tanggapan pada Aduan Anda</p>
                     @elseif ($notif->user_id == 2)
@@ -25,7 +25,7 @@
                         <p class="ml-2">{{strip_tags($notif->title)}}</p>
                     </div>
                     <span class=" m-1 text-xs font-medium text-blue-600 dark:text-blue-500">{{ $notif->created_at->diffForHumans() }}</span>
-                </div>
+                </a>
             </div>
             @endforeach
             @endif

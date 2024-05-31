@@ -15,7 +15,7 @@
             </div>
             <img src="{{asset('images/Ellipse 75.png')}}" class="scale-150 mt-52 sm:mt-10 ml-40 sm:ml-5 sm:scale-75" alt="">
         </div>
-        <div class="text mt-40 mb-12 sm:ml-40 text-center sm:text-left text-[#274C5B]">
+        <div class="text mt-40 mb-12 sm:ml-40 text-center sm:text-left text-[#274C5B]" id="home">
             <p class="font-semibold italic sm:text-2xl">Monitoring aduan anda secara realtime</p>
             <p class="font-extrabold text-4xl my-2 sm:my-6 sm:text-5xl">Selamat Datang di Monitor!</p>
             <p class="font-bold text-2xl sm:text-5xl sm:pr-40">Lindungi Hak Petani, Tingkatkan Kualitas Pertanian</p>
@@ -35,17 +35,20 @@
             </div>
         </div>
     </div>
-    <div class="w-screen relative flex flex-col items-center text-[#185141] bg-[#F2FBFF]">
+    <div class="w-screen relative flex flex-col items-center text-[#185141] bg-[#F2FBFF]" id="tentang">
         <img src="{{ asset('images/tani.png') }}" alt="" class="w-full">
         <div class="bg-white bg-opacity-85  sm:w-2/3 w-full absolute sm:top-[615px] top-60 sm:rounded-xl shadow-md  p-10">
             <p>tentang kami</p>
             <p class="text-5xl font-bold my-4">Apa itu Monitor</p>
             <p class="text-justify">Monitor adalah platform digital yang menghubungkan petani dengan penyuluh dan Dinas Ketahanan Pangan Kabupaten Jember . Platform kami hadir untuk mempermudah pengaduan dan mempercepat penyelesaian masalah yang dialami oleh petani di Kabupaten Jember.</p>
         </div>
-        <p class="text-5xl font-bold mt-72 sm:mt-20">Layanan</p>
-        <p class="mt-3 text-lg mb-10">layanan yang tersedia di Monitor</p>
+        <div id="layanan">
+            <p class="text-5xl font-bold mt-72 sm:mt-20">Layanan</p>
+            <p class="mt-3 text-lg mb-10">layanan yang tersedia di Monitor</p>
+
+        </div>
     </div>
-    <div class="w-screen flex flex-col sm:flex-row items-center gap-7 sm:gap-0 sm:pb-52 pb-20 bg-[#F2FBFF] text-white">
+    <div class="w-screen flex flex-col sm:flex-row items-center gap-7 sm:gap-0 sm:pb-52 pb-20 bg-[#F2FBFF] text-white" id="">
         <div class="kotak-kiri bg-[#185141] rounded-xl w-2/3 sm:w-1/2 sm:mr-20 sm:ml-96 sm:pb-[23px] flex flex-col justify-center">
             <img src="{{ asset('images/lp.png') }}" alt="" class="ml-[135px] sm:ml-48 -mt-5 sm:mt-5 scale-50 max-w-40 flex justify-center">
             <p class="text-3xl font-bold text-center -mt-8">Pengaduan</p>
@@ -59,7 +62,7 @@
             <p class="text-sm text-center mx-5 pb-5">Hubungi penyuluh yang berada di lokasi sekitar anda untuk memberikan jawaban atas pertanyaan terkait pertanian.</p>
         </div>
     </div>
-    <div class="w-screen relative">
+    <div class="w-screen relative" id="benefit">
         <img src="{{ asset('images/sawah.png') }}" alt="" class="max-h-[1000px]">
         <div class="text-[#185141] w-screen sm:w-1/2 h-[644px] bg-white bg-opacity-80 sm:bg-opacity-95 sm:rounded-3xl top-0 sm:top-44 sm:right-20 absolute z-10">
             <p class="text-center sm:text-left pl-16 text-5xl font-bold mt-16">Benefit <br> yang didapatkan : </p>

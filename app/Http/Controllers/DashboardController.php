@@ -38,4 +38,11 @@ class DashboardController extends Controller
         
         return view('pengaduan.riwayat', compact('user', 'reports'));
     }
+
+    public function index2(){
+        $user = Auth::user();
+
+        return view('dashboard2');
+    }
 }
+

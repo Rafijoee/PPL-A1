@@ -63,8 +63,6 @@
 </html>
 <body class="bg-[#F2FBFF]">
     <div class="p-4 sm:ml-72 mt-16">
-        <h1 class="font-bold text-4xl">Pengaduan</h1>
-
         @if (session()->has('success'))
         <div id="alert-border-3" class="flex items-center mt-5 p-4 mb-4 text-green-800 border-t-4 border-green-300 bg-green-50 dark:text-green-400 dark:bg-gray-800 dark:border-green-800" role="alert">
             <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -81,6 +79,9 @@
             </button>
         </div>
         @endif
+        <h1 class="font-bold text-4xl">Pengaduan</h1>
+
+
 
         <!-- <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -178,15 +179,15 @@
                             <div>
                                 <div class="">
                                     @if ($report->handling__statuses_id == 2)
-                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-[#594FB7] rounded-lg text-gray-900">
+                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-[#594FB7] rounded-lg text-white">
                                         sedang ditindaklanjuti
                                         </div>
                                     @elseif ($report->handling__statuses_id == 3)
-                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-[#037367] rounded-lg text-gray-900">
+                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-[#037367] rounded-lg text-white">
                                         sudah ditindaklanjuti
                                         </div>
                                     @else
-                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-[#3197F2] rounded-lg text-gray-900">
+                                        <div class="absolute top-2 left-2 text-sm w-[38%] bg-[#3197F2] rounded-lg text-white">
                                         belum ditindaklanjuti
                                         </div>
                                     @endif
@@ -194,38 +195,40 @@
                             </div>
                             <div class="badge">
                             @if ($report->verification_statuses_id == 2)
-                                <div class="absolute top-2 right-2 text-sm w-1/3 bg-yellow-200 rounded-lg text-gray-900">
+                                <div class="absolute top-2 right-2 text-sm w-1/3 bg-yellow-200 rounded-lg text-white">
                                     sedang diverifikasi
                                 </div>
                             @elseif ($report->verification_statuses_id == 3)
-                                <div class="absolute top-2 right-2 text-sm w-1/3 bg-[#037367] rounded-lg text-gray-900">
+                                <div class="absolute top-2 right-2 text-sm w-1/3 bg-[#037367] rounded-lg text-white">
                                 sudah diverifikasi
                                 </div>
                             @elseif ($report->verification_statuses_id == 4)
-                                <div class="absolute top-2 right-2 px-0.5 text-sm w-1/3 bg-[#ED3131] rounded-lg text-gray-900">
+                                <div class="absolute top-2 right-2 px-0.5 text-sm w-1/3 bg-[#ED3131] rounded-lg text-white">
                                 Aduan ditolak
                                 </div>
                             @else
-                                <div class=" absolute top-2 right-2 text-sm w-1/3 bg-[#3197F2] rounded-lg text-gray-900">
+                                <div class=" absolute top-2 right-2 text-sm w-1/3 bg-[#3197F2] rounded-lg text-white">
                                 belum diverifikasi
                                 </div>
                             @endif
                             </div>
-                            <div class="absolute bottom-10">
-                                <a href="/dashboard/pengaduan/{{ Crypt::encryptString($report["id"]) }}" class="bg-[#037367] hover:bg-[#035367] py-0.5 px-5 rounded-md text-white">lihat</a>
+                            <div class="absolute bottom-10 flex flex-col">
+                                <div class="flex-row">
+                                    <a href="/dashboard/pengaduan/{{ Crypt::encryptString($report["id"]) }}" class="bg-[#037367] hover:bg-[#035367] py-0.5 px-5 rounded-md text-white">lihat</a>
+                                </div>
                             </div>
+                            
                             <!-- <div class="absolute bottom-6 mt-3">
                                 <a href="/dashboard/pengaduan-riwayat/{{ Crypt::encryptString($report["id"]) }}" class="py-1 px-3.5 rounded-md text-gray-500 hover:text-gray-300">Riwayat</a>
                             </div> -->
+                        </div>
+                        @endforeach
                     </div>
-                @endforeach
-            </div>
-            <div class="swiper-button-next text-[#26826F]"></div>
-            <div class="swiper-button-prev  text-[#26826F]"></div>
-            <div class="swiper-pagination "></div>
-        </div>
-        
-
+                    <div class="swiper-button-next text-[#26826F]"></div>
+                    <div class="swiper-button-prev  text-[#26826F]"></div>
+                    <div class="swiper-pagination "></div>
+                </div>
+                
     </div>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 

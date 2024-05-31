@@ -21,6 +21,7 @@
     @else
     
     <div class="p-4 sm:ml-64 text-justify mt-3 sm:mr-5">
+        @if ($roles != 1)
         <div id="default-carousel" class="relative w-full pl-20 pr-20 ml-5" data-carousel="slide">
             <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
                 @if ($roles == 2 )

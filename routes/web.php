@@ -8,12 +8,14 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ChatifyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FileDownloadController;
 use App\Http\Controllers\KonsultasiController;
 use App\Http\Controllers\NotifikasiController;
 use App\Http\Controllers\ReportAdminController;
 use App\Http\Controllers\NewsPemerintahController;
 use App\Http\Controllers\ReportPenyuluhController;
 use App\Http\Controllers\ReportPemerintahController;
+use App\Http\Controllers\User\Admin\ValidasiStatus;
 use App\Http\Controllers\User\Pemerintah\AduanController as PemerintahAduanController;
 use App\Http\Controllers\User\Pemerintah\BeritaController;
 use App\Http\Controllers\User\Penyuluh\AduanController as PenyuluhAduanController;
@@ -52,7 +54,6 @@ Route::post('login', [AuthController::class, 'authenticate'])->name('authenticat
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('register', [AuthController::class, 'form_register'])->name('form_register');
 Route::post('register', [AuthController::class, 'register'])->name('register');
-Route::get('inbox', [NotifikasiController::class, 'index'])->name('inbox');
 
 
 
@@ -66,10 +67,12 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/update', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/update', [ProfileController::class, 'update'])->name('profile.update');
     });
+    Route::resource('/inbox', NotifikasiController::class);
 });
 
 
 Route::middleware('petani')->group(function(){
+    Route::get('/download/{filename}', [FileDownloadController::class, 'downloadFile'])->name('download.file');
     Route::get('/chat', [ChatController::class, 'index']);
     Route::post('/chat', [ChatController::class, 'store']);
     Route::get('/chat/{id}', [ChatController::class, 'show'])->name('chat.show');
@@ -115,6 +118,7 @@ Route::middleware('pemerintah')->group(function(){
 });
 
 Route::middleware('admin')->group(function(){
+    Route::resource('/validasi', ValidasiStatus::class);
     Route::group(['prefix' => 'dashboard'], function() {
         Route::resource('/pengaduan-admin', ReportAdminController::class);
     });

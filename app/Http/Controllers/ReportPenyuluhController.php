@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Storage;
 
 class ReportPenyuluhController extends Controller
 {
-    public function edit2(Report $report, $id){
+    public function edit2(Report $report, $id)
+    {
         $user = Auth::user();
         $user_id = Auth::user()->id;
         $decryptedID = Crypt::decryptString($id);
@@ -32,7 +33,8 @@ class ReportPenyuluhController extends Controller
         return view('pengaduan-penyuluh.edit', compact('reports', 'model', 'namakecamatan', 'verifs', 'user', 'username'));
     }
 
-    public function update2(Request $request, Report $report, $id){
+    public function update2(Request $request, Report $report, $id)
+    {
         $decryptedID = Crypt::decryptString($id);
         $reports = Report::find($decryptedID);
 
@@ -41,13 +43,13 @@ class ReportPenyuluhController extends Controller
         ]);
 
         $validatedData['tanggapan_penyuluh'] = $request->input('tanggapan_penyuluh');
-        $verif_status =$request->input('verification_statuses_id') ;
+        $verif_status = $request->input('verification_statuses_id');
 
         Report::where('id', $reports->id)
-              ->update([
+            ->update([
                 'tanggapan_penyuluh' => $validatedData['tanggapan_penyuluh'],
                 'verification_statuses_id' => $verif_status
-              ]);
+            ]);
 
         return redirect('/dashboard/pengaduan-penyuluh')->with('success', 'Tanggapan berhasil dikirim!');
     }
@@ -78,7 +80,6 @@ class ReportPenyuluhController extends Controller
      */
     public function store(Request $request)
     {
-    
     }
 
     /**
@@ -90,9 +91,11 @@ class ReportPenyuluhController extends Controller
         $user_id = Auth::user()->id;
         $decryptedID = Crypt::decryptString($id);
         $reports = Report::find($decryptedID);
-        
+
         $model = Report::findOrFail($decryptedID);
-        $id_petanis = Report::where('id', $reports->id)->pluck('user_id');
+        $id_petanis = Report::where('id', $reports->id)->pluck('user_id')->first();
+        $petani = User::where('id', $id_petanis)->pluck('name')->first();
+        // dd($petani);
         $kecamatan_petani = Profile::where('user_id', $id_petanis)->pluck('kecamatan_id')->first();
         // dd($model);
         $kecamatan_id = $reports->kecamatan_id;
@@ -147,34 +150,33 @@ class ReportPenyuluhController extends Controller
             ]);
         }
 
-        if($request->file('foto')){
-            if($request->oldImage2){
+        if ($request->file('foto')) {
+            if ($request->oldImage2) {
                 Storage::delete($request->oldImage2);
             }
             $validatedData['foto'] = $request->file('foto')->store('post-images-penyuluh');
-        }
-        else{
+        } else {
             $validatedData['foto'] = $request->oldImage2;
         }
         $validatedData['isi_aduan_penyuluh'] = $request->input('isi_aduan_penyuluh');
         $verif = 3;
 
         Report::where('id', $reports->id)
-              ->update([
+            ->update([
                 'foto_penyuluh' => $validatedData['foto'],
                 'isi_aduan_penyuluh' => $validatedData['isi_aduan_penyuluh'],
                 'verification_statuses_id' => $verif
-              ]);
+            ]);
         $profile = Auth::user()->profile;
         $kecamatan_kita = $profile->kecamatan_id;
-        $profile_lain = Profile::where('kecamatan_id',$kecamatan_kita)->where('id', '!=', $profile->id)->pluck('user_id')->first();
+        $profile_lain = Profile::where('kecamatan_id', $kecamatan_kita)->where('id', '!=', $profile->id)->pluck('user_id')->first();
         $notifikasi = new Notifikasi();
         $notifikasi->user_id = Auth::user()->id;
         $notifikasi->to_id = Report::where('id', $reports->id)->pluck('user_id')->first();
         $notifikasi->report_id = $reports->id;
         $notifikasi->title = $validatedData['isi_aduan_penyuluh'];
         $notifikasi->save();
-        
+
         $notifikasi1 = new Notifikasi();
         $notifikasi1->user_id = Auth::user()->id;
         $notifikasi1->to_id = 2;
@@ -192,5 +194,4 @@ class ReportPenyuluhController extends Controller
     {
         //
     }
-
 }

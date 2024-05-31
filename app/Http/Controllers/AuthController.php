@@ -18,17 +18,28 @@ class AuthController extends Controller
     {
         return view('auth.login');
     }
-
     public function authenticate(Request $request)
     {
         $credentials = $request->only('email', 'password');
+
         if (Auth::attempt($credentials)) {
-            return redirect('/dashboard');
-        } else {
-            if($request->email && $request->password){
-                return redirect('login')->with('error', 'Email atau Kata sandi salah !');
+            $user = Auth::user();
+            $profile = $user->profile;
+
+            if ($profile) {
+                if ($profile->status === null) {
+                    return redirect('/dashboard');
+                } else {
+                    return redirect('/dashboard');
+                }
+            } else {
+                // Handle kasus jika profil tidak ditemukan
+                return redirect('/dashboard')->with('error', 'Profil tidak ditemukan.');
             }
-            else{
+        } else {
+            if ($request->email && $request->password) {
+                return redirect('login')->with('error', 'Email atau Kata sandi salah !');
+            } else {
                 return redirect('login')->with('error', 'Email atau Kata sandi tidak boleh kosong !');
             }
         }
@@ -61,10 +72,16 @@ class AuthController extends Controller
             'nik' => 'required|numeric',
             'no_hp' => 'required|numeric',
             'alamat' => 'required',
-            'kecamatan_id' => 'required'
+            'kecamatan_id' => 'required',
         ]);
+
+
         $roles = $validate_data['roles_id'] = '2';
-        
+
+        if ($request->file('kelompok_tani')) {
+            $validate_data['kelompok_tani'] = $request->file('kelompok_tani')->store('kelompok-tani');
+        }
+
         $user = new User();
         $user->email = $validate_data['email'];
         $user->roles_id = $roles;
@@ -80,8 +97,9 @@ class AuthController extends Controller
         $profile->alamat = $validate_data['alamat'];
         $profile->kecamatan_id = $validate_data['kecamatan_id'];
         $profile->save();
-        
+
         Auth::login($user);
+
         return redirect('/dashboard');
     }
 }

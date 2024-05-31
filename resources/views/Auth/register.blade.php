@@ -19,7 +19,7 @@
                 <h1 class="sm:mt-4 text-4xl font-poppins font-bold text-[#185141]">Buat Akun</h1>
 
                 <div class="flex flex-col sm:w-full mt-4 overflow-y-auto h-[500px]">
-                    <form action="{{ url('register') }}" method="post" class="form-control">
+                    <form action="{{ url('register') }}" method="post" class="form-control" enctype="multipart/form-data">
                         @method('POST')
                         @csrf
                         <div class="m-12">
