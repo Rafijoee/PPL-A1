@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Report;
 use App\Models\Profile;
 use App\Models\Kecamatan;
 use App\Models\Notifikasi;
-use App\Models\User;
-use App\Models\VerificationStatus;
 use Illuminate\Http\Request;
+use App\Models\VerificationStatus;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
@@ -27,7 +27,10 @@ class ReportPenyuluhController extends Controller
 
         $model = Report::findOrFail($decryptedID);
         $verifs = VerificationStatus::all();
-        return view('pengaduan-penyuluh.edit', compact('reports', 'model', 'namakecamatan', 'verifs', 'user'));
+        $petani = $reports->user_id;
+        $username = User::where('id', $petani)->first();
+        $username = $username->name;
+        return view('pengaduan-penyuluh.edit', compact('reports', 'model', 'namakecamatan', 'verifs', 'user', 'username'));
     }
 
     public function update2(Request $request, Report $report, $id)
@@ -98,8 +101,11 @@ class ReportPenyuluhController extends Controller
         $kecamatan_id = $reports->kecamatan_id;
         $kecamatans = Kecamatan::all();
         $namakecamatan = Kecamatan::where('id', $kecamatan_id)->first();
-
-        return view('pengaduan-penyuluh.show', compact('model', 'reports', 'namakecamatan', 'user', 'petani'));
+        
+        $petani = $reports->user_id;
+        $username = User::where('id', $petani)->first();
+        $username = $username->name;
+        return view('pengaduan-penyuluh.show', compact('model', 'reports', 'namakecamatan', 'user', 'username'));
     }
 
     /**
@@ -114,11 +120,14 @@ class ReportPenyuluhController extends Controller
         $kecamatan_id = $reports->kecamatan_id;
         $kecamatans = Kecamatan::all();
         $namakecamatan = Kecamatan::where('id', $kecamatan_id)->first();
-        $user_id = $reports->pluck('user_id')->first();
-        $user_name = User::where('id', $user_id)->pluck('name')->first();
+        $petani = $reports->user_id;
+        $username = User::where('id', $petani)->first();
+        $username = $username->name;
+
+        
 
         $model = Report::findOrFail($decryptedID);
-        return view("pengaduan-penyuluh.create", compact('reports', 'model', 'namakecamatan', 'user', 'user_name'));
+        return view("pengaduan-penyuluh.create", compact('reports', 'model', 'namakecamatan', 'user', 'username'));
     }
 
     /**
@@ -128,11 +137,18 @@ class ReportPenyuluhController extends Controller
     {
         $decryptedID = Crypt::decryptString($id);
         $reports = Report::find($decryptedID);
-
-        $validatedData = $request->validate([
-            'foto' => 'file|image|max:20480',
-            'isi_aduan_penyuluh' => 'required|max:255'
-        ]);
+        if($request->oldImage2){
+            $validatedData = $request->validate([
+                'foto' => 'file|image|max:20480',
+                'isi_aduan_penyuluh' => 'required|max:255'
+            ]);
+        }
+        else{
+            $validatedData = $request->validate([
+                'foto' => 'required|file|image|max:20480',
+                'isi_aduan_penyuluh' => 'required|max:255'
+            ]);
+        }
 
         if ($request->file('foto')) {
             if ($request->oldImage2) {

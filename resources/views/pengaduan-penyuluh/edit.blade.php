@@ -36,6 +36,8 @@
                 Edit
             </a>
             @endif
+            <h2 class="text-2xl font-bold mt-5">Nama Petani</h2>
+            <p class="">{{ $username }}</p>
             <h2 class="text-2xl font-bold mt-5">Isi Aduan Petani</h2>
             <div class="bg-gray-100 py-2 text-justify mt-3 px-2 rounded-lg">
                 <p class="">{!! $reports->isi_aduan !!}</p>
