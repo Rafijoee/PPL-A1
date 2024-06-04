@@ -3,9 +3,9 @@
 
 <body>
     <div class="relative w-full h-full min-h-screen">
-        <img src="{{ asset('images/auth.png') }}" alt="Background Image" class="absolute inset-0 w-full h-full object-cover">
+        <img src="{{ asset('images/auth.png') }}" alt="Background Image" class="sm:absolute sm:inset-0 sm:w-full sm:h-full sm:object-cover">
         <div class="absolute inset-0">
-            <div class="fixed top-0 right-0 w-[35vw] bg-[#FFFFFF] bg-opacity-80 sm:mr-20 sm:my-[10vh] rounded-xl p-4 flex flex-col justify-center items-center">
+        <div class="absolute my-auto right-0 left-0 sm:w-[35vw] bg-[#FFFFFF] bg-opacity-80 sm:mr-20 sm:my-[10vh] rounded-xl sm:p-4 flex flex-col justify-center items-center m-4 sm:mx-auto h-full">
                 <img src="{{ asset('images/logo_akun.png') }}" class="scale-75" alt="">
                 <h1 class="sm:mt-4 text-4xl font-poppins font-bold text-[#185141]">Buat Akun</h1>
 

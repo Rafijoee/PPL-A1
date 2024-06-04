@@ -1,9 +1,5 @@
 @extends('layouts.dashboard')
 @section('title', 'Dashboard')
-
-<!-- Dashboard page -->
-
-@section('content')
 <body class="bg-[#F2FBFF]">
     <div class="z-10 w-full sm:h-[49.5vh] h-[284px] bg-opacity-20 sm:-mt-4 absolute bg-black"></div>
     <div class="">
@@ -133,5 +129,4 @@
     </div>
     @endif
 </body>
-@endsection
 
