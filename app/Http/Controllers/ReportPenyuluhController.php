@@ -51,6 +51,13 @@ class ReportPenyuluhController extends Controller
                 'verification_statuses_id' => $verif_status
             ]);
 
+        Notifikasi::create([
+            'user_id' => Auth::user()->id, 
+            'to_id'=> Report::where('id', $reports->id)->pluck('user_id')->first(),
+            'report_id' => $reports->id,
+            'title' => $validatedData['tanggapan_penyuluh'],
+        ]);
+
         return redirect('/dashboard/pengaduan-penyuluh')->with('success', 'Tanggapan berhasil dikirim!');
     }
     /**
@@ -170,12 +177,6 @@ class ReportPenyuluhController extends Controller
         $profile = Auth::user()->profile;
         $kecamatan_kita = $profile->kecamatan_id;
         $profile_lain = Profile::where('kecamatan_id', $kecamatan_kita)->where('id', '!=', $profile->id)->pluck('user_id')->first();
-        $notifikasi = new Notifikasi();
-        $notifikasi->user_id = Auth::user()->id;
-        $notifikasi->to_id = Report::where('id', $reports->id)->pluck('user_id')->first();
-        $notifikasi->report_id = $reports->id;
-        $notifikasi->title = $validatedData['isi_aduan_penyuluh'];
-        $notifikasi->save();
 
         $notifikasi1 = new Notifikasi();
         $notifikasi1->user_id = Auth::user()->id;
