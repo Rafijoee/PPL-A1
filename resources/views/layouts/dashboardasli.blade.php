@@ -4,19 +4,22 @@
 <!-- Dashboard page -->
 
 <body class="bg-[#F2FBFF]">
-    <div class="z-10 w-full sm:h-[51.5vh] h-[284px]  bg-opacity-20 sm:-mt-4 absolute bg-black"></div>
+    <div class="z-10 w-full sm:h-[49.5vh] h-[284px]  bg-opacity-20 sm:-mt-4 absolute bg-black"></div>
     <div class="">
         <img src="{{ asset('images/sawah3.png') }}" alt="" class="mt-9 w-full sm:h-[50vh]">
         <div class="w-full">
             <div class="z-10 w-1/2 sm:h-[50vh] absolute top-0 ml-3 mt-9">
-                <p class=" absolute sm:top-28 top-12 left-40 w-full sm:left-[700px] text-white font-semibold text-lg sm:text-3xl">Halo {{$user->name}}</p>
+            <p class=" absolute sm:top-28 top-12 left-40 w-full sm:left-[700px] text-white font-semibold text-lg sm:text-3xl">Halo, {{$user->name}}!</p>
                 <p class="absolute top-[102px] sm:top-36 left-40 sm:left-[700px] text-white font-black text-5xl sm:text-9xl shadow">Selamat</p>
                 <p class="absolute top-36 sm:top-64 sm:left-[1000px] left-56 text-white font-black text-5xl sm:text-9xl shadow">Datang</p>
-                <p class="absolute sm:top-[320px] top-52 left-32 w-full sm:w-96 sm:left-[330px] text-justify text-white font-semibold text-xs sm:text-sm">Buat aduan pertanian dengan mudah dari rumah tanpa harus mencetak dokumen. Pantau perkembangan aduan real time dengan sekali klik.</p>
+                <p class="absolute sm:top-[320px] top-52 left-32 w-full sm:w-96 sm:left-[310px] text-justify text-white font-semibold text-xs sm:text-sm">Buat aduan pertanian dengan mudah dari rumah tanpa harus mencetak dokumen. Pantau perkembangan aduan real time dengan sekali klik.</p>
             </div>
         </div>
     </div>
-
+    @if ($roles == 1)
+        
+    @else
+    
     <div class="p-4 sm:ml-64 text-justify mt-3 sm:mr-5">
         @if ($roles != 1)
         <div id="default-carousel" class="relative w-full pl-20 pr-20 ml-5" data-carousel="slide">
@@ -69,6 +72,7 @@
 
                 @endif
             </div>
+           
 
 
             <!-- Slider controls -->
