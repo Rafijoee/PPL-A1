@@ -45,9 +45,9 @@
                 @endif
                 @endforeach
                 <!-- Chat Input -->
-                <div class="bg-gray-200 px-4 flex py-2 mb-4 rounded-b-lg fixed bottom-0  -ml-4 w-[1250px] ">
-                    <input type="text" name="body" id="body" class="flex flex-grow appearance-none rounded-full py-2 px-3 mr-2 focus:outline-none focus:shadow-outline" placeholder="Type your message...">
-                    <button type="submit" class=" px-3 py-2 bg-[#26826F] text-white rounded-full hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Kirim</button>
+                <div class="bg-gray-200 sm:px-4 flex py-2 mb-4 rounded-b-lg fixed bottom-0 sm:w-[71vw] sm:-ml-5 -ml-5 w-[60vw]">
+                    <input type="text" name="body" id="body" class="flex flex-grow sm:appearance-none rounded-full sm:py-2 sm:px-3 sm:mr-2 focus:outline-none focus:shadow-outline" placeholder="Type your message...">
+                    <button type="submit" class=" px-3 py-2 bg-[#26826F] text-white rounded-full ">Kirim</button>
                 </div>
             </div>
         </div>

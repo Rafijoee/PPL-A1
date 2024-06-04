@@ -20,7 +20,8 @@ class Notifikasi extends Model
     public function profile(){
         return $this->belongsTo(Profile::class, 'user_id');
     }
-    public function report(){
-        return $this->belongsTo(Report::class, 'report_id');
+    public function report()
+    {
+        return $this->belongsTo(Report::class, 'report_id', 'id');
     }
 }

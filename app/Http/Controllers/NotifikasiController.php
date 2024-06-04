@@ -16,8 +16,9 @@ class NotifikasiController extends Controller
     {
         $user = Auth::user();
         $user_id = $user->id;
-        $notifs = Notifikasi::latest()->where('to_id', $user_id)->get();
+        $notifs = Notifikasi::latest()->where('to_id', $user_id)->with('report')->get();
         $reports = Report::latest()->where('user_id', $user_id)->get();
+
 
         return view('notifikasi.index', compact('user', 'notifs', 'reports'));
     }

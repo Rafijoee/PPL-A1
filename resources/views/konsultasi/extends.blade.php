@@ -1,5 +1,5 @@
 <div class="mt-24 px-2 sm:ml-[31vh] text-justify flex flex-row w-auto">
-    <div class="w-[30vh] bg-gray-200 rounded-l-lg ">
+    <div class="w-[30vh] bg-gray-200 rounded-l-lg sm:h-[88vh] h-[88vh]">
         <h1 class="text-lg font-bold ml-2 mt-2 border-b-2 border-gray-300 pb-2.5 flex justify-between">Chats <i class="fa-regular fa-comment-dots fa-xl mt-3.5 mr-2 justify-end" style="color: #8a9099"></i></h1>
         <div class="flex flex-col ml-2 mt-2">
             @foreach ($kontaks as $kontak)

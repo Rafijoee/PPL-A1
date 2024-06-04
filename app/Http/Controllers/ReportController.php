@@ -94,13 +94,6 @@ class ReportController extends Controller
         $notifikasi->to_id = $profile_lain;
         $notifikasi->report_id = $reportId;
         $notifikasi->title = $validatedData['judul_laporan'];
-
-        $notifikasi->save();
-        $notifikasi = new Notifikasi();
-        $notifikasi->user_id = Auth::user()->id;
-        $notifikasi->to_id = 2;
-        $notifikasi->report_id = $reportId;
-        $notifikasi->title = $validatedData['judul_laporan'];
         $notifikasi->save();
 
         return redirect('/dashboard/pengaduan')->with('success', 'Aduan berhasil dikirimkan!');
