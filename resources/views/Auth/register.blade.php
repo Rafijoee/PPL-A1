@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+@extends('layouts.index')
+@section('title', 'Register')
 
 <body>
-    <div class="relative">
-        <img src="{{ asset('images/auth.png') }}" alt="Background Image" class="w-full">
+    <div class="relative w-full h-full min-h-screen">
+        <img src="{{ asset('images/auth.png') }}" alt="Background Image" class="absolute inset-0 w-full h-full object-cover">
         <div class="absolute inset-0">
-            <div class="fixed top-0 right-0 w-[661px] bg-[#FFFFFF] bg-opacity-80 sm:mr-20 sm:mt-5 rounded-xl p-4 flex flex-col justify-center items-center">
+            <div class="fixed top-0 right-0 w-[35vw] bg-[#FFFFFF] bg-opacity-80 sm:mr-20 sm:my-[10vh] rounded-xl p-4 flex flex-col justify-center items-center">
                 <img src="{{ asset('images/logo_akun.png') }}" class="scale-75" alt="">
                 <h1 class="sm:mt-4 text-4xl font-poppins font-bold text-[#185141]">Buat Akun</h1>
 
@@ -112,5 +103,3 @@
         </div>
     </div>
 </body>
-
-</html>

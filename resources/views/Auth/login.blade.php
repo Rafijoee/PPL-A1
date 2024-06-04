@@ -15,7 +15,7 @@
         <img src="{{ asset('images/auth.png') }}" alt="Background Image" class="w-full h-screen">
         <div class="absolute inset-1">
             <!-- div card -->
-            <div class="absolute my-auto h-[80vh] right-0 w-[661px] bg-[#FFFFFF] bg-opacity-80 sm:mr-20 sm:mt-5 rounded-xl sm:p-4 flex flex-col justify-center items-center">
+            <div class="absolute my-auto h-[80vh] right-0 w-[35vw] bg-[#FFFFFF] bg-opacity-80 sm:mr-20 sm:my-[10vh] rounded-xl sm:p-4 flex flex-col justify-center items-center">
                 <!-- Card Content Lainnya -->
                 <img src="{{ asset('images/logo_akun.png') }}" class="scale-75" alt="">
                 <h1 class="sm:mt-4 text-4xl font-poppins font-bold text-[#185141]">Masuk</h1>
