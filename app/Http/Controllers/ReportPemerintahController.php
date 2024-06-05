@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Handling_Status;
 use App\Models\Report;
 use App\Models\Kecamatan;
@@ -11,6 +12,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use App\Jobs\CreateDatabaseAfterTenDays;
+use App\Models\Complaint;
 
 class ReportPemerintahController extends Controller
 {
@@ -65,7 +68,6 @@ class ReportPemerintahController extends Controller
         $petani = $reports->user_id;
         $username = User::where('id', $petani)->first();
         $username = $username->name;
-
         $model = Report::findOrFail($decryptedID);
         return view("pengaduan-pemerintah.show", compact('reports', 'model', 'namakecamatan', 'handlings', 'user', 'username'));
     }
@@ -103,6 +105,24 @@ class ReportPemerintahController extends Controller
         $notifikasi->report_id = $reports->id;
         $notifikasi->title = $tanggapan_pemerintah;
         $notifikasi->save();
+
+        $notifikasi = new Notifikasi();
+        $notifikasi->user_id = Auth::user()->id;
+        $notifikasi->to_id = Report::where('id', $reports->id)->pluck('user_id')->first();
+        $notifikasi->report_id = $reports->id;
+        $notifikasi->title = $tanggapan_pemerintah;
+        $notifikasi->save();
+
+
+
+// Ketika pengaduan dibuat
+        // $complaint = Complaint::create([
+        //     'description' => 'Haloo, bagaimana kabar anda? Apakah sawah anda sudah membaik ?',
+        // ]);
+
+// Menjadwalkan job untuk dijalankan setelah 10 hari
+        // CreateDatabaseAfterTenDays::dispatch($complaint->id)->delay(now()->addDays(10));
+
 
         return redirect('/dashboard/pengaduan-pemerintah')->with('success', 'tanggapan berhasil dikirim!');
     }

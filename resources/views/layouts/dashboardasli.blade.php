@@ -9,7 +9,7 @@
                 <p class="absolute sm:top-28 top-12 left-40 w-full sm:left-[700px] text-white font-semibold text-lg sm:text-3xl">Halo, {{$user->name}}!</p>
                 <p class="absolute top-[102px] sm:top-36 left-40 sm:left-[700px] text-white font-black text-5xl sm:text-9xl shadow">Selamat</p>
                 <p class="absolute top-36 sm:top-64 sm:left-[1000px] left-56 text-white font-black text-5xl sm:text-9xl shadow">Datang</p>
-                <p class="absolute sm:top-[320px] top-52 left-32 w-full sm:w-96 sm:left-[310px] text-justify text-white font-semibold text-xs sm:text-sm">Buat aduan pertanian dengan mudah dari rumah tanpa harus mencetak dokumen. Pantau perkembangan aduan real time dengan sekali klik.</p>
+                <p class="absolute sm:top-[320px] top-52 left-32 w-full sm:w-[500px] sm:left-[310px] text-justify text-white font-semibold text-xs sm:text-lg">Buat aduan pertanian dengan mudah dari rumah tanpa harus mencetak dokumen. Pantau perkembangan aduan real time dengan sekali klik.</p>
             </div>
         </div>
     </div>
