@@ -18,7 +18,7 @@
 
 </head>
 <body class="bg-[#F2FBFF] text-[#185141] flex flex-col sm:flex-row overflow-x-hidden">
-    <a href="/dashboard/pengaduan-penyuluh" class="sm:ml-80 sm:mt-32 max-h-8 mt-20 ml-3">
+    <a href="/dashboard/pengaduan-pemerintah" class="sm:ml-80 sm:mt-32 max-h-8 mt-20 ml-3">
         <svg class="w-[35px] h-[35px] text-[#185141] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 12h14M5 12l4-4m-4 4 4 4"/>
         </svg>

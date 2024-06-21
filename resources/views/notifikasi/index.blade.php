@@ -17,9 +17,9 @@
                 </div>
                 <a href="{{ route('pengaduan.show', Crypt::encryptString($notif->report_id)) }}" class="ms-3 text-sm font-normal">
                     @if ($notif->user_id > 2 )
-                    <p class="text-sm font-semibold text-gray-900 dark:text-white m-1">Penyuluh Telah Memberi Tanggapan pada Aduan Anda</p>
+                    <p class="text-sm font-semibold text-gray-900 dark:text-white m-1">Penyuluh Telah Memberi Tanggapan pada Aduan "{{ $notif->report->judul_laporan }}"</p>
                     @elseif ($notif->user_id == 2)
-                    <p class="text-sm font-semibold text-gray-900 dark:text-white m-1">Pemerintah Telah Memberi Tanggapan pada Aduan Anda</p>
+                    <p class="text-sm font-semibold text-gray-900 dark:text-white m-1">Pemerintah Telah Memberi Tanggapan pada Aduan ""{{ $notif->report->judul_laporan }}""</p>
                     @endif
                     <div class="ml-5 text-sm font-normal m-1 border-l-2">
                         <p class="ml-2">{{strip_tags($notif->title)}}</p>
@@ -37,17 +37,17 @@
                 <div class="relative inline-block shrink-0">
                     <img class="w-[85,3px] h-12" src="{{asset('images/notifikasi.png')}}" />
                 </div>
-                <div class="ms-3 text-sm font-normal">
+                <a href="{{ route('pengaduan-penyuluh.show', Crypt::encryptString($notif->report_id)) }}" class="ms-3 text-sm font-normal">
                     @if ($notif->user_id > 2 )
-                    <p class="text-sm font-semibold text-gray-900 dark:text-white m-1">Petani Telah Aduan</p>
+                    <p class="text-sm font-semibold text-gray-900 dark:text-white m-1">Petani Telah Membuat Aduan "{{$notif->report->judul_laporan}}"</p>
                     @elseif ($notif->user_id == 2)
-                    <p class="text-sm font-semibold text-gray-900 dark:text-white m-1">Pemerintah Telah Memberi Tanggapan pada Aduan Anda</p>
+                    <p class="text-sm font-semibold text-gray-900 dark:text-white m-1">Pemerintah Telah Memberi Tanggapan pada Aduan"{{ $notif->report->judul_laporan }}"</p>
                     @endif
                     <div class="ml-5 text-sm font-normal m-1 border-l-2">
                         <p class="ml-2">{{strip_tags($notif->title)}}</p>
                     </div>
                     <span class=" m-1 text-xs font-medium text-blue-600 dark:text-blue-500">{{ $notif->created_at->diffForHumans() }}</span>
-                </div>
+                </a>
             </div>
             @endforeach
             @endif
@@ -59,17 +59,15 @@
                 <div class="relative inline-block shrink-0">
                     <img class="w-[85,3px] h-12" src="{{asset('images/notifikasi.png')}}" />
                 </div>
-                <div class="ms-3 text-sm font-normal">
-                    @if ($notif->user_id > 32 )
-                    <p class="text-sm font-semibold text-gray-900 dark:text-white m-1">Petani Telah Aduan</p>
-                    @elseif ($notif->user_id > 2 && $notif->user_id < 34 )
-                    <p class="text-sm font-semibold text-gray-900 dark:text-white m-1">Penyuluh Telah Memberi Tanggapan pada Aduan Anda</p>
+                <a href="{{ route('pengaduan-pemerintah.edit', Crypt::encryptString($notif->report_id)) }}" class="ms-3 text-sm font-normal">
+                    @if ($notif->user_id > 2 && $notif->user_id < 34 )
+                    <p class="text-sm font-semibold text-gray-900 dark:text-white m-1">Penyuluh Telah Membuat Aduan "{{$notif->report->judul_laporan}}"</p>
                     @endif
                     <div class="ml-5 text-sm font-normal m-1 border-l-2">
-                        <p class="ml-2">{{strip_tags($notif->title)}}</p>
+                        <p class="ml-2">{!! strip_tags($notif->title) !!}</p>
                     </div>
                     <span class=" m-1 text-xs font-medium text-blue-600 dark:text-blue-500">{{ $notif->created_at->diffForHumans() }}</span>
-                </div>
+                </a>
             </div>
             @endforeach
             @endif

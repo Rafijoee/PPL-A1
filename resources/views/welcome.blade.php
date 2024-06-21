@@ -43,7 +43,7 @@
             <p class="text-justify">Monitor adalah platform digital yang menghubungkan petani dengan penyuluh dan Dinas Ketahanan Pangan Kabupaten Jember . Platform kami hadir untuk mempermudah pengaduan dan mempercepat penyelesaian masalah yang dialami oleh petani di Kabupaten Jember.</p>
         </div>
         <div id="layanan">
-            <p class="text-5xl font-bold mt-72 sm:mt-20">Layanan</p>
+            <p class="text-5xl font-bold mt-72 text-center sm:mt-20">Layanan</p>
             <p class="mt-3 text-lg mb-10">layanan yang tersedia di Monitor</p>
 
         </div>
